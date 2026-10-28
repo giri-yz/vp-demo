@@ -1,0 +1,391 @@
+/* ═══ SuperOrdersView — uses ONLY colors from existing SuperAdminDashboard.module.css ═══ */
+
+/* ── Banner (identical to .banner in SuperAdminDashboard) ── */
+.banner {
+  background: linear-gradient(135deg, #0a3d1f 0%, #134B2F 40%, #1a6b3a 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  top: -50%;
+  right: -20%;
+  pointer-events: none;
+}
+.banner::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  bottom: -60%;
+  right: 10%;
+  pointer-events: none;
+}
+.bannerContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.bannerIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4F9E4A, #2E7D32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bannerTitle {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fff;
+  margin: 0 0 6px;
+}
+.bannerSubtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+/* ── KPI Grid (payKpiCard pattern) ── */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.kpiCard {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+.kpiCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+.kpiGreen::before { background: linear-gradient(180deg, #22C55E, #16A34A); }
+.kpiTeal::before  { background: linear-gradient(180deg, #14B8A6, #0D9488); }
+.kpiAmber::before { background: linear-gradient(180deg, #7EBC51, #5EA33A); }
+.kpiRed::before   { background: linear-gradient(180deg, #134B2F, #0B2F1A); }
+.kpiTitle {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748B;
+  margin-bottom: 6px;
+}
+.kpiAmount {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1E293B;
+}
+
+/* ── Tabs (pill tabs from Super module) ── */
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #F1F5F9;
+  color: #64748B;
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tab:hover {
+  background: #E2E8F0;
+  color: #334155;
+}
+.tabActive,
+.tabActive:hover {
+  background: #2E7D32;
+  color: #fff;
+  border-color: #2E7D32;
+}
+.tabCount {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1px 7px;
+  border-radius: 10px;
+}
+.tab:not(.tabActive) .tabCount {
+  background: #E5E7EB;
+  color: #64748B;
+}
+
+/* ── Panel (white variant from SubViews) ── */
+.panel {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #E5E7EB;
+  margin-bottom: 24px;
+  overflow: hidden;
+  /* Flex/grid child guard — lets the inner tableWrapper actually scroll
+     horizontally on mobile instead of expanding the panel past the viewport. */
+  min-width: 0;
+}
+.panelHeader {
+  padding: 14px 20px;
+  border-bottom: 1px solid #E5E7EB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.panelTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1E293B;
+  margin: 0;
+}
+
+/* ── Table (green header = super admin signature) ── */
+.tableWrapper {
+  overflow-x: auto;
+  min-width: 0;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th {
+  background: #2E7D32;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 2px solid #1B5E20;
+  white-space: nowrap;
+}
+.table td {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #1E293B;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+.table tr:hover td {
+  background: #F8FAFC;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.viewBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #134B2F;
+  background: #fff;
+  color: #134B2F;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.viewBtn:hover {
+  background: #2E7D32;
+  border-color: #2E7D32;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.35);
+}
+.boltBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #FFC107;
+  background: #FFF3CD;
+  color: #7C6B1D;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.boltBtn:hover {
+  background: #FFC107;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.35);
+}
+.advanceBtn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #2E7D32;
+  background: transparent;
+  color: #2E7D32;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.advanceBtn:hover:not(:disabled) {
+  background: #2E7D32;
+  color: #fff;
+}
+.advanceBtn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+.cancelBtn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  background: #F8FAFC;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.cancelBtn:hover:not(:disabled) {
+  border-color: #DC2626;
+  background: #DC2626;
+  color: #fff;
+}
+.cancelBtn:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+/* ── Placeholder / loading / empty ── */
+.placeholder {
+  padding: 40px 20px;
+  text-align: center;
+  color: #64748B;
+  font-size: 13px;
+}
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-top: 1px solid #E5E7EB;
+  font-size: 13px;
+  color: #475569;
+}
+.pageBtns {
+  display: flex;
+  gap: 8px;
+}
+.pageBtn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  background: #fff;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pageBtn:hover:not(:disabled) {
+  background: #2E7D32;
+  border-color: #2E7D32;
+  color: #fff;
+}
+.pageBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Tablet band: four metric cards squash below ~1100px — step to 2-up ── */
+@media (max-width: 1100px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .banner {
+    padding: 20px 16px;
+    margin-bottom: 14px;
+  }
+  .bannerTitle {
+    font-size: 20px;
+  }
+  .bannerIcon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .kpiCard {
+    padding: 14px 14px;
+  }
+  .kpiAmount {
+    font-size: 20px;
+  }
+  .tabs {
+    gap: 6px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  .table th,
+  .table td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  .pagination {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}

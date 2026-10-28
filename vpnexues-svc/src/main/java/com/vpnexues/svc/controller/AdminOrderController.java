@@ -1,0 +1,85 @@
+package com.vpnexues.svc.controller;
+
+import com.vpnexues.svc.dto.AdminOrderDetailDto;
+import com.vpnexues.svc.dto.AdminOrderSummaryDto;
+import com.vpnexues.svc.dto.PageResponse;
+import com.vpnexues.svc.dto.UpdateOrderStatusRequest;
+import com.vpnexues.svc.entity.OrderChannel;
+import com.vpnexues.svc.entity.OrderStatus;
+import com.vpnexues.svc.service.AdminAccessService;
+import com.vpnexues.svc.service.AdminOrderService;
+import jakarta.validation.Valid;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
+import java.util.UUID;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+public class AdminOrderController {
+
+    private final AdminOrderService adminOrderService;
+    private final AdminAccessService accessService;
+
+    @GetMapping("/api/admin/orders")
+    public PageResponse<AdminOrderSummaryDto> list(
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) OrderChannel channel,
+            @RequestParam(required = false) String country,
+            @RequestParam(required = false) String buyerPhone,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateFrom,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateTo,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size,
+            @AuthenticationPrincipal UUID requestingAdminId) {
+        accessService.requireRead(requestingAdminId, AdminAccessService.M_ORDERS);
+        size = Math.min(Math.max(1, size), 200);
+        Instant createdFrom = dateFrom == null ? null : dateFrom.atStartOfDay(ZoneOffset.UTC).toInstant();
+        // Exclusive upper bound one day past dateTo so the whole day is included.
+        Instant createdBefore =
+                dateTo == null ? null : dateTo.plusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant();
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+        OrderStatus orderStatus = null;
+        try {
+            if (status != null && !status.isEmpty()) {
+                orderStatus = OrderStatus.valueOf(status);
+            }
+        } catch (IllegalArgumentException e) {
+            orderStatus = null;
+        }
+        return PageResponse.from(
+                adminOrderService.list(
+                        orderStatus, channel, country, buyerPhone, createdFrom, createdBefore, pageable,
+                        requestingAdminId));
+    }
+
+    @GetMapping("/api/admin/orders/{id}")
+    public AdminOrderDetailDto get(
+            @PathVariable UUID id, @AuthenticationPrincipal UUID requestingAdminId) {
+        accessService.requireRead(requestingAdminId, AdminAccessService.M_ORDERS);
+        return adminOrderService.get(id, requestingAdminId);
+    }
+
+    @PutMapping("/api/admin/orders/{id}/status")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
+    public AdminOrderDetailDto updateStatus(
+            @PathVariable UUID id,
+            @RequestBody @Valid UpdateOrderStatusRequest req,
+            @AuthenticationPrincipal UUID requestingAdminId) {
+        accessService.requirePermission(requestingAdminId, AdminAccessService.M_ORDERS, AdminAccessService.P_EDIT);
+        return adminOrderService.updateStatus(id, req.status(), requestingAdminId);
+    }
+}

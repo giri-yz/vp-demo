@@ -1,0 +1,102 @@
+.strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  border: 1.5px dashed var(--color-gold-dark);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-alt, var(--color-cream));
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--color-text-heading);
+  text-align: left;
+}
+
+.stripApplied {
+  border-style: solid;
+  border-color: var(--color-success);
+  background: #e6f6e9;
+  color: var(--color-success);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(10, 20, 8, 0.5);
+  display: flex;
+  align-items: flex-end;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.sheet {
+  width: 100%;
+  background: var(--color-white);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  padding: var(--space-6);
+  animation: sheetUp 0.28s ease;
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.sheetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.sheetHeader button {
+  border: none;
+  background: var(--color-bg);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sheetHeader button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.row {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.row input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+}
+
+.message {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}

@@ -1,0 +1,742 @@
+/* ═══════════════════════════════════════════════════════════════
+   Team member detail — 40/60 CORRECT POSITIONING.
+   LEFT 40% sticky photo card (Director first) · RIGHT 60% stacked roles
+   + skills, tops aligned, 60px gap, 24px page padding — no waste.
+   Solid #0A2E18 stage, leaves drift behind both columns. Inter UI text.
+   Transform/opacity only → 60fps.
+   ═══════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+  background: #0a2e18;
+  color: #fff9e8;
+  padding: 0 24px 72px;
+  font-family: 'Inter', 'Nunito', system-ui, sans-serif;
+}
+
+/* ── atmosphere: fixed night forest, behind everything ── */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: bokehFloat 10s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.bokehSoft {
+  background: radial-gradient(circle, rgba(74, 140, 74, 0.85) 0%, rgba(74, 140, 74, 0.3) 45%, transparent 70%);
+  box-shadow: 0 0 16px rgba(74, 140, 74, 0.45);
+}
+
+.bokehGreen {
+  background: radial-gradient(circle, rgba(183, 224, 74, 0.7) 0%, rgba(91, 140, 81, 0.28) 45%, transparent 70%);
+}
+
+@keyframes bokehFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(24px, -38px, 0) scale(1.25); }
+}
+
+.driftLeaf {
+  position: absolute;
+  display: block;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.5));
+  opacity: 0.85;
+  will-change: transform;
+}
+
+/* ── stage: 1320 container ── */
+.stage {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+  perspective: 1500px;
+}
+
+.topBar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 0 32px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 249, 232, 0.75);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.backLink:hover {
+  color: #4A8C4A;
+  border-bottom-color: #4A8C4A;
+}
+
+.crumbSlug {
+  font-family: Georgia, 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(255, 249, 232, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   40/60 flex: photo left sticky, content right stacked
+   ═══════════════════════════════════════════════════════════════ */
+.columns {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  transform-style: preserve-3d;
+}
+
+/* LEFT 40% — sticky, full column width, tops aligned with right */
+.colPhoto {
+  flex: 0 0 40%;
+  max-width: 40%;
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+}
+
+/* RIGHT 60% — stacked, same width, left aligned */
+.colContent {
+  flex: 1 1 60%;
+  max-width: 60%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  will-change: transform;
+}
+
+/* ── LEFT: floating glass identity card (full column width) ── */
+.cardParallax {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.idCard {
+  width: 100%;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 30px 28px 26px;
+  text-align: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.cardKicker {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4A8C4A;
+  transform: translateZ(50px);
+}
+
+.cardName {
+  margin: 12px 0 20px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  transform: translateZ(70px);
+}
+
+.cardPhoto {
+  position: relative;
+  width: 80%;
+  height: 420px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(170deg, #0d3520, #020d07);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 -30px 60px rgba(2, 13, 7, 0.55);
+  transform: translateZ(40px);
+}
+
+.initials {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-size: 96px;
+  font-weight: 700;
+  color: #A3C9A0;
+}
+
+.cardImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 1;
+  transition: transform 0.8s ease;
+}
+
+.cardPhoto:hover .cardImg {
+  transform: scale(1.05);
+}
+
+.photoMissing { display: none !important; }
+
+.cardPhotoShade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(0deg, rgba(2, 13, 7, 0.45) 0%, rgba(2, 13, 7, 0) 35%);
+  pointer-events: none;
+}
+
+.cardStats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+  transform: translateZ(55px);
+}
+
+.statPill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff9e8;
+  white-space: nowrap;
+}
+
+.cardGloss {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8%;
+  width: 34%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.09), transparent);
+  transform: skewX(-12deg) translateZ(90px);
+  pointer-events: none;
+  border-radius: 32px;
+}
+
+/* ── RIGHT: section titles + cards, all same width, left aligned ── */
+.sideTitle {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #4A8C4A;
+}
+
+.sideCard {
+  width: 100%;
+  background: rgba(22, 69, 37, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  will-change: transform;
+}
+
+.roleList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.roleItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.dot {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin-top: 5px;
+  border-radius: 50%;
+  background: #4A8C4A;
+  box-shadow: 0 0 10px rgba(74, 140, 74, 0.8);
+}
+
+.roleText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.roleTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.roleDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* skills: stacked mini cards, vertical, 12px gaps */
+.sideSection {
+  width: 100%;
+}
+
+.skillCards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.skillCard {
+  width: 100%;
+  background: rgba(22, 69, 37, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+  will-change: transform;
+}
+
+.skillCard:hover {
+  border-color: rgba(74, 140, 74, 0.45);
+  transform: translateX(4px);
+}
+
+.skillTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.bioLine {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255, 249, 232, 0.66);
+  border-left: 2px solid rgba(74, 140, 74, 0.45);
+  padding-left: 16px;
+}
+
+/* ── prev / next: two separated glass buttons, never merged ── */
+.pager {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.pageLink {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: #fff9e8;
+  background: rgba(22, 69, 37, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 20px 24px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pageLinkNext {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.pageLink:hover {
+  transform: translateY(-3px);
+  border-color: rgba(74, 140, 74, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.pageLink:hover strong {
+  color: #4A8C4A;
+}
+
+.pageDir {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 249, 232, 0.55);
+}
+
+.pageLink strong {
+  font-family: Georgia, 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 700;
+  transition: color 0.25s ease;
+}
+
+/* ── loading / error ── */
+.stateText {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 90px 20px;
+  color: rgba(255, 249, 232, 0.85);
+  font-size: 15px;
+}
+
+.stateBox {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.stateBox .stateText {
+  padding: 0 0 14px;
+}
+
+.retryLink {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #4A8C4A;
+  padding: 0 0 3px;
+  color: #4A8C4A;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE — photo on top, content below
+   ════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .page {
+    padding: 0 16px 64px;
+  }
+
+  .columns {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .colPhoto {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    position: static;
+  }
+
+  .cardParallax {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .colContent {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .sideCard {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hideMobile {
+    display: none;
+  }
+
+  .topBar {
+    padding: 20px 0 24px;
+  }
+
+  .cardName {
+    font-size: 23px;
+  }
+
+  .cardPhoto {
+    height: 320px;
+  }
+
+  .cardStats {
+    flex-wrap: wrap;
+  }
+
+  .skillCard:hover {
+    transform: none;
+  }
+
+  .pager {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .pageLinkNext {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* ── Reduced motion: composed still frame, full content ── */
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere {
+    display: none;
+  }
+
+  .cardPhoto:hover .cardImg {
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT OLIVÉ THEME (append-only) — warm white stage, white panels,
+   dark-green ink. The portrait ID card stays deep green as the
+   contrast anchor. All motion/depth untouched.
+   ═══════════════════════════════════════════════════════════════ */
+.page {
+  background: #ffffff;
+  color: #2c3e2d;
+}
+
+.atmosphere {
+  opacity: 0.4;
+}
+
+.backLink {
+  color: rgba(44, 62, 45, 0.7);
+}
+
+.backLink:hover {
+  color: #2E7A3E;
+  border-bottom-color: #4A8C4A;
+}
+
+.crumbSlug {
+  color: #5a6b5c;
+}
+
+/* portrait card keeps its deep-green glass so white text stays readable */
+.idCard {
+  background: rgba(10, 31, 20, 0.94);
+  border-color: rgba(74, 140, 74, 0.45);
+  box-shadow:
+    0 30px 80px rgba(44, 62, 45, 0.18),
+    0 0 40px rgba(74, 140, 74, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.cardKicker {
+  color: #A3C9A0;
+}
+
+.cardPhoto {
+  background: linear-gradient(170deg, #1a3a2a, #0a1f14);
+}
+
+.initials {
+  color: #A3C9A0;
+}
+
+/* side panels become white premium cards */
+.sideTitle {
+  color: #2E7A3E;
+}
+
+.sideTitle::after,
+.sideCard .dot,
+.dot {
+  background: #4A8C4A;
+  box-shadow: 0 0 10px rgba(74, 140, 74, 0.5);
+}
+
+.sideTitle::after {
+  box-shadow: 0 0 10px rgba(74, 140, 74, 0.5);
+}
+
+.sideCard {
+  background: #ffffff;
+  border-color: rgba(74, 140, 74, 0.3);
+  box-shadow: 0 4px 24px rgba(44, 62, 45, 0.06);
+}
+
+.roleTitle {
+  color: #2c3e2d;
+}
+
+.roleDesc {
+  color: #5a6b5c;
+}
+
+.dotRow:hover {
+  background: rgba(74, 140, 74, 0.08);
+}
+
+.skillTitle {
+  color: #2c3e2d;
+}
+
+.skillCard {
+  background: #ffffff;
+  border-color: rgba(74, 140, 74, 0.3);
+  box-shadow: 0 4px 24px rgba(44, 62, 45, 0.06);
+}
+
+.skillCard:hover {
+  border-color: #4A8C4A;
+  box-shadow: 0 10px 26px rgba(44, 62, 45, 0.1), 0 0 20px rgba(74, 140, 74, 0.15);
+}
+
+.bioLine {
+  color: #5a6b5c;
+  border-left-color: rgba(74, 140, 74, 0.6);
+}
+
+.pager {
+  border-top-color: #e8e0d0;
+}
+
+.pageDir {
+  color: #2E7A3E;
+}
+
+.pageLink {
+  background: #ffffff;
+  border: 1px solid rgba(74, 140, 74, 0.3);
+  box-shadow: 0 4px 24px rgba(44, 62, 45, 0.06);
+  color: #2c3e2d;
+}
+
+.pageLink:hover {
+  border-color: #4A8C4A;
+  box-shadow: 0 14px 34px rgba(44, 62, 45, 0.1), 0 0 20px rgba(74, 140, 74, 0.15);
+}
+
+.pageLink:hover strong {
+  color: #2E7A3E;
+}
+
+.pageLink strong {
+  color: #2c3e2d;
+}
+
+.stateText {
+  color: #5a6b5c;
+}
+
+.retryLink {
+  color: #2E7A3E;
+  border-bottom-color: #4A8C4A;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HOME-MATCH TEXT COLORS (append-only) — flat ink like the home
+   page. No glows. Layout/motion untouched.
+   ═══════════════════════════════════════════════════════════════ */
+.backLink {
+  color: #2d2d2d;
+  font-weight: 600;
+}
+
+.crumbSlug {
+  color: #5a5a5a;
+}
+
+.sideTitle {
+  color: #1a4d2e;
+}
+
+.roleTitle {
+  color: #1a1a1a;
+}
+
+.roleDesc {
+  color: #5a5a5a;
+}
+
+.skillTitle {
+  color: #1a1a1a;
+}
+
+.bioLine {
+  color: #5a5a5a;
+}
+
+.pageLink strong {
+  color: #1a1a1a;
+}
+
+.pageDir {
+  color: #2E7A3E;
+}
+
+.stateText {
+  color: #5a5a5a;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PURE WHITE (append-only) — #FFFFFF stage, #E5E5E5 hairlines,
+   no particles. Text layer above untouched.
+   ═══════════════════════════════════════════════════════════════ */
+.page {
+  background: #ffffff;
+}
+
+.atmosphere {
+  display: none;
+}
+
+.sideCard,
+.skillCard,
+.pageLink {
+  border-color: #e5e5e5;
+}

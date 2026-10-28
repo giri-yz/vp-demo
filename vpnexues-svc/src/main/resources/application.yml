@@ -1,0 +1,94 @@
+spring:
+  application:
+    name: vpnexues-svc
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/vpnexues_db}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # Flyway (see config/FlywayConfig.java — Boot 4.1 ships no Flyway
+      # autoconfiguration, so it's wired manually there) owns the schema.
+      # This only checks entities still match it — never create/update here.
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_batch_fetch_size: 50
+
+  mail:
+    host: ${SMTP_HOST:}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+
+server:
+  # Render/Docker inject PORT (e.g. 10000). Local/Gradle bootRun keeps SERVER_PORT or 8080.
+  port: ${PORT:${SERVER_PORT:8080}}
+
+supabase:
+  url: ${SUPABASE_URL:}
+  anon-key: ${SUPABASE_ANON_KEY:}
+  secret-key: ${SUPABASE_SECRET_KEY:}
+  jwks-url: ${SUPABASE_JWKS_URL:}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET}
+    access-token-ttl-minutes: ${JWT_ACCESS_TTL_MIN:30}
+    refresh-token-ttl-days: ${JWT_REFRESH_TTL_DAYS:14}
+    # Customer sessions have no refresh-token flow, so the vpx_at cookie + this TTL are what keep a
+    # shopper signed in (and their cart attached to their account) across reloads. Sliding renewal in
+    # CustomerJwtAuthFilter extends it further while the user stays active.
+    customer-access-token-ttl-days: ${CUSTOMER_ACCESS_TTL_DAYS:30}
+  cors:
+    # Comma-separated exact origins. Production must include the live site.
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173,http://127.0.0.1:5174,https://tesing.vpnexues.com,http://tesing.vpnexues.com}
+  otp:
+    provider: stub
+  # Admin photo uploads land here as real files (ContentUploadService) and are
+  # served back at /uploads/** (UploadStorageConfig). Relative to the process
+  # working dir by default; override with UPLOAD_DIR for deployments.
+  uploads:
+    dir: ${UPLOAD_DIR:uploads}
+  firebase:
+    project-id: ${FIREBASE_PROJECT_ID:vpnexues-otp-and-img-s}
+  admin:
+    # First SUPER_ADMIN, created once on startup if admin_users is empty (see
+    # AdminBootstrapRunner). Leave unset after the first successful boot.
+    bootstrap-email: ${ADMIN_BOOTSTRAP_EMAIL:}
+    bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD:}
+  cookie:
+    # Secure cookies require HTTPS — keep false for local http://localhost dev,
+    # set true (via COOKIE_SECURE=true) once served over real HTTPS.
+    secure: ${COOKIE_SECURE:false}
+  # Trusted-device binding for phone login: a browser that has passed OTP once
+  # keeps the `vpx_dv` cookie for this long and may log in without a new OTP.
+  trusted-device:
+    ttl-days: ${TRUSTED_DEVICE_TTL_DAYS:180}
+
+# Inbox for Contact-page form submissions (see ContactFormMailService).
+# Key must match the service's @Value("${contact.mail.receiver:}").
+# Empty = skip email, message is still saved to the DB + admin inbox.
+contact:
+  mail:
+    receiver: ${CONTACT_RECEIVER_EMAIL:}

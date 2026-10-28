@@ -1,0 +1,394 @@
+/* =====================================================================
+   FilterSheet.module.css — Premium card-based filter sheet
+   ===================================================================== */
+
+/* ── Overlay ─────────────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(10, 28, 12, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: flex-end;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Sheet container (mobile) ────────────────────────────────────── */
+.sheet {
+  width: 100%;
+  max-height: min(80vh, 520px);
+  overflow: hidden;
+  background: #f0f7ed;
+  border-radius: 24px 24px 0 0;
+  padding: 0 16px calc(20px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -20px 60px rgba(10, 28, 12, 0.25);
+  animation: sheetUp 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes sheetUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* ── Drag handle ─────────────────────────────────────────────────── */
+.handle {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: #c5d4c0;
+  margin: 10px auto 0;
+}
+
+/* ── Header ──────────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 -16px 14px;
+  padding: 16px 20px 14px;
+  background: linear-gradient(135deg, #14472F 0%, #1a5c35 50%, #0d3018 100%);
+  border-radius: 24px 24px 0 0;
+}
+
+.title {
+  margin: 0;
+  min-width: 0;
+  color: #fff;
+  font: 800 18px/1.2 'Nunito', sans-serif;
+  letter-spacing: -0.3px;
+  overflow-wrap: anywhere;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Clear button ────────────────────────────────────────────────── */
+.clearBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 30px;
+  height: auto;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font: 700 11px/1.3 'Nunito', sans-serif;
+  cursor: pointer;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+  transition: all 0.2s ease;
+}
+
+.clearBtn:hover,
+.clearBtn:active {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ── Close button ────────────────────────────────────────────────── */
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:active {
+  transform: scale(0.92);
+}
+
+.closeBtn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Sections grid (mobile: stacked) ─────────────────────────────── */
+.sectionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Section card ────────────────────────────────────────────────── */
+.section {
+  background: #fff;
+  border: 1px solid #e7efe5;
+  border-radius: 16px;
+  padding: 14px 14px 14px;
+  box-shadow: 0 2px 8px rgba(20, 60, 30, 0.06);
+}
+
+.sectionLabel {
+  margin: 0 0 10px;
+  color: #14472F;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sectionLabel::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #5b8c51, #2E7D32);
+  flex-shrink: 0;
+}
+
+/* ── Chips container ─────────────────────────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Chip ────────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 34px;
+  height: auto;
+  padding: 6px 14px;
+  border: 1.5px solid #e8efe6;
+  border-radius: 10px;
+  background: #f8fbf7;
+  color: #3a5a3a;
+  font: 600 12px/1.3 'Nunito', sans-serif;
+  cursor: pointer;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+  transition: all 0.2s ease;
+}
+
+.chip:active {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) {
+  .chip:hover {
+    border-color: #b7d1b3;
+    background: #f1f7ef;
+  }
+  .chipActive:hover {
+    background: linear-gradient(135deg, #527f4a, #2E7D32);
+  }
+}
+
+.chipActive {
+  background: linear-gradient(135deg, #5b8c51, #2E7D32);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.3);
+}
+
+.chipIcon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.chipsSingleRow {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  gap: 8px;
+}
+
+.chipsSingleRow::-webkit-scrollbar {
+  display: none;
+}
+
+/* Single-row chips must keep their natural width — otherwise flex shrinking +
+   overflow-wrap breaks labels mid-word ("Vegetables" -> "get abl"). */
+.chipsSingleRow .chip {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* ── Quick Links ─────────────────────────────────────────────────── */
+.linkChip {
+  background: #fffdf5;
+  border-color: #f0dfa0;
+  color: #9a7a10;
+}
+
+.linkChipActive {
+  background: linear-gradient(135deg, #FFC107, #e6ac00);
+  color: #1a3c1e;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(255, 193, 7, 0.35);
+}
+
+/* ── Apply button ────────────────────────────────────────────────── */
+.applyBtn {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1a5c35, #14472F);
+  color: #fff;
+  font: 800 15px/1 'Nunito', sans-serif;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 24px rgba(20, 71, 47, 0.3);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+.applyBtn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  pointer-events: none;
+}
+
+.applyBtn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 14px rgba(20, 71, 47, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Desktop (≥768px) — anchored dropdown, single column
+   ═══════════════════════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .overlay {
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .sheet {
+    position: fixed;
+    width: 380px;
+    max-width: calc(100vw - 32px);
+    max-height: min(60vh, 440px);
+    border-radius: 16px;
+    padding: 0 18px 16px;
+    background: #f4faf3;
+    box-shadow:
+      0 16px 48px rgba(10, 28, 12, 0.18),
+      0 2px 8px rgba(10, 28, 12, 0.06);
+    border: 1px solid #c8e0c4;
+    pointer-events: auto;
+    animation: dropIn 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sheet[data-anchored="true"]::before { display: none; }
+
+  .sheet::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    background: #134B2F;
+    border-left: 1px solid #0d3a22;
+    border-top: 1px solid #0d3a22;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  @keyframes dropIn {
+    from { transform: translateY(-8px) scale(0.98); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
+
+  .handle { display: none; }
+
+  .header {
+    margin: 0 -18px 10px;
+    padding: 12px 18px 10px;
+    background: linear-gradient(135deg, #134B2F, #1a5c32);
+    border-radius: 16px 16px 0 0;
+  }
+
+  .title { font-size: 15px; color: #fff; }
+
+  .clearBtn {
+    padding: 5px 14px;
+    font-size: 11px;
+  }
+
+  .closeBtn { width: 30px; height: 30px; font-size: 14px; }
+
+  .sectionsGrid {
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 8px;
+    padding-right: 4px;
+  }
+
+  .section { padding: 10px 12px; }
+
+  .sectionLabel {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+
+  .chips { gap: 5px; }
+
+  .chip {
+    height: 28px;
+    padding: 0 10px;
+    font-size: 11px;
+    border-radius: 8px;
+  }
+
+  .applyBtn {
+    height: 38px;
+    border-radius: 10px;
+    font-size: 12px;
+    box-shadow: 0 6px 18px rgba(46, 125, 50, 0.22);
+    flex-shrink: 0;
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sheet::before { left: 50%; right: auto; }
+}

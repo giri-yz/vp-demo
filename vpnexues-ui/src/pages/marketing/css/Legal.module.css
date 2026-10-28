@@ -1,0 +1,338 @@
+/* ── Legal pages (Privacy Policy + Terms) — mobile-first ── */
+
+/* ── Banner (mobile + desktop green gradient) ── */
+.banner {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(110deg, #14472F, #2c5427);
+  border-radius: 0 0 28px 28px;
+  padding: 28px 16px 32px;
+  color: #fff;
+}
+.bannerInner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.breadcrumb {
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+.breadcrumb a {
+  color: #fff;
+  text-decoration: none;
+}
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.banner h1 {
+  font: 800 clamp(24px, 5vw, 36px)/1.2 'Nunito', sans-serif;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,.55);
+}
+.banner p {
+  font: 500 13px/1.5 'Nunito', sans-serif;
+  margin: 8px 0 0;
+  color: rgba(255,255,255,.92);
+  max-width: 640px;
+}
+.bannerMeta {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.28);
+  font: 700 11px/1.3 'Nunito', sans-serif;
+  letter-spacing: .4px;
+  color: #fff;
+}
+
+/* ── Content ── */
+.section {
+  padding: 36px 0 48px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.card {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #e5e8e2;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(20,71,47,.06);
+  padding: 24px 18px;
+  box-sizing: border-box;
+}
+.docTitle {
+  font: 900 22px/1.25 'Nunito', sans-serif;
+  color: #14472F;
+  margin: 0 0 6px;
+}
+.docMeta {
+  font: 600 12px/1.5 'Nunito', sans-serif;
+  color: #5b8c51;
+  margin: 0 0 4px;
+}
+.docApplies {
+  font: 500 12px/1.5 'Nunito', sans-serif;
+  color: #444;
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef3ea;
+}
+
+.legalSection {
+  margin-bottom: 26px;
+}
+.legalSection:last-child { margin-bottom: 0; }
+.legalSection h2 {
+  font: 800 16px/1.35 'Nunito', sans-serif;
+  color: #14472F;
+  margin: 0 0 10px;
+  padding-left: 12px;
+  border-left: 4px solid #5B8C51;
+}
+.legalSection p {
+  font: 500 14px/1.65 'Nunito', sans-serif;
+  color: #333;
+  margin: 0 0 10px;
+}
+.legalSection p:last-child { margin-bottom: 0; }
+.legalSection ul {
+  margin: 0 0 10px;
+  padding: 0 0 0 4px;
+  list-style: none;
+}
+.legalSection ul:last-child { margin-bottom: 0; }
+/* Ordered lists = numbered steps (Account Deletion "How to" section) */
+.legalSection ol {
+  margin: 0 0 10px;
+  padding: 0 0 0 24px;
+}
+.legalSection ol:last-child { margin-bottom: 0; }
+.legalSection ol li {
+  padding-left: 4px;
+  list-style: decimal;
+}
+.legalSection ol li::marker { color: #5B8C51; font-weight: 700; }
+.legalSection li {
+  font: 500 13.5px/1.6 'Nunito', sans-serif;
+  color: #333;
+  margin-bottom: 8px;
+  padding-left: 18px;
+  position: relative;
+}
+.legalSection li:last-child { margin-bottom: 0; }
+.legalSection ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5B8C51;
+}
+.legalSection li strong,
+.legalSection p strong {
+  color: #14472F;
+  font-weight: 800;
+}
+.legalSection a {
+  color: #1a6b2a;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.legalSection a:hover { color: #14472F; }
+
+/* Info block (company details) — :global because HTML bodies come from i18n strings */
+:global(.infoBlock) {
+  background: #f6f9f2;
+  border: 1px solid #e5e8e2;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+:global(.infoBlock p) {
+  margin: 0 0 6px;
+  font: 500 13px/1.6 'Nunito', sans-serif;
+  color: #333;
+}
+:global(.infoBlock p:last-child) { margin-bottom: 0; }
+
+/* Channel table (Terms §4) */
+:global(.channelTable) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font: 600 12px/1.4 'Nunito', sans-serif;
+}
+:global(.channelTable th) {
+  background: #14472F;
+  color: #fff;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 800;
+}
+:global(.channelTable td) {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef3ea;
+  color: #333;
+  background: #fff;
+}
+:global(.channelTable tr:nth-child(even) td) { background: #f9fbf7; }
+
+/* Provider table (Terms §10) */
+:global(.providerTable) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font: 600 12px/1.4 'Nunito', sans-serif;
+}
+:global(.providerTable th) {
+  background: #14472F;
+  color: #fff;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 800;
+}
+:global(.providerTable td) {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef3ea;
+  color: #333;
+  vertical-align: top;
+  background: #fff;
+}
+:global(.providerTable tr:nth-child(even) td) { background: #f9fbf7; }
+
+/* Cross-link footer inside card */
+.docFooter {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid #eef3ea;
+  font: 600 13px/1.6 'Nunito', sans-serif;
+  color: #444;
+}
+.docFooter a {
+  color: #1a6b2a;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+/* ── Mobile Header — Shop-style sticky bar (back + logo). Base = mobile;
+      hidden on desktop via the DESKTOP media block below. ── */
+.mobileHeader {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  min-height: 56px;
+  padding: 6px clamp(12px, 3vw, 24px);
+  border-bottom: 1px solid #e8ece7;
+  background-color: #fff;
+  backdrop-filter: blur(14px);
+}
+.backBtn {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid rgba(91, 140, 81, 0.28);
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  color: #2f7d2c;
+  background: linear-gradient(145deg, #f4fbf1 0%, #e8f5e3 100%);
+  box-shadow:
+    0 4px 12px rgba(21, 102, 39, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(91, 140, 81, 0.06);
+  transition: all 0.25s ease;
+}
+.backBtn:hover {
+  border-color: rgba(91, 140, 81, 0.45);
+  box-shadow:
+    0 6px 16px rgba(21, 102, 39, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  transform: translateX(-2px);
+}
+.backBtn:active {
+  transform: translateX(0);
+  box-shadow:
+    0 2px 6px rgba(21, 102, 39, 0.1),
+    inset 0 1px 2px rgba(91, 140, 81, 0.1);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  gap: 8px;
+  color: #1c2820;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brandLogo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.brandText {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
+}
+.brandText strong {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.brandText small {
+  color: #263528;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.headerSpacer {
+  width: 34px;
+  height: 34px;
+  justify-self: end;
+}
+
+/* ═══ DESKTOP ═══ */
+@media (min-width: 768px) {
+  .mobileHeader { display: none; }
+  .banner { padding: 48px 24px 52px; }
+  .banner h1 { font-size: 36px; }
+  .banner p { font-size: 15px; }
+  .section { padding: 56px 0 64px; }
+  .card { padding: 40px 44px; border-radius: 18px; }
+  .docTitle { font-size: 28px; }
+  .docMeta { font-size: 13px; }
+  .docApplies { font-size: 13px; }
+  .legalSection h2 { font-size: 18px; margin-bottom: 12px; }
+  .legalSection p { font-size: 14.5px; }
+  .legalSection li { font-size: 14px; }
+  :global(.infoBlock) { padding: 18px 22px; }
+  :global(.infoBlock p) { font-size: 14px; }
+  :global(.channelTable),
+  :global(.providerTable) { font-size: 13px; }
+  :global(.channelTable th),
+  :global(.channelTable td),
+  :global(.providerTable th),
+  :global(.providerTable td) { padding: 12px 16px; }
+  .docFooter { font-size: 14px; }
+}

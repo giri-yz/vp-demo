@@ -1,0 +1,114 @@
+.eyebrow {
+  display: inline-block;
+  color: var(--color-gold-dark);
+  font-weight: 700;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+}
+
+.story {
+  padding: var(--space-10) 0;
+}
+
+.storyInner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.storyImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+.storyText h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.storyText > p {
+  margin-bottom: var(--space-6);
+  line-height: 1.7;
+}
+
+.progressList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  overflow-wrap: anywhere;
+}
+
+.progressTrack {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--color-primary-500);
+  border-radius: var(--radius-pill);
+}
+
+.timelineSection {
+  padding: var(--space-10) 0;
+  background: var(--color-bg);
+}
+
+.sectionHead {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-7);
+  overflow-wrap: anywhere;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.milestone {
+  padding: var(--space-5);
+}
+
+.year {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-primary-700);
+  margin-bottom: var(--space-3);
+}
+
+.milestone p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1024px) {
+  .storyInner {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

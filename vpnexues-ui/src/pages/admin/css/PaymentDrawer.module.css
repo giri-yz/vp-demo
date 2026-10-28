@@ -1,0 +1,312 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 36vw;
+  max-width: 580px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0B2F1A 0%, #0E3A20 50%, #0B2F1A 100%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  animation: slideInRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.45);
+}
+
+.panel.closing {
+  animation: slideOutRight 0.3s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+/* ── Header ── */
+.header {
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.headerTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.txnId {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.subInfo {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badgeSuccessful { background: rgba(34, 197, 94, 0.18); color: #4ADE80; }
+.badgePending { background: rgba(251, 191, 36, 0.18); color: #FBBF24; }
+.badgeFailed { background: rgba(239, 68, 68, 0.18); color: #F87171; }
+.badgeRefunded { background: rgba(96, 165, 250, 0.18); color: #60A5FA; }
+.badgeVerified { background: rgba(34, 197, 94, 0.18); color: #4ADE80; }
+.badgeUnverified { background: rgba(251, 191, 36, 0.18); color: #FBBF24; }
+
+/* ── Scrollable Body ── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+.body::-webkit-scrollbar { width: 5px; }
+.body::-webkit-scrollbar-track { background: transparent; }
+.body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.12); border-radius: 3px; }
+
+/* ── Amount Highlight ── */
+.amountBox {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.1) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.18);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.amountLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.amountValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: #4ADE80;
+  letter-spacing: -0.5px;
+}
+
+/* ── Section ── */
+.section {
+  margin-bottom: 22px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sectionTitle svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.55;
+}
+
+/* ── Info Grid ── */
+.infoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.infoCard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: background 0.2s;
+}
+
+.infoCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.infoCardLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.38);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.infoCardValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.infoCardValue.green { color: #4ADE80; }
+.infoCardValue.amber { color: #FBBF24; }
+.infoCardValue.red { color: #F87171; }
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 0 0 22px;
+}
+
+/* ── Actions ── */
+.actions {
+  padding: 16px 24px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.btnVerify {
+  background: linear-gradient(135deg, #22C55E, #16A34A);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+}
+
+.btnVerify:hover {
+  background: linear-gradient(135deg, #16A34A, #15803D);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  transform: translateY(-1px);
+}
+
+.btnRefund {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  color: #F87171;
+}
+
+.btnRefund:hover {
+  background: rgba(239, 68, 68, 0.18);
+  transform: translateY(-1px);
+}
+
+.btnClose {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.btnClose:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+/* ── Responsive: Tablet ── */
+@media (max-width: 1024px) {
+  .panel { width: 55vw; max-width: none; }
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 768px) {
+  .panel { width: 92vw; max-width: none; }
+  .infoGrid { grid-template-columns: 1fr; }
+  .actions { flex-wrap: wrap; }
+  .btn { min-width: calc(50% - 5px); }
+  .header { padding: 18px 18px 14px; }
+  .body { padding: 16px 18px 20px; }
+  .actions { padding: 14px 18px 18px; }
+}
+
+@media (max-width: 480px) {
+  .panel { width: 100vw; }
+  .txnId { font-size: 19px; }
+  .amountValue { font-size: 24px; }
+}

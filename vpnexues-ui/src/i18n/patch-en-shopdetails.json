@@ -1,0 +1,87 @@
+{
+  "shopDetails": {
+    "benefitsHeading": "Health Benefits",
+    "amount": { "veryHigh": "Very High", "high": "High", "medium": "Medium", "low": "Low" },
+    "benefits": {
+      "Vegetables": {
+        "items": [
+          { "icon": "🥬", "title": "High in Fiber", "desc": "Supports digestion and gut health with natural dietary fiber." },
+          { "icon": "💪", "title": "Immune Boost", "desc": "Rich in Vitamin C and antioxidants to strengthen immunity." },
+          { "icon": "❤️", "title": "Heart Health", "desc": "Low in sodium and cholesterol, supporting cardiovascular wellness." },
+          { "icon": "🦴", "title": "Bone Strength", "desc": "Contains Vitamin K and calcium for strong, healthy bones." },
+          { "icon": "🧠", "title": "Brain Function", "desc": "Folate and iron support cognitive function and energy levels." },
+          { "icon": "🌿", "title": "Detox Support", "desc": "Natural compounds help cleanse and purify the body." }
+        ],
+        "vitamins": [
+          { "name": "Vitamin A", "level": "high" },
+          { "name": "Vitamin C", "level": "veryHigh" },
+          { "name": "Vitamin K", "level": "high" },
+          { "name": "Folate", "level": "medium" },
+          { "name": "Potassium", "level": "high" },
+          { "name": "Iron", "level": "medium" }
+        ]
+      },
+      "Fruits": {
+        "items": [
+          { "icon": "🍊", "title": "Antioxidant Rich", "desc": "Packed with natural antioxidants that fight free radicals." },
+          { "icon": "✨", "title": "Skin Glow", "desc": "Vitamin C and collagen support healthy, radiant skin." },
+          { "icon": "⚡", "title": "Natural Energy", "desc": "Natural sugars provide sustained, crash-free energy." },
+          { "icon": "🫀", "title": "Heart Protection", "desc": "Potassium and fiber help regulate blood pressure." },
+          { "icon": "🦠", "title": "Gut Health", "desc": "Prebiotic fibers feed beneficial gut bacteria." },
+          { "icon": "💧", "title": "Hydration", "desc": "High water content keeps you hydrated and refreshed." }
+        ],
+        "vitamins": [
+          { "name": "Vitamin C", "level": "veryHigh" },
+          { "name": "Vitamin A", "level": "high" },
+          { "name": "Potassium", "level": "high" },
+          { "name": "Fiber", "level": "high" },
+          { "name": "Folate", "level": "medium" },
+          { "name": "Vitamin B6", "level": "medium" }
+        ]
+      },
+      "Groceries": {
+        "items": [
+          { "icon": "🌾", "title": "Whole Grain Goodness", "desc": "Complex carbohydrates for sustained energy throughout the day." },
+          { "icon": "💪", "title": "Protein Power", "desc": "Essential amino acids for muscle repair and growth." },
+          { "icon": "🫙", "title": "Long Shelf Life", "desc": "Carefully processed to retain freshness and nutrients." },
+          { "icon": "🍳", "title": "Kitchen Essential", "desc": "Versatile ingredients for countless recipes and meals." },
+          { "icon": "❤️", "title": "Heart Friendly", "desc": "Low saturated fat options for a balanced diet." },
+          { "icon": "🌿", "title": "Natural Processing", "desc": "Minimal artificial additives, preservatives, or colors." }
+        ],
+        "vitamins": [
+          { "name": "Iron", "level": "high" },
+          { "name": "B Vitamins", "level": "high" },
+          { "name": "Fiber", "level": "medium" },
+          { "name": "Magnesium", "level": "medium" },
+          { "name": "Zinc", "level": "medium" },
+          { "name": "Selenium", "level": "low" }
+        ]
+      },
+      "Beverages": {
+        "items": [
+          { "icon": "💧", "title": "Deep Hydration", "desc": "Natural fluids to replenish and rehydrate your body." },
+          { "icon": "🌿", "title": "Herbal Goodness", "desc": "Botanical extracts with natural healing properties." },
+          { "icon": "⚡", "title": "Natural Energy", "desc": "No artificial stimulants — just pure, natural vitality." },
+          { "icon": "🧘", "title": "Stress Relief", "desc": "Adaptogenic herbs help calm the mind and reduce stress." },
+          { "icon": "🫀", "title": "Detox Cleanse", "desc": "Natural cleansing agents support liver and kidney health." },
+          { "icon": "🌞", "title": "Vitamin Boost", "desc": "Fortified with essential vitamins and minerals." }
+        ],
+        "vitamins": [
+          { "name": "Vitamin C", "level": "high" },
+          { "name": "Electrolytes", "level": "veryHigh" },
+          { "name": "Antioxidants", "level": "high" },
+          { "name": "Vitamin B6", "level": "medium" },
+          { "name": "Potassium", "level": "medium" },
+          { "name": "Magnesium", "level": "low" }
+        ]
+      }
+    },
+    "farmSteps": [
+      { "icon": "🌱", "title": "Sourced from Farms", "desc": "We partner with certified organic farms that follow sustainable growing practices. Every product is traceable to its source." },
+      { "icon": "🔬", "title": "Quality Tested", "desc": "Each batch undergoes rigorous quality checks for freshness, pesticide residue, and nutritional content before approval." },
+      { "icon": "❄️", "title": "Cold Chain Preserved", "desc": "Temperature-controlled logistics from farm gate to our facility ensures maximum freshness and nutrient retention." },
+      { "icon": "📦", "title": "Hygienically Packed", "desc": "Food-grade, eco-friendly packaging in climate-controlled facilities. Sealed for freshness with tamper-proof seals." },
+      { "icon": "🚚", "title": "Fast Delivery", "desc": "Last-mile delivery within hours of packing. Your order reaches you at peak freshness, farm-fresh guaranteed." }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+name: API keep-alive (Render free tier)
+
+# The Render free plan sleeps a web service after ~15 min of no traffic,
+# causing 60-120s cold starts on vpnexues.com ("Network Error", failed
+# login/shop loads). This pings both backend services a bit more often
+# than the idle window so they stay warm.
+#
+# NOTE: scheduled runs only fire from the DEFAULT branch (main).
+# Run manually any time via workflow_dispatch.
+
+on:
+  schedule:
+    - cron: "*/13 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Wake vpnexues-api (website)
+        run: |
+          for i in 1 2 3 4; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 100 \
+              "https://vpnexues-api.onrender.com/api/health" || echo 000)
+            echo "vpnexues-api attempt $i -> HTTP $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 20
+          done
+          echo "::warning::vpnexues-api did not return 200 - likely cold-starting or down"
+
+      - name: Wake vpnexues-android-backend (Android app)
+        run: |
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 100 \
+              "https://vpnexues-android-backend.onrender.com/api/health" || echo 000)
+            echo "vpnexues-android-backend attempt $i -> HTTP $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 20
+          done
+          echo "::warning::vpnexues-android-backend did not return 200 - cold-starting or down"

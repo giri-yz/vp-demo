@@ -1,0 +1,37 @@
+name: Frontend CI
+on:
+  push:
+    branches: [main, SunilVPN]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: vpnexues-ui/package-lock.json
+      - run: npm ci
+        working-directory: vpnexues-ui
+      - run: npm run lint
+        working-directory: vpnexues-ui
+      - run: npx vite build
+        working-directory: vpnexues-ui
+      - name: QA-01 gate — no service_role credentials in source or bundle
+        working-directory: vpnexues-ui
+        run: |
+          if grep -r "service_role" src/ index.html dist/ 2>/dev/null; then
+            echo "::error::service_role credential found in frontend source or bundle (QA-01)"
+            exit 1
+          fi
+          echo "OK: no service_role in src/ index.html dist/"
+      # dist/ is gitignored, so no separate checkout job can ever see it, and the
+      # free 500MB artifact quota was exhausted 24-Oct (upload failed every run;
+      # usage recalculates only every 6-12h). The sanity check therefore runs here,
+      # in the same job that produced dist/. GoDaddy zips are packaged locally from
+      # dist/ and gated by check-zip.ps1, not from CI artifacts.
+      - name: Deploy sanity - production bundle exists
+        run: test -f vpnexues-ui/dist/index.html

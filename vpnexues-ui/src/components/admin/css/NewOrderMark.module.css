@@ -1,0 +1,60 @@
+/* Persistent NEW marker — row pill + row tint (shared by the admin order
+   tables). Tokens only. */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  color: var(--color-white);
+  font-family: var(--font-family-base);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  line-height: 1.5;
+  vertical-align: middle;
+  white-space: nowrap;
+  animation: markPop 0.25s ease;
+}
+
+/* Gold attention dot — echoes the LiveBadge / toast pulse */
+.pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* Green-banner variant (super Orders header) */
+.onDark {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Row tint. `!important` because table rows carry nth-child striping and
+   inline backgrounds in some views — the NEW row must always win. */
+.rowNew,
+.rowNew > td {
+  background: var(--color-primary-100) !important;
+}
+
+@keyframes markPop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    animation: none;
+  }
+}

@@ -1,0 +1,2031 @@
+:root {
+  --nav-font-size: 16px;
+  --nav-font-weight: 700;
+  --nav-font-family: var(--font-family-base);
+  --nav-color: #404a3d;
+  --nav-hover-color: var(--color-primary-500);
+  --nav-padding-v: 20px;
+  --nav-gap: 28px;
+  --submenu-min-width: 240px;
+  --submenu-border-radius: 10px;
+  --submenu-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px;
+  --topbar-bg: #fff9e8;
+  --topbar-contact-font-size: 16px;
+  --topbar-contact-font-weight: 600;
+  --topbar-contact-font-family: var(--font-family-base);
+}
+
+/* ─── Wrapper ──────────────────────────────────────────────── */
+/* Container for topBar + navbarSpacer. The actual navbar is      */
+/* position:fixed and sits outside normal flow.                   */
+.wrapper {
+  background: var(--color-white);
+  z-index: 100;
+}
+
+.wrapper a, .wrapper span, .wrapper button, .wrapper select {
+  font-size: 16px;
+}
+
+/* ─── Top Bar ──────────────────────────────────────────────── */
+/* Normal flow. Scrolls away naturally. Smoothly hides via        */
+/* translateY + opacity when wrapper gets is-scrolled class.      */
+.topBar {
+  background: var(--topbar-bg);
+  color: var(--color-text-heading);
+  font-size: var(--topbar-contact-font-size);
+  font-weight: var(--topbar-contact-font-weight);
+  font-family: var(--topbar-contact-font-family);
+  border-bottom: 1px solid var(--color-border);
+  transition: height 0.25s ease;
+}
+
+/* Hide top bar when scrolled */
+.wrapper:global(.is-scrolled) .topBar {
+  height: 0;
+  overflow: hidden;
+  border-bottom: none;
+  padding: 0;
+}
+
+/* Country dropdown must escape topBar overflow:hidden when scrolled */
+.wrapper:global(.is-scrolled) .countryDropdown {
+  position: fixed;
+  top: 52px;
+  right: 40px;
+  z-index: 10000;
+}
+
+.topBarInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: 8px 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contactList {
+  display: flex;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactList li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactIcon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--color-primary-500);
+}
+
+.contactList a {
+  color: var(--color-text-heading);
+  opacity: 0.9;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.contactList a:hover {
+  opacity: 1;
+  color: var(--color-primary-500);
+}
+
+.topRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.countryPicker {
+  position: relative;
+}
+
+.countryPickerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.countryPickerBtn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.flagImg {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.countryCode {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-heading);
+}
+
+.countryChevron {
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-heading);
+  opacity: 0.6;
+  transition: transform 0.2s;
+}
+
+.countryChevronOpen {
+  transform: rotate(180deg);
+}
+
+.countryDropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 10000;
+  background: #fff;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  min-width: 160px;
+  padding: 4px;
+  animation: countryDropdownIn 0.15s ease;
+}
+
+@keyframes countryDropdownIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.langSectionHeader {
+  padding: 6px 8px 2px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  text-transform: uppercase;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 4px;
+}
+
+.countryOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px 8px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.countryOption:hover {
+  background: #f3f4f6;
+}
+
+.countryOptionActive {
+  background: #f0fdf4;
+}
+
+.countryOptionFlag {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.changeCountryIcon {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.changeCountryChevron {
+  width: 12px;
+  height: 12px;
+  color: #9ca3af;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.countryDivider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 4px 0;
+}
+
+.langRadio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.langRadioActive {
+  border-color: #22c55e;
+  background: #22c55e;
+}
+
+.langRadioCheck {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.countryOptionLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-heading);
+}
+
+.langOption {
+  padding: 3px 8px;
+}
+
+.langFlag {
+  width: 16px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.langOptionLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-heading);
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background: var(--color-border-strong);
+}
+
+.socialIcons {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.socialIcons a {
+  display: flex;
+  color: var(--color-text-heading);
+  opacity: 0.85;
+  transition: var(--transition);
+}
+
+.socialIcons a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.socialIcons a:hover {
+  opacity: 1;
+  color: var(--color-primary-500);
+}
+
+/* ─── Navbar ───────────────────────────────────────────────── */
+/* position:sticky keeps it in flow until it reaches top:0.     */
+/* Top bar scrolls away; navbar sticks. Zero flicker.            */
+/* is-scrolled class on wrapper adds shadow only — NO height change. */
+.navbar {
+  position: sticky;
+  top: 0;
+  /* Above Leaflet map panes (tiles 200 … controls 1000) so open
+     dropdowns always paint over preview maps. Scrolled state stays top. */
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  height: 80px;
+  padding-inline: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(14px) saturate(1.6);
+  -webkit-backdrop-filter: blur(14px) saturate(1.6);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* Scrolled state — navbar fixes at viewport top */
+.wrapper:global(.is-scrolled) .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 30px rgba(23, 61, 33, 0.14), 0 2px 8px rgba(23, 61, 33, 0.06);
+}
+
+/* Spacer: holds the navbar's height when it becomes fixed */
+.navbarSpacer {
+  display: none;
+}
+
+.wrapper:global(.is-scrolled) .navbarSpacer {
+  display: block;
+  height: 80px;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logoIcon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logoWordmark {
+  font-size: 24px !important;
+  font-weight: 800;
+  color: var(--color-primary-700);
+}
+
+.logoTagline {
+  font-size: 10px !important;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--nav-gap);
+  font-weight: var(--nav-font-weight);
+  font-size: var(--nav-font-size);
+  font-family: var(--nav-font-family);
+  min-width: 0;
+}
+
+.link {
+  color: var(--nav-color);
+  text-decoration: none;
+  padding: var(--nav-padding-v) 0;
+  transition: color var(--transition);
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--nav-padding-v) - 6px);
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-gold));
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.link:hover::after,
+.linkActive::after {
+  left: 0;
+  width: 100%;
+}
+
+.link:hover,
+.linkActive {
+  color: var(--nav-hover-color);
+}
+
+.dropdown {
+  position: relative;
+  padding: var(--nav-padding-v) 0;
+}
+
+.dropdownTrigger {
+  cursor: pointer;
+  color: var(--nav-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--transition);
+  background: none;
+  border: none;
+  padding: var(--nav-padding-v) 0;
+  font: inherit;
+  font-weight: inherit;
+  position: relative;
+}
+
+.dropdownTrigger::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--nav-padding-v) - 6px);
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-gold));
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.dropdown:hover .dropdownTrigger::after,
+.dropdownTrigger:focus-visible::after {
+  left: 0;
+  width: 100%;
+}
+
+.dropdown:hover .dropdownTrigger,
+.dropdownTrigger:focus {
+  color: var(--nav-hover-color);
+}
+
+.dropdownChevron {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+}
+
+.dropdown:hover .dropdownChevron {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: var(--submenu-min-width);
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: var(--submenu-border-radius);
+  box-shadow: var(--shadow-lg), 0 4px 14px rgba(23, 61, 33, 0.1);
+  padding: var(--space-2) 0;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.dropdownMenuOpen {
+  display: flex;
+  animation: dropdownMenuIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes dropdownMenuIn {
+  from {
+    opacity: 0;
+    transform: perspective(600px) rotateX(-8deg) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(600px) rotateX(0deg) translateY(0);
+  }
+}
+
+.dropdownLink {
+  padding: 8px var(--space-4);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.dropdownLink:hover,
+.dropdownLinkActive {
+  background: var(--color-primary-100);
+  color: var(--color-primary-500);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.shopNowBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #5b8c51, #3d7a34);
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(91, 140, 81, 0.25);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.shopNowBtn:hover {
+  background: #2c4f25;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(44, 79, 37, 0.35);
+}
+
+.shopNowBtn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.shopNowBtn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.accountLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 700;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-500);
+  background: none;
+  border: 1.5px solid var(--color-primary-500);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.accountLink:hover {
+  background: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.accountIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.cartLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+  text-decoration: none;
+  box-shadow: inset 0 -2px 6px rgba(44, 79, 37, 0.06);
+  transition: var(--transition);
+}
+
+.cartLink:hover {
+  background: var(--color-primary-500);
+  color: var(--color-white);
+  box-shadow: 0 8px 20px rgba(91, 140, 81, 0.4);
+  transform: translateY(-2px);
+}
+
+.cartLink:active {
+  transform: translateY(0) scale(0.94);
+  box-shadow: 0 4px 10px rgba(91, 140, 81, 0.3);
+}
+
+.cartIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.cartBadge {
+  position: absolute;
+  top: 0;
+  right: -2px;
+  background: none;
+  color: var(--color-primary-700);
+  font-size: 11px;
+  font-weight: 800;
+  min-width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.menuToggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.menuToggleLine {
+  display: block;
+  height: 2.5px;
+  width: 24px;
+  background: #4d7c3f;
+  border-radius: 99px;
+  transition: var(--transition), opacity 0.25s ease;
+}
+
+.menuToggleLineMid {
+  width: 15px;
+}
+
+.menuToggleOpen .menuToggleLine:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.menuToggleOpen .menuToggleLineMid {
+  opacity: 0;
+}
+
+.menuToggleOpen .menuToggleLine:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: rgba(10, 20, 8, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.mobileOverlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileDrawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10002;
+  width: min(420px, 92vw);
+  background: var(--color-brand-ivory);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: inset 3px 0 0 var(--color-brand-gold), -28px 0 72px rgba(10, 40, 3, 0.35);
+  transform: translateX(calc(100% + 80px));
+  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobileDrawerOpen {
+  transform: translateX(0);
+}
+
+/* ── Hero: logo row + solid ivory banner card ── */
+.mobileHero {
+  position: relative;
+  background: transparent;
+  color: var(--color-text-heading);
+  padding: var(--space-4) var(--space-4) 0;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.mobileHero::before,
+.mobileHero::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mobileHero::before {
+  width: 180px;
+  height: 180px;
+  top: -70px;
+  right: -50px;
+  background: radial-gradient(circle, rgba(237, 221, 94, 0.18) 0%, transparent 70%);
+}
+
+.mobileHero::after {
+  width: 120px;
+  height: 120px;
+  bottom: 10px;
+  left: -45px;
+  background: radial-gradient(circle, rgba(106, 163, 88, 0.28) 0%, transparent 70%);
+}
+
+/* premium ivory banner card: Manrope heading + tagline + fruit basket */
+.mobileHeroBanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 225px;
+  border-radius: 24px;
+  overflow: hidden; /* only clips decorative bleed + rounded wave corners; all content sits in padded bounds */
+  padding: var(--space-4) var(--space-4) var(--space-6);
+  border: 1.5px solid rgba(53, 91, 58, 0.14);
+  background: var(--color-brand-ivory);
+  box-shadow: 0 12px 26px rgba(53, 91, 58, 0.1);
+}
+
+/* hero is tall on desktop-sized viewports, comfortably sized on phones */
+@media (min-width: 768px) {
+  .mobileHeroBanner {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mobileHeroBanner {
+    min-height: 215px;
+  }
+}
+
+.mobileDrawerTop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.mobileDrawerLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+  padding: 0;
+  transition: var(--transition);
+}
+
+.mobileDrawerLogo:hover {
+  background: transparent;
+  opacity: 0.85;
+}
+
+.mobileDrawerLogo .logoIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.mobileDrawerLogo .logoWordmark {
+  color: var(--color-brand-forest);
+  font-size: 16px;
+}
+
+.mobileDrawerClose {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(53, 91, 58, 0.2);
+  background: var(--color-white);
+  color: var(--color-brand-forest);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mobileDrawerClose:hover {
+  background: rgba(53, 91, 58, 0.08);
+  transform: rotate(90deg);
+  box-shadow: var(--shadow-lift);
+}
+
+.mobileDrawerClose svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* “Farm to Table • Global Quality” tagline — compact supporting line under the heading */
+.mobileHeroTagline {
+  margin: 0;
+  text-align: left;
+  font-family: var(--font-family-heading);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-brand-forest);
+  opacity: 0.88;
+}
+
+/* copy (left) + fruit basket (right) — balanced two-column scene */
+.mobileHeroScene {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* basket is a major visual feature — fill and slightly bleed its column.
+   max-height pins the art to its original footprint so the banner card
+   keeps its usual height (the cropped viewBox makes the drawing bigger). */
+.mobileHeroScene .farmArt {
+  width: 115%;
+  max-width: none;
+  max-height: 124px;
+}
+
+.mobileHeroCopy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-1);
+}
+
+/* premium Manrope heading — semibold, intentionally broken into two blocks */
+.mobileHeroScript {
+  margin: 0;
+  font-family: var(--font-family-heading);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--color-brand-forest);
+  /* safety net: a too-long word can never spill out of the copy column */
+  overflow-wrap: break-word;
+}
+
+/* clean hierarchy: “Freshness,” on its own line, then “Delivered with Care” */
+.scriptLead,
+.scriptAccent {
+  display: block;
+  color: var(--color-brand-forest);
+}
+
+.mobileDrawerTitle {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-family-base);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-brand-forest);
+  opacity: 0.85;
+  max-width: 44ch;
+  margin: var(--space-3) auto 0;
+  text-align: center;
+}
+
+.mobileHeroWave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.mobileHeroWave svg {
+  display: block;
+  width: 100%;
+  height: 26px;
+}
+
+/* wave body matches the ivory drawer surface below the banner — no seam */
+.mobileHeroWave path {
+  fill: var(--color-brand-ivory);
+}
+
+/* harvest-gold edge line on the organic curve */
+.mobileHeroWave .mobileHeroWaveAccent {
+  fill: var(--color-brand-gold);
+  opacity: 1;
+}
+
+/* ── Nav list (rounded menu cards) ── */
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 0 0 auto;
+  margin: var(--space-4) var(--space-5) var(--space-3);
+}
+
+.mobileNavCard {
+  --item-accent: var(--color-brand-forest);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 54px;
+  padding: 7px 12px;
+  background: var(--color-white);
+  border: 1.5px solid rgba(53, 91, 58, 0.15);
+  border-radius: 18px;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-brand-forest);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.mobileNavCard:hover {
+  transform: translateX(4px);
+  background: var(--color-white);
+  border-color: var(--item-accent);
+  box-shadow: var(--shadow-lift);
+}
+
+/* same cream look with a whisper of gradient (Home + Careers) */
+.mobileNavWide {
+  background: linear-gradient(180deg, var(--color-white) 0%, var(--color-cream) 100%);
+}
+
+.mobileNavWide:hover {
+  background: var(--color-white);
+}
+
+/* active highlight: solid forest fill, ivory text */
+.mobileNavCardActive,
+.mobileNavCardActive:hover {
+  background: var(--color-brand-forest);
+  border: 1.5px solid var(--color-brand-forest);
+  color: var(--color-brand-ivory);
+  box-shadow: 0 6px 14px rgba(53, 91, 58, 0.25);
+}
+
+.mobileNavCardOpen {
+  background: rgba(53, 91, 58, 0.06);
+}
+
+.mobileNavCardActive.mobileNavCardOpen,
+.mobileNavCardActive.mobileNavCardOpen:hover {
+  background: var(--color-brand-forest);
+}
+
+/* elegant icon circle — soft forest chip that fills on hover */
+.mobileNavIcon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(53, 91, 58, 0.08);
+  color: var(--color-brand-forest);
+  box-shadow: inset 0 0 0 1px rgba(53, 91, 58, 0.14);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mobileNavIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mobileNavCard:hover .mobileNavIcon {
+  transform: scale(1.1) rotate(-5deg);
+  background: var(--item-accent);
+  color: var(--color-brand-ivory);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* active card: ivory icon circle, forest glyph */
+.mobileNavCardActive .mobileNavIcon {
+  background: var(--color-brand-ivory);
+  color: var(--color-brand-forest);
+  box-shadow:
+    inset 0 -2px 0 rgba(53, 91, 58, 0.15),
+    0 2px 6px rgba(53, 91, 58, 0.25);
+  animation: farmIconGlow 2.6s ease-in-out infinite;
+}
+
+.mobileNavCardActive:hover .mobileNavIcon {
+  transform: scale(1.06);
+}
+
+.mobileNavLabel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.mobileNavText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* text + right-hand arrow/hint grouped at the card’s right edge */
+.mobileNavMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.mobileNavHint {
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-brand-forest);
+  white-space: nowrap;
+  background: var(--color-brand-gold);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+/* round right-arrow chip on leaf menu items */
+.mobileNavArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(53, 91, 58, 0.08);
+  color: var(--color-brand-forest);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.mobileNavArrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+.mobileNavCard:hover .mobileNavArrow {
+  transform: translateX(3px);
+}
+
+.mobileNavCardActive .mobileNavArrow {
+  background: var(--color-brand-ivory);
+  color: var(--color-brand-forest);
+}
+
+/* expand-group chevron: rests pointing right (“>”), folds down when open */
+.mobileNavChevron {
+  width: 26px;
+  height: 26px;
+  padding: 6px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(53, 91, 58, 0.08);
+  color: var(--color-brand-forest);
+  transform: rotate(-90deg);
+  transition: transform var(--transition), background 0.25s ease;
+}
+
+.mobileNavChevronOpen {
+  transform: rotate(0deg);
+}
+
+.mobileNavCardActive .mobileNavChevron {
+  background: var(--color-brand-ivory);
+  color: var(--color-brand-forest);
+}
+
+.mobileSubNav {
+  margin: 2px 0 6px 22px;
+  padding: 6px;
+  background: var(--color-white);
+  border: 1.5px dashed var(--color-border-strong);
+  border-left: 3px solid var(--color-brand-forest);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobileSubLink {
+  display: flex;
+  align-items: center;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-brand-forest);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.mobileSubLink::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-brand-forest);
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.mobileSubLink:hover,
+.mobileSubLinkActive {
+  background: rgba(53, 91, 58, 0.1);
+  color: var(--color-brand-forest);
+}
+
+.mobileSubLinkActive::before {
+  background: var(--color-brand-gold);
+}
+
+.mobileLoginBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: calc(100% - 40px);
+  padding: 13px var(--space-2);
+  margin: 0 var(--space-5) var(--space-4);
+  border: 1.5px solid var(--color-brand-forest);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-brand-forest);
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mobileLoginBtn:hover {
+  background: rgba(53, 91, 58, 0.1);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.mobileLoginIcon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 768px) {
+  .mobileLoginBtn {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobileLoginBtn {
+    display: none;
+  }
+}
+
+.mobileSocial {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.mobileSocial a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-white);
+  color: var(--color-brand-forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.mobileSocial a svg {
+  width: 17px;
+  height: 17px;
+}
+
+.mobileSocial a:hover {
+  color: var(--color-brand-ivory);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 16px rgba(53, 91, 58, 0.3);
+}
+
+/* consistent forest social circles (specificity must beat `.mobileSocial a`) */
+.mobileSocial .socialFb,
+.mobileSocial .socialIg,
+.mobileSocial .socialLi {
+  background: var(--color-brand-forest);
+  color: var(--color-brand-ivory);
+}
+
+/* ── Contact panel (playful dashed card) ── */
+.mobileContactBlock {
+  position: relative;
+  flex-shrink: 0;
+  margin: auto var(--space-5) var(--space-3);
+  padding: var(--space-3) var(--space-3) var(--space-4);
+  background: var(--color-white);
+  border: 2px dashed rgba(53, 91, 58, 0.3);
+  border-radius: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.mobileContactBlock h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-brand-forest);
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+/* decorative leaf sprigs peeking from the panel corners */
+.leafCorner {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  color: rgba(53, 91, 58, 0.35);
+  pointer-events: none;
+  animation: farmSway 4.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.leafCorner svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.leafCornerTop {
+  top: -14px;
+  right: -10px;
+  rotate: 24deg;
+}
+
+.leafCornerBottom {
+  bottom: -12px;
+  left: -10px;
+  rotate: 204deg;
+  animation-delay: -2s;
+}
+
+.mobileContactCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+}
+
+.mobileContactCard {
+  --chip-accent: var(--color-brand-forest);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 74px;
+  padding: var(--space-2);
+  background: var(--color-brand-ivory);
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  color: var(--color-brand-forest);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.mobileContactCard:hover {
+  transform: translateY(-3px);
+  background: var(--color-white);
+  border-color: var(--chip-accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.mobileContactCardActive,
+.mobileContactCardActive:hover {
+  background: rgba(53, 91, 58, 0.1);
+  border-color: var(--color-brand-forest);
+  color: var(--color-brand-forest);
+  box-shadow: var(--shadow-sm);
+}
+
+/* round forest chips: consistent icon treatment for call / email / location */
+.mobileContactCardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--chip-accent);
+  color: var(--color-brand-ivory);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.14), 0 3px 8px rgba(0, 0, 0, 0.14);
+  transition: transform 0.25s ease;
+}
+
+.mobileContactCard:hover .mobileContactCardIcon {
+  transform: scale(1.12) rotate(-6deg);
+}
+
+.mobileContactCardActive .mobileContactCardIcon {
+  background: var(--color-brand-forest);
+  color: var(--color-brand-ivory);
+}
+
+.mobileContactCardIcon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.mobileContactCard .mobileContactCardLabel {
+  font-size: var(--font-size-xs);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.mobileContactLines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.mobileContactLines a {
+  color: var(--color-text-heading);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.mobileContactLines a:hover {
+  color: var(--color-brand-forest);
+  text-decoration: underline;
+}
+
+.mobileContactCallLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.mobileLocations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.mobileLocation {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-xs);
+  color: var(--color-text);
+}
+
+.mobileLocationRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+.mobileComingSoon {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: 2px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 3px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+
+.mobileLocation strong {
+  color: var(--color-text-heading);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+}
+
+.mobileLocationGroup {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  color: var(--color-text-heading);
+}
+
+/* ── Harvest-gold “Shop Fresh” CTA with leaf ── */
+.mobileShopNowBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px 24px;
+  background: var(--color-brand-gold);
+  color: var(--color-brand-forest);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: var(--space-4);
+  box-shadow: 0 5px 0 var(--color-gold-deep);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.mobileShopNowBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 var(--color-gold-deep);
+  filter: saturate(1.06);
+}
+
+.mobileShopNowBtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--color-gold-deep);
+}
+
+.shopNowLeaf {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--color-brand-forest);
+  animation: farmSway 3s ease-in-out infinite;
+  transform-origin: bottom left;
+}
+
+.shopNowArrow {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.mobileShopNowBtn:hover .shopNowArrow {
+  transform: translateX(5px);
+}
+
+/* ── Decorative farm footer (produce friends + leaves) ── */
+.mobileFarmFooter {
+  position: relative;
+  flex-shrink: 0;
+  margin-top: calc(var(--space-1) * -1);
+  line-height: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ─── Farm-to-table drawer: illustrations & motion ───── */
+
+/* ── Illustration fills (all colours come from tokens.css) ── */
+.farmArt {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* clip inside the artwork box so decorative bleed never reaches text */
+  overflow: hidden;
+}
+
+.leafy {
+  fill: var(--color-primary-300);
+}
+
+.cornBody {
+  fill: var(--color-sunny);
+}
+
+.cornHusk {
+  fill: var(--color-primary-500);
+}
+
+.carrotBody {
+  fill: var(--color-sunny);
+}
+
+.carrotRidge {
+  fill: none;
+  stroke: var(--color-gold-deep);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.carrotTop {
+  fill: var(--color-primary-500);
+}
+
+.carrotTopDark {
+  fill: var(--color-primary-700);
+}
+
+.tomatoBody {
+  fill: var(--color-danger);
+}
+
+.tomatoHighlight {
+  fill: var(--color-white);
+  opacity: 0.35;
+}
+
+.calyx {
+  fill: var(--color-primary-700);
+}
+
+.lemonBody {
+  fill: var(--color-sunny);
+}
+
+.lemonHighlight {
+  fill: var(--color-white);
+  opacity: 0.4;
+}
+
+.mangoBody {
+  fill: var(--color-sunny);
+}
+
+.mangoBlush {
+  fill: var(--color-warning);
+  opacity: 0.3;
+}
+
+.farmArtShadow {
+  fill: var(--color-header-dark);
+  opacity: 0.12;
+}
+
+.avocadoSkin {
+  fill: var(--color-primary-500);
+}
+
+.avocadoFlesh {
+  fill: var(--color-meadow-wash);
+}
+
+.broccoliHead {
+  fill: var(--color-primary-500);
+}
+
+.broccoliStalk {
+  fill: var(--color-primary-300);
+}
+
+.wood {
+  fill: var(--color-gold-deep);
+}
+
+.woodSlat {
+  fill: var(--color-sand);
+  opacity: 0.32;
+}
+
+.woodHandle {
+  fill: var(--color-sand);
+  opacity: 0.55;
+}
+
+.crateLeaf {
+  fill: var(--color-primary-500);
+}
+
+.hillBack {
+  fill: var(--color-primary-100);
+}
+
+.hillFront {
+  fill: var(--color-primary-300);
+}
+
+.faceEye {
+  fill: var(--color-dark);
+}
+
+.faceGlint {
+  fill: var(--color-white);
+}
+
+.faceBlush {
+  fill: var(--color-berry);
+  opacity: 0.5;
+}
+
+.faceMouth {
+  fill: none;
+  stroke: var(--color-dark);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+
+.sproutLeaf {
+  fill: var(--color-primary-500);
+}
+
+/* ── Gentle character motion (staggered, lightweight) ── */
+.vegTomato,
+.vegLemon,
+.vegAvocado,
+.vegLeafy,
+.vegBroccoli,
+.vegTomatoSm,
+.vegLemonSm {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.vegTomato {
+  animation: farmBob 3.2s ease-in-out infinite;
+}
+
+.vegLemon {
+  animation: farmBob 3.6s ease-in-out -1.2s infinite;
+}
+
+.vegAvocado {
+  animation: farmBob 3.4s ease-in-out -2.1s infinite;
+}
+
+.vegLeafy {
+  animation: farmBob 4.2s ease-in-out -0.6s infinite;
+}
+
+.vegTomatoSm {
+  animation: farmBob 3.5s ease-in-out -1.7s infinite;
+}
+
+.vegLemonSm {
+  animation: farmBob 3.8s ease-in-out -2.6s infinite;
+}
+
+.vegBroccoli {
+  animation: farmBob 3.3s ease-in-out -0.9s infinite;
+}
+
+.vegCarrot,
+.vegCorn {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.vegCarrot {
+  animation: farmSway 4s ease-in-out infinite;
+}
+
+.vegCorn {
+  animation: farmSway 3.8s ease-in-out -1.4s infinite;
+}
+
+.sproutLeaf {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.sproutOne {
+  animation: farmFloat 4.5s ease-in-out infinite;
+}
+
+.sproutTwo {
+  animation: farmFloat 3.9s ease-in-out -1.5s infinite;
+}
+
+.sproutThree {
+  animation: farmFloat 5.2s ease-in-out -2.7s infinite;
+}
+
+/* ── Entrance choreography (plays when the drawer opens) ── */
+.mobileDrawerOpen .mobileHero {
+  animation: farmHeroIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobileDrawerOpen .mobileHeroTagline {
+  animation: farmCardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.mobileDrawerOpen .mobileHeroScene {
+  animation: farmCardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.mobileDrawerOpen .mobileDrawerTitle {
+  animation: farmCardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+.mobileDrawerOpen .mobileNavCard,
+.mobileDrawerOpen .mobileSubNav {
+  animation: farmCardIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mobileDrawerOpen .mobileNav > *:nth-child(1) { animation-delay: 0.1s; }
+.mobileDrawerOpen .mobileNav > *:nth-child(2) { animation-delay: 0.16s; }
+.mobileDrawerOpen .mobileNav > *:nth-child(3) { animation-delay: 0.22s; }
+.mobileDrawerOpen .mobileNav > *:nth-child(4) { animation-delay: 0.28s; }
+.mobileDrawerOpen .mobileNav > *:nth-child(5) { animation-delay: 0.34s; }
+.mobileDrawerOpen .mobileNav > *:nth-child(6) { animation-delay: 0.4s; }
+
+.mobileDrawerOpen .mobileContactBlock {
+  animation: farmCardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+}
+
+.mobileDrawerOpen .mobileFarmFooter {
+  animation: farmCardIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+/* ── Keyframes ── */
+@keyframes farmBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes farmSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes farmFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(6deg); }
+}
+
+@keyframes farmCardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes farmHeroIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes farmIconGlow {
+  0%, 100% { box-shadow: inset 0 -2px 0 rgba(53, 91, 58, 0.15), 0 0 6px rgba(215, 182, 93, 0.5), 0 2px 6px rgba(53, 91, 58, 0.3); }
+  50% { box-shadow: inset 0 -2px 0 rgba(53, 91, 58, 0.15), 0 0 10px rgba(215, 182, 93, 0.75), 0 2px 6px rgba(53, 91, 58, 0.3); }
+}
+
+/* ── Reduced motion: keep the drawer usable, drop the animation ── */
+@media (prefers-reduced-motion: reduce) {
+  .mobileDrawer .mobileHero,
+  .mobileDrawer .mobileHeroTagline,
+  .mobileDrawer .mobileHeroScene,
+  .mobileDrawer .mobileDrawerTitle,
+  .mobileDrawer .mobileNavCard,
+  .mobileDrawer .mobileSubNav,
+  .mobileDrawer .mobileContactBlock,
+  .mobileDrawer .mobileFarmFooter,
+  .mobileDrawer .mobileNavCardActive .mobileNavIcon,
+  .mobileDrawer .leafCorner,
+  .mobileDrawer .shopNowLeaf,
+  .mobileDrawer .sproutLeaf,
+  .mobileDrawer .vegTomato,
+  .mobileDrawer .vegLemon,
+  .mobileDrawer .vegAvocado,
+  .mobileDrawer .vegLeafy,
+  .mobileDrawer .vegBroccoli,
+  .mobileDrawer .vegTomatoSm,
+  .mobileDrawer .vegLemonSm,
+  .mobileDrawer .vegCarrot,
+  .mobileDrawer .vegCorn {
+    animation: none !important;
+  }
+
+  .mobileDrawer,
+  .mobileDrawer * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Small phones: tighter gutters, no horizontal overflow ── */
+@media (max-width: 420px) {
+  .mobileHero {
+    padding: var(--space-4) var(--space-4) var(--space-6);
+  }
+
+  .mobileNav {
+    margin-inline: var(--space-4);
+  }
+
+  .mobileContactBlock {
+    margin-inline: var(--space-4);
+    padding: var(--space-3) var(--space-2) var(--space-3);
+  }
+
+  .mobileContactCard .mobileContactCardLabel {
+    white-space: normal;
+    font-size: 10.5px;
+  }
+
+  .mobileNavHint {
+    font-size: 9.5px;
+    padding: 3px 8px;
+  }
+}
+
+/* ── Phone-width drawers: stacked hero keeps the basket large ── */
+@media (max-width: 456px) {
+  .mobileHeroScene {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-3);
+    padding-top: var(--space-1);
+  }
+
+  .mobileHeroCopy {
+    align-items: center;
+  }
+
+  .mobileHeroTagline {
+    text-align: center;
+  }
+
+  .mobileHeroScript {
+    font-size: 32px;
+  }
+
+  .mobileHeroScene .farmArt {
+    width: min(300px, 100%);
+    max-height: 190px;
+  }
+}
+
+@media (max-width: 350px) {
+  .mobileHeroScript {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 330px) {
+  .mobileHeroScript {
+    font-size: 27px;
+  }
+}
+
+/* ─── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1199px) {
+  .actions .accountLink {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .topBar {
+    display: none;
+  }
+
+  .wrapper:global(.is-scrolled) .topBar {
+    display: none;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .actions .accountLink {
+    display: none;
+  }
+
+  .navbar {
+    height: 68px;
+    border-bottom: none;
+    padding-inline: 24px;
+  }
+
+  .wrapper:global(.is-scrolled) .navbarSpacer {
+    height: 68px;
+  }
+
+  .logoIcon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .accountLink {
+    display: none !important;
+  }
+
+  .cartLink {
+    display: none !important;
+  }
+}
+
+.link:focus-visible,
+.dropdownTrigger:focus-visible,
+.dropdownLink:focus-visible,
+.accountLink:focus-visible,
+.cartLink:focus-visible,
+.menuToggle:focus-visible,
+.mobileDrawerClose:focus-visible,
+.mobileNavCard:focus-visible,
+.mobileSubLink:focus-visible,
+.mobileSocial a:focus-visible,
+.mobileContactCard:focus-visible,
+.mobileShopNowBtn:focus-visible,
+.mobileContactLines a:focus-visible {
+  outline: 2px solid var(--color-brand-forest);
+  outline-offset: 2px;
+}
+
+/* green active pill needs a light ring instead of green-on-green */
+.mobileNavCardActive:focus-visible {
+  outline-color: var(--color-white);
+}
+
+/* ── Language Switcher (desktop top bar) ── */
+.langPickerMobile {
+  display: none;
+}
+
+.langDropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 4px;
+  z-index: 200;
+}
+
+@media (max-width: 767px) {
+  .langPickerMobile {
+    display: flex;
+    position: relative;
+  }
+}

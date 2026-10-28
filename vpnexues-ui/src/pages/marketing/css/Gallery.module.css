@@ -1,0 +1,453 @@
+/* ── Gallery page — matches vpnexues.com/gallery.html ── */
+
+/* ── Mobile banner ── */
+.mobileBanner {
+  width: 100%;
+  overflow: hidden;
+}
+.mobileBannerOverlay {
+  width: 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(30, 80, 30, 0.80) 0%, rgba(40, 90, 40, 0.70) 50%, rgba(50, 100, 50, 0.60) 100%),
+    url('https://res.cloudinary.com/eqjshlur/image/upload/f_auto,q_auto:good/vpnexues/banners/page-banner-gallery.jpg') center 35% / cover no-repeat;
+  padding: 40px 16px 30px;
+  box-sizing: border-box;
+  box-shadow: 0 16px 40px rgba(30, 80, 30, 0.35);
+}
+.mobileBannerContent {
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+.mobileBannerTag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: rgba(255,255,255,.2);
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.mobileBannerTitle {
+  font-size: 26px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+  line-height: 1.2;
+}
+.mobileBannerDesc {
+  font-size: 16px;
+  margin: 0;
+  color: rgba(255,255,255,.9);
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+/* ── Desktop banner ── */
+.desktopBanner {
+  display: none;
+}
+.bannerOverlay {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, rgba(30, 80, 30, 0.80) 0%, rgba(40, 90, 40, 0.70) 50%, rgba(50, 100, 50, 0.60) 100%),
+    url('https://res.cloudinary.com/eqjshlur/image/upload/f_auto,q_auto:good/vpnexues/banners/page-banner-gallery.jpg') center 52% / cover no-repeat;
+  padding: 70px 0 60px;
+  min-height: 330px;
+  display: grid;
+  align-items: center;
+  box-shadow: 0 16px 40px rgba(30, 80, 30, 0.35);
+}
+.bannerContent {
+  color: var(--color-white);
+  text-align: center;
+}
+.bannerIcon {
+  margin: 0 auto 14px;
+  font-size: 56px;
+  line-height: 1;
+}
+.bannerContent h1 {
+  font-size: 44px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color-white);
+  line-height: 1.15;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+.bannerContent p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* ── Section head ── */
+.section {
+  padding: var(--space-9) 0 var(--space-10);
+  background: var(--color-bg);
+}
+.sectionHead {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+.sectionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--color-primary-700);
+  background: var(--color-primary-100);
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+.sectionTitle {
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 900;
+  color: var(--color-text-heading);
+  line-height: 1.2;
+  margin: 0;
+}
+.sectionRule {
+  display: block;
+  width: 72px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-gold));
+  margin: var(--space-5) auto 0;
+}
+.sectionHead[data-inview] .sectionRule {
+  animation: ruleGrow 0.9s 0.25s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+@keyframes ruleGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+/* ── Category filters (between tag and title) ── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-5);
+}
+.filterBtn {
+  padding: var(--space-2) var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.filterBtn:hover {
+  color: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  transform: translateY(-1px);
+}
+.filterBtnActive,
+.filterBtnActive:hover {
+  background: var(--color-primary-700);
+  border-color: var(--color-primary-700);
+  color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+.filterBtn:focus-visible {
+  outline: 2px solid var(--color-primary-700);
+  outline-offset: 2px;
+}
+.emptyNote {
+  margin: var(--space-6) auto;
+  max-width: 480px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  padding: var(--space-8) var(--space-5);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+}
+
+/* ── Banner entrance ── */
+.mobileBannerContent > *,
+.bannerContent > * {
+  animation: bannerIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+.mobileBannerContent > *:nth-child(2),
+.bannerContent > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.mobileBannerContent > *:nth-child(3),
+.bannerContent > *:nth-child(3) {
+  animation-delay: 0.24s;
+}
+@keyframes bannerIn {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+}
+.bannerIcon span {
+  display: inline-block;
+  animation: iconFloat 3.5s 1s ease-in-out infinite;
+}
+@keyframes iconFloat {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -3deg;
+  }
+  50% {
+    translate: 0 -9px;
+    rotate: 3deg;
+  }
+}
+
+/* ── Gallery grid: uniform square tiles, even alignment ── */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+}
+.cardItem {
+  min-width: 0;
+}
+.imgWrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 10 / 9;
+  padding: 0;
+  border: none;
+  background: var(--color-primary-100);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.imgWrap:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-3d);
+}
+/* light sweep across the photo on hover */
+.imgWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  translate: -120% 0;
+  pointer-events: none;
+}
+.imgWrap:hover::after {
+  animation: sweep 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+@keyframes sweep {
+  to {
+    translate: 120% 0;
+  }
+}
+.imgWrap:focus-visible {
+  outline: 3px solid var(--color-primary-500);
+  outline-offset: 3px;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.imgWrap:hover .img {
+  transform: scale(1.07);
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    to top,
+    rgba(10, 40, 3, 0.78) 0%,
+    rgba(10, 40, 3, 0.18) 45%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.imgWrap:hover .overlay,
+.imgWrap:focus-visible .overlay {
+  opacity: 1;
+}
+.cardNum {
+  position: absolute;
+  left: var(--space-3);
+  top: var(--space-3);
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 3px var(--space-2);
+  border-radius: var(--radius-pill);
+  scale: 0;
+  transform-origin: top left;
+  transition: scale 0.3s 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.imgWrap:hover .cardNum,
+.imgWrap:focus-visible .cardNum {
+  scale: 1;
+}
+.plusIcon {
+  width: 46px;
+  height: 46px;
+  background: var(--color-white);
+  color: var(--color-primary-700);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  scale: 0.6;
+  transition: scale 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.imgWrap:hover .plusIcon {
+  scale: 1;
+}
+.note {
+  position: absolute;
+  left: var(--space-2);
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 2;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-gold);
+  color: var(--color-dark);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: center;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transition: background 0.3s ease;
+}
+.imgWrap:hover .note {
+  background: var(--color-gold-dark);
+}
+
+/* ── Scroll reveal (IntersectionObserver in Gallery.tsx) ── */
+[data-reveal] {
+  opacity: 0;
+  translate: var(--reveal-from, 0 28px);
+}
+[data-reveal][data-inview] {
+  opacity: 1;
+  translate: 0 0;
+  animation: galleryReveal 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) backwards;
+}
+@keyframes galleryReveal {
+  from {
+    opacity: 0;
+    translate: var(--reveal-from, 0 28px);
+  }
+}
+
+/* ── Breakpoints ── */
+@media (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .mobileBanner {
+    display: none;
+  }
+  .desktopBanner {
+    display: block;
+  }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+  .note {
+    font-size: var(--font-size-sm);
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: var(--space-3);
+  }
+}
+
+/* ── Desktop banner rounded bottom ── */
+@media (min-width: 768px) {
+  .bannerOverlay {
+    border-radius: 0 0 28px 28px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    translate: none;
+    animation: none;
+  }
+  .imgWrap,
+  .img,
+  .overlay,
+  .plusIcon,
+  .cardNum {
+    transition: none;
+  }
+  .imgWrap::after {
+    display: none;
+  }
+  .mobileBannerContent > *,
+  .bannerContent > *,
+  .bannerIcon span,
+  .sectionHead[data-inview] .sectionRule {
+    animation: none;
+  }
+}

@@ -1,0 +1,159 @@
+/* =====================================================================
+   VPNEXUES DESIGN TOKENS — canonical set (v2)
+   Ported verbatim from ../../../design-tokens/tokens-preview.html.
+   Reconciled from the vpnexues-latest-main UI drop (vpnexues-static-ui
+   is retired as a design reference as of this pass). Used across BOTH
+   the customer UI and the admin UI — no component should hardcode a hex
+   color or one-off spacing value.
+   ===================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Manrope:wght@400..800&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Poppins:wght@400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&display=swap');
+
+:root {
+  /* --- Brand primary (green) --- */
+  --color-primary-700: #2c4f25;
+  --color-primary-500: #5b8c51; /* v2: was #4d7c3f */
+  --color-primary-300: #6aa358;
+  --color-primary-100: #e7f0e3;
+
+  /* --- Accent (green) --- */
+  --color-leaf: #4a8c4a;
+  --color-leaf-dark: #3d7a3d;
+  --color-leaf-deep: #1a4d2e; /* dark green — stat card fill */
+
+  /* --- Accent (gold) — legacy alias, kept so pages that still use
+     --color-gold* keep their original look until they are remapped --- */
+  --color-gold: #eddd5e;
+  --color-gold-dark: #c9bc50;
+  --color-gold-deep: #b8860b; /* dark yellow — stat card fill */
+
+  /* --- Editorial neutrals (team stage frame + sage accents) --- */
+  --color-sand: #e7d7a6;
+  --color-sage: #c2c7b1;
+  --color-sage-soft: #e6ebdd; /* muted sage wash (currently unused — kept in palette) */
+  --color-sage-mid: #b5c9a6; /* deeper sage (kept for reference) */
+  --color-peach: #e8c49d; /* warm peach/tan — Vegetables / Fruits / Groceries category cards */
+  --color-leaf: #9fb98c; /* muted leaf green — B2B category card */
+
+  /* --- Neutrals --- */
+  --color-white: #ffffff;
+  --color-cream: #f9f7f2;
+  --color-bg: #f0f4ef;
+  --color-bg-alt: #fff9e8; /* v2 new */
+  --color-dark: #1b2f18;
+  --color-header-dark: #0a2803; /* v2 new */
+  --color-text: #1f1c1c;
+  --color-text-heading: #1e3318;
+  --color-text-muted: #1e1d1d;
+  --color-border: #dde8d8;
+  --color-border-strong: #c8d8c2;
+
+  /* --- Editorial accents (About / outlined-card palette, v2.1) --- */
+  --color-lime: #b7e04a; /* bright lime card fill */
+  --color-blush: #f6b3a2; /* soft salmon card fill */
+
+  /* --- Farm-drawer produce accents (v2.2 — menu/contact chips, hero scene) --- */
+  --color-forest-deep: #123a08; /* deep forest — drawer hero gradient start */
+  --color-sunny: #f6b43c; /* ripe citrus — Pages chip, email chip, carrot/lemon fills */
+  --color-berry: #ef5da8; /* berry pink — Shop chip, location chip, tomato blush */
+  --color-lavender: #a78bfa; /* soft grape — Support chip */
+  --color-sky: #56b6f0; /* clear sky — Careers chip */
+  --color-meadow-wash: #d3f0c0; /* hero grass wash */
+
+  /* --- VPNexues brand trio (CEO-approved palette, v2.3) --- */
+  --color-brand-forest: #355b3a; /* primary brand green — typography, nav icons */
+  --color-brand-ivory: #f7f8f0; /* soft ivory — main backgrounds */
+  --color-brand-gold: #d7b65d; /* harvest gold — Shop Fresh CTA + small highlights */
+
+  /* --- About editorial palette (v2.4 — About Us redesign)
+     warm paper / sage / deep green-black; component styles consume
+     these instead of hardcoding a hex value. --- */
+  --color-about-ink: #0f1a13; /* deep green-black — closing band base */
+  --color-about-deep: #17281c; /* dark green — panels, active tab fills */
+  --color-about-beige: #f5f1e8; /* warm paper — page wash */
+  --color-about-beige-deep: #e3dccb; /* paper edge — hairlines, borders */
+  --color-about-mint: #eaeee3; /* sage wash — framed panel */
+  --color-about-mint-strong: #cadbc0; /* sage accent — chips, markers */
+
+  /* --- Semantic status --- */
+  --color-success: #2f9e44;
+  --color-warning: #c98a1f;
+  --color-danger: #c0392b;
+  --color-info: #4a6fa5;
+
+  /* --- Typography --- */
+  --font-family-base: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-family-script: 'Caveat', 'Segoe Script', cursive;
+  --font-family-heading: 'Manrope', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-body: 500; /* v2: was ~400 */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 40px;
+  --font-size-5xl: 56px; /* v2 new */
+
+  /* --- Spacing scale (4/8px based) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* --- Shadow (kept green-tinted/brand-consistent — the v2 source
+     material's blue-tinted shadows were not adopted, see tokens-preview.html) --- */
+  --shadow-sm: 0 4px 24px rgba(44, 79, 37, 0.1);
+  --shadow-lg: 0 12px 48px rgba(44, 79, 37, 0.16);
+  --shadow-lift: 0 8px 24px rgba(23, 61, 33, 0.12), 0 2px 6px rgba(23, 61, 33, 0.06);
+  --shadow-3d: 0 18px 40px rgba(23, 61, 33, 0.16), 0 6px 14px rgba(23, 61, 33, 0.08);
+  --shadow-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  /* Hard offset shadow for outlined/neobrutalist cards (v2.1) */
+  --shadow-hard: 6px 6px 0 var(--color-header-dark);
+  --shadow-hard-sm: 3px 3px 0 var(--color-header-dark);
+
+  /* --- Overlay tints (translucent white, used on photo/hero backgrounds
+     for glassy buttons, arrow controls, badges) --- */
+  --overlay-white-15: rgba(255, 255, 255, 0.15);
+  --overlay-white-20: rgba(255, 255, 255, 0.2);
+  --overlay-white-30: rgba(255, 255, 255, 0.3);
+
+  /* --- App-promo farm-to-home palette — homepage end-of-page promo --- */
+  --color-brand-green: #176b3a; /* VPNexues wordmark, deep-green headline, store buttons */
+  --color-fresh-green: #4caf50; /* fresh-green headline accent */
+  --color-gold-soft: #fbe7b0; /* soft-gold QR tile — pairs with brand-green modules */
+
+  /* --- Motion --- */
+  --transition: all 0.4s ease-in-out; /* v2: was 0.28s ease */
+
+  /* --- Light OLIVÉ theme (additive v2.2 — dark tokens above untouched) --- */
+  --color-bg-warm: #ffffff; /* pure white — main page background */
+  --color-bg-beige: #ffffff; /* white — alternate sections */
+  --color-card: #ffffff; /* pure white cards */
+  --color-ink: #2c3e2d; /* dark green — headings */
+  --color-ink-muted: #5a6b5c; /* muted green — descriptions */
+  --color-edge: #e5e5e5; /* hairline borders on light */
+  --shadow-soft: 0 4px 24px rgba(44, 62, 45, 0.06);
+  --shadow-accent-soft: 0 0 20px rgba(74, 140, 74, 0.15);
+}
+
+/* Breakpoints are documented here for reference (media queries can't read
+   custom properties), v2: 450px / 576px / 768px / 992px / 1200px / 1400px
+   (was 480px / 768px / 1024px / 1280px). */

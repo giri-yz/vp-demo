@@ -1,0 +1,573 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrap {
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  background: #fff;
+  overflow: hidden;
+}
+
+.wrap.pageFlipping {
+  animation: pageFlip 0.4s ease-in forwards;
+  transform-origin: left center;
+}
+
+@keyframes pageFlip {
+  0%   { transform: perspective(1200px) rotateY(0deg); }
+  100% { transform: perspective(1200px) rotateY(-90deg); }
+}
+
+/* --- LEFT PANEL --- */
+.leftPanel {
+  flex: 1;
+  background: #f0f7f0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.leftPanel .lpBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* --- RIGHT PANEL --- */
+.rightPanel {
+  width: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 60px;
+  position: relative;
+  background: linear-gradient(135deg, #0d3b12 0%, #1a5c2a 30%, #2d7a3a 60%, #1a5c2a 100%);
+  overflow: hidden;
+}
+
+.loginForm {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  animation: fadeUp 0.6s ease;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.brandLogo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.brandText {
+  text-align: left;
+}
+
+.brandText h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+}
+
+.brandText .tagline {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.loginForm h2 {
+  font-size: 30px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.loginForm .subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 36px;
+}
+
+.formGroup {
+  margin-bottom: 24px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.inputWrap :global(.icon) {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 16px;
+  transition: color 0.2s;
+  pointer-events: none;
+}
+
+.inputWrap input {
+  width: 100%;
+  padding: 15px 48px 15px 46px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+  color: #1a1a2e;
+  background: #f9fafb;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.inputWrap input::placeholder {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.inputWrap input:focus {
+  border-color: #1a5c2a;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(26, 92, 42, 0.08);
+}
+
+.inputWrap input:focus ~ :global(.icon) {
+  color: #1a5c2a;
+}
+
+.inputError {
+  position: relative;
+}
+
+.inputError input {
+  border-color: #dc2626 !important;
+  background: #fef2f2 !important;
+}
+
+.inputError input:focus {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.08) !important;
+}
+
+.inputError :global(.icon) {
+  color: #dc2626 !important;
+}
+
+.fieldError {
+  color: #dc2626;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+  padding-left: 4px;
+}
+
+.togglePw {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.togglePw:hover {
+  color: #6b7280;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #FFB800;
+  color: #134B2F;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  box-shadow: 0 4px 16px rgba(255, 184, 0, 0.3);
+}
+
+.loginBtn:hover {
+  background: #e6a600;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 184, 0, 0.4);
+}
+
+.loginBtn:focus-visible {
+  outline: 3px solid #134B2F;
+  outline-offset: 2px;
+}
+
+.loginBtn:active {
+  transform: translateY(0);
+}
+
+.loginBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loginBtn i {
+  font-size: 18px;
+}
+
+.formFooter {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.formFooter a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.formFooter a:hover {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+
+/* Error/Success */
+.msg {
+  display: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  align-items: center;
+  gap: 10px;
+  animation: slideIn 0.3s ease;
+}
+
+.msg.show {
+  display: flex;
+}
+
+.msg.error {
+  background: #fecaca;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.msg.warning {
+  background: #fef3c7;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- MOBILE SPLASH (<=1024px) --- */
+.mobileSplash {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #e8f5e9;
+}
+
+.mobileSplash .splashImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The artwork's headline/logo column sits at the image's left edge;
+     centering cropped it off on phones, so bias the visible window left
+     (i.e. shift the image right) by 20%. */
+  object-position: 20% top;
+}
+
+.mobileSplash .splashOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 24px 48px;
+}
+
+.mobileSplash .splashLogo {
+  display: none;
+}
+
+.mobileSplash .splashTitle {
+  display: none;
+}
+
+.mobileSplash .splashTagline {
+  display: none;
+}
+
+.mobileSplash .welcomeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 50px;
+  background: #1a5c2a;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.mobileSplash .welcomeBtn:hover {
+  background: #1a5c2a;
+  transform: translateY(-2px);
+}
+
+.mobileSplash .welcomeBtn:active {
+  background: #f5a623;
+  border-color: #f5a623;
+  transform: scale(0.96);
+  box-shadow: 0 2px 12px rgba(245, 166, 35, 0.4);
+}
+
+.mobileSplash .welcomeBtn i {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.mobileSplash .welcomeBtn:active i {
+  transform: translateX(4px);
+}
+
+/* Mobile sign-in form (hidden by default on mobile) */
+.mobileLoginWrap {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d3b12 0%, #1a5c2a 30%, #2d7a3a 60%, #1a5c2a 100%);
+  padding: 24px 16px;
+}
+
+.mobileLoginWrap.show {
+  display: block;
+}
+
+.mobileLoginWrap .loginForm {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 28px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.mobileLoginWrap .mobileBackBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.mobileLoginWrap .mobileBackBtn i {
+  font-size: 16px;
+}
+
+/* --- WELCOME SCREEN (after login) --- */
+.welcomeScreen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #0d3b12 0%, #1a5c2a 30%, #2d7a3a 60%, #1a5c2a 100%);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.welcomeScreen.show {
+  display: flex;
+}
+
+.welcomeScreen img {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: welcomeFadeIn 0.8s ease;
+}
+
+@keyframes welcomeFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.welcomeScreenBtn {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 52px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #FFC107, #FFB300 50%, #FFA000);
+  background-size: 200% 100%;
+  color: #134B2F;
+  font-size: 17px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 6px 24px rgba(255, 193, 7, 0.35), 0 0 0 0 rgba(255, 193, 7, 0);
+  animation: welcomeFadeIn 0.8s ease 0.3s both, shimmerSweep 3s ease-in-out 1.2s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcomeScreenBtn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-20deg);
+  animation: btnShine 3s ease-in-out 1.5s infinite;
+  pointer-events: none;
+}
+
+.welcomeScreenBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(255, 193, 7, 0.45), 0 0 24px rgba(255, 193, 7, 0.3);
+  background-position: 100% 0;
+}
+
+.welcomeScreenBtn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.welcomeScreenBtn.clicked {
+  transform: scale(0.95);
+  opacity: 0.85;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  pointer-events: none;
+}
+
+.welcomeScreenBtn i {
+  font-size: 16px;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  color: #134B2F;
+}
+
+.welcomeScreenBtn:hover i {
+  transform: translateX(6px);
+}
+
+@keyframes shimmerSweep {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes btnShine {
+  0% { left: -100%; }
+  30%, 100% { left: 120%; }
+}
+
+@media (max-width: 1024px) {
+  .wrap {
+    overflow: auto;
+  }
+
+  .leftPanel {
+    display: none;
+  }
+
+  .rightPanel {
+    display: none;
+  }
+
+  .mobileSplash {
+    display: block;
+  }
+
+  .mobileLoginWrap.show {
+    display: block;
+  }
+}

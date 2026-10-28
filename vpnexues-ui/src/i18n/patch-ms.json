@@ -1,0 +1,357 @@
+{
+  "about.addressTba": "Alamat akan diumumkan",
+  "about.contactPoints": [
+    "Disumber terus daripada ladang organik bersijil di Tamil Nadu",
+    "Pesanan pukal B2B dan pek B2C dihantar ke seluruh dunia",
+    "Dokumen eksport dan kastam diuruskan hujung ke hujung",
+    "Logistik rantaian sejuk yang mengekalkan kesegaran hasil ladang"
+  ],
+  "about.galleryLabels": [
+    "Kualiti & Pemakanan",
+    "Menyokong Petani",
+    "Alam Sekitar & Pertanian",
+    "Menuju Dunia Lebih Sihat",
+    "Sayuran Segar dari Ladang",
+    "Segar Dari Ladang"
+  ],
+  "about.introGlobalReach": "Jangkauan Global",
+  "about.introGlobalReachDesc": "Menyediakan perkhidmatan kepada pelanggan di Singapura, India, UAE, Eropah dan seluruh dunia.",
+  "about.introOurVision": "Visi Kami",
+  "about.introOurVisionDesc": "Menjadi jenama eksport organik paling dipercayai dari India ke seluruh dunia.",
+  "about.introWhoWeAre": "Siapa Kami",
+  "about.introWhoWeAreDesc": "VPNexues Private Limited, syarikat eksport organik ladang-ke-meja-makan yang berpusat di Tamil Nadu, India.",
+  "about.subjectB2b": "Bekalan Pukal B2B",
+  "about.subjectB2c": "Pesanan Runcit B2C",
+  "about.subjectOther": "Lain-lain",
+  "about.subjectPartnership": "Perkongsian & Pengedaran",
+  "about.viewPhotoAria": "Lihat gambar",
+  "account.backToOrders": "Kembali ke Pesanan",
+  "account.channel": "Saluran",
+  "account.discount": "Diskaun",
+  "account.orderDetailsTitle": "Butiran Pesanan",
+  "account.orderNotFound": "Pesanan tidak ditemui",
+  "account.orderNotFoundDesc": "Kami tidak dapat mencari pesanan ini. Ia mungkin telah dipadam atau anda tidak mempunyai akses kepadanya.",
+  "account.priceDetails": "Butiran Harga",
+  "account.tax": "Cukai",
+  "auth.accountRequired": "Sila daftar dahulu — nama dan e-mel diperlukan untuk membuat akaun anda.",
+  "auth.emailRequired": "Sila masukkan alamat e-mel anda untuk mendaftar.",
+  "auth.invalidEmailFormat": "Sila masukkan alamat e-mel yang sah.",
+  "auth.loggingIn": "Sedang log masuk…",
+  "auth.loginFailed": "Log masuk gagal",
+  "auth.nameRequired": "Sila masukkan nama penuh anda untuk mendaftar.",
+  "auth.notRegistered": "Nombor mudah alih ini tidak berdaftar. Sila daftar untuk meneruskan.",
+  "auth.serverWaking": "Pelayan sedang diaktifkan. Sila cuba lagi dalam beberapa saat.",
+  "cart.farmersSub": "Hasil segar • Kehidupan lebih baik • Esok yang lebih sihat",
+  "cart.farmersTitle": "Anda menyokong petani tempatan",
+  "cart.headerSub": "Segar dari ladang kami ke rumah anda 🌿",
+  "chat.agentReplyLabel": "Ejen sokongan",
+  "chat.autoCapturePrompt": "Baik — soalan anda telah disimpan untuk pasukan sokongan kami. Boleh saya ketahui nama anda supaya mereka tahu kepada siapa perlu membalas?",
+  "chat.escalateAlreadyConnected": "Anda sudah tersambung dengan pasukan sokongan kami — terus menulis, setiap mesej akan sampai kepada mereka.",
+  "chat.escalateConnected": "Anda telah tersambung! Perbualan anda telah dikongsi dengan pasukan sokongan kami (tiket {id}). Seorang ejen akan menyusul di {email} dalam 24 jam bekerja. Anda boleh terus berbual di sini.",
+  "chat.escalateConnecting": "Sedang menyambungkan anda dengan pasukan sokongan kami…",
+  "chat.escalateEmailError": "E-mel tersebut kelihatan tidak sah — sila semak dan cuba lagi.",
+  "chat.escalateEmailPrompt": "Terima kasih {name}! E-mel yang mana patut pasukan kami balas?",
+  "chat.escalateFailed": "Tidak dapat menghubungi pasukan kami buat masa ini. Sila e-mel support@vpnexues.com dan kami akan membantu anda di sana.",
+  "chat.escalateNameError": "Sila taip nama anda supaya pasukan kami tahu kepada siapa mereka sedang membantu.",
+  "chat.escalateNamePrompt": "Untuk menyambungkan anda dengan pasukan sokongan kami, boleh saya ketahui nama anda?",
+  "checkout.cartRefreshed": "Troli anda telah dimuat semula dari pelayan. Sila semak semula item anda dan cuba lagi.",
+  "common.citySalem": "Salem",
+  "common.citySalemIndia": "Salem, India",
+  "common.citySingapore": "Singapore",
+  "common.citySriLanka": "Sri Lanka",
+  "common.cityTirupattur": "Tirupattur",
+  "common.comingSoon": "Akan Datang",
+  "contact.allTopics": "Semua",
+  "contact.answersFound": "jawapan",
+  "contact.b2bBody": "Restoran, hotel, rangkaian runcit dan institusi mendapat kategori khusus, pengurus akaun, bil invois, kredit 30 hari serta sijil organik/Halal. Minimum 50kg setiap penghantaran. Kami membalas dalam 24 jam bekerja.",
+  "contact.b2bCta": "Lihat harga B2B",
+  "contact.b2bMail": "E-mel pasukan B2B",
+  "contact.b2bTitle": "Buat pesanan untuk perniagaan?",
+  "contact.browseTopics": "Teroka mengikut topik",
+  "contact.browseTopicsSub": "Pilih satu topik untuk terus ke jawapan, atau carian di atas.",
+  "contact.cardHours": "9 pagi–7 malam IST",
+  "contact.cardMonSat": "Isn–Sab",
+  "contact.faqGroups": [
+    {
+      "title": "Pesanan",
+      "items": [
+        {
+          "q": "Bagaimana saya membuat pesanan?",
+          "a": "Teroka di /shop, tambah item ke troli, pilih Small Box, Big Box atau B2B, masukkan butiran penghantaran dan bayar. Tiada akaun diperlukan — bayar sebagai tetamu!"
+        },
+        {
+          "q": "Bagaimana saya boleh menjejak pesanan saya?",
+          "a": "ID pesanan bermula dengan VPN- (cth. VPN-24581). Gunakan pautan penjejakan yang dihantar melalui WhatsApp/e-mel, atau pergi ke Akaun Saya → Pesanan Saya. Perlu bantuan? Hubungi +91 9943994603."
+        },
+        {
+          "q": "Bolehkah saya menukar atau membatalkan pesanan saya?",
+          "a": "Boleh — dalam masa 4 jam selepas pesanan dibuat (sebelum pembungkusan). Hantar mesej kepada kami di WhatsApp (+91 9943994603) atau e-mel support@vpnexues.com berserta ID pesanan anda."
+        },
+        {
+          "q": "Bagaimana saya menggunakan kod promosi?",
+          "a": "Semasa pembayaran, cari ruang \"Guna Kupon\", masukkan kod anda dan klik Guna. Diskaun akan dipaparkan dalam jumlah pesanan anda. FIRST200 memberikan penjimatan ₹200 untuk pesanan pertama bagi troli ₹500 ke atas."
+        },
+        {
+          "q": "Adakah ada pesanan minimum?",
+          "a": "Runcit: tiada minimum — pesan walaupun satu item. Minimum B2B / borong berbeza mengikut produk; hubungi pasukan B2B untuk sebut harga."
+        }
+      ]
+    },
+    {
+      "title": "Penghantaran",
+      "items": [
+        {
+          "q": "Ke mana anda menghantar?",
+          "a": "Kami menghantar ke India, Singapura, Amerika Syarikat dan Emiriah Arab Bersatu. Destinasi baharu disemak setiap suku tahun."
+        },
+        {
+          "q": "Apakah caj penghantaran?",
+          "a": "Tamil Nadu: PERCUMA untuk pesanan melebihi ₹999. Bahagian lain di India: dikira semasa pembayaran mengikut berat. Antarabangsa: dinilai semasa pembayaran. Tiada caj tersembunyi."
+        },
+        {
+          "q": "Seberapa cepat penghantaran?",
+          "a": "Penghantaran percuma untuk semua pelan langganan, penghantaran hari yang sama di bandar terpilih, jadual fleksibel — pilih hari penghantaran anda — dalam pembungkusan mesra alam tanpa plastik."
+        },
+        {
+          "q": "Pesanan saya lewat. Apa yang perlu saya buat?",
+          "a": "Semak pautan penjejakan untuk anggaran tiba yang dikemas kini. Jika melebihi 2 hari selepas tarikh yang dijanjikan, WhatsApp +91 9943994603 berserta ID pesanan anda dan kami akan eskalasikan serta-merta."
+        },
+        {
+          "q": "Bagaimana jika tiada siapa di rumah semasa penghantaran?",
+          "a": "Kami cuba menghantar sebanyak 2 kali dan menyimpan bungkusan di hab terdekat selama 3 hari. Tinggalkan nota semasa pembayaran seperti \"Serahkan kepada keselamatan\" atau \"Panggil sebelum penghantaran\"."
+        }
+      ]
+    },
+    {
+      "title": "Pembayaran",
+      "items": [
+        {
+          "q": "Kaedah pembayaran apa yang anda terima?",
+          "a": "Kad: Visa, Mastercard, RuPay, Amex. UPI: Google Pay, PhonePe, Paytm, BHIM. Perbankan dalam talian: semua bank utama di India. Juga PayNow (SG), PayPal dan pemindahan bank untuk B2B."
+        },
+        {
+          "q": "Adakah bayaran semasa penghantaran (COD) tersedia?",
+          "a": "Ya, untuk kod pos terpilih di Tamil Nadu bagi pesanan di bawah ₹5,000. COD tidak tersedia untuk pesanan antarabangsa atau B2B."
+        },
+        {
+          "q": "Pembayaran saya gagal. Adakah saya akan dikenakan caj?",
+          "a": "Pembayaran yang gagal biasanya dikembalikan secara automatik oleh bank anda dalam 5–7 hari bekerja. Jika tidak dikembalikan selepas 7 hari, e-mel support@vpnexues.com berserta ID transaksi anda."
+        },
+        {
+          "q": "Bagaimana saya mendapat invois GST?",
+          "a": "Invois GST dikeluarkan bersama pesanan anda. Jika anda tidak menerimanya, e-mel support@vpnexues.com berserta ID pesanan anda dan kami akan menghantar semula."
+        },
+        {
+          "q": "Adakah pembayaran dalam talian selamat?",
+          "a": "Ya — semua transaksi adalah selamat dan disulitkan. Kami tidak pernah melihat atau menyimpan maklumat kad penuh atau kelayakan UPI anda."
+        }
+      ]
+    },
+    {
+      "title": "Produk & Kesegaran",
+      "items": [
+        {
+          "q": "Produk apa yang anda jual?",
+          "a": "Sayuran (tomato, lobak merah, terung, bendi, brokoli, kacang, bawang), buah-buahan (mangga, pisang, epal, tembikai), bijirin & rempah (biji kopi, dal, beras, rempah premium), serta telur segar, minuman dan barangan runcit — semuanya bebas bahan kimia."
+        },
+        {
+          "q": "Adakah produk anda benar-benar organik?",
+          "a": "Ya — 100% organik bersijil, disumber terus daripada ladang organik bersijil di seluruh Tamil Nadu yang diaudit di bawah standard organik India & antarabangsa. Setiap kotak membawa kod QR dengan maklumat ladang, tarikh menuai & laporan pemeriksaan."
+        },
+        {
+          "q": "Bagaimana anda mengekalkan kesegaran hasil?",
+          "a": "Dituai mengikut pesanan dan dibungkus dalam beberapa jam dengan pembungkusan berinsulasi rantaian sejuk serta pek ais; pengangkutan terkawal suhu untuk penghantaran antarabangsa."
+        },
+        {
+          "q": "Apakah jangka hayat simpanan?",
+          "a": "Sayuran berdaun: 3–5 hari dalam peti sejuk. Sayuran akar & buah-buahan: 7–10 hari. Rempah & bijirin: sehingga 12 bulan. Setiap pek menyenaraikan tarikh menuai & maklumat tarikh luput."
+        },
+        {
+          "q": "Adakah anda menawarkan sampel atau pek hadiah?",
+          "a": "Sampel tersedia atas permintaan mengikut produk — sila tanya. Kami juga menyediakan langganan Small Box & Big Box serta hamper perayaan untuk Deepavali, Pongal & penghujung tahun (pelanggan langganan menjimatkan sehingga 15% dengan penghantaran keutamaan)."
+        }
+      ]
+    },
+    {
+      "title": "Pelan Harga",
+      "items": [
+        {
+          "q": "Apakah pelan Small Box dan Big Box?",
+          "a": "Small Box — ₹1,550: minimum 10 produk setiap kotak, gabungan sayuran, buah-buahan & barangan runcit. Big Box — ₹5,518: minimum 10kg keseluruhan, sebarang gabungan, dengan diskaun pukal 12% digunakan secara automatik apabila mencecah 10kg+."
+        },
+        {
+          "q": "Bagaimana harga item tambahan Small Box berfungsi?",
+          "a": "10 item pertama pada harga standard; item selepas 10 dikenakan caj premium +15%."
+        },
+        {
+          "q": "Bagaimana diskaun Big Box berfungsi?",
+          "a": "Tiada had bilangan item — apabila kotak anda mencapai berat keseluruhan 10kg, diskaun pukal 12% digunakan secara automatik."
+        },
+        {
+          "q": "Adakah anda menawarkan langganan?",
+          "a": "Ya — langganan Small Box / Big Box setiap minggu atau dua kali sebulan dengan penjimatan sehingga 15% dan penghantaran keutamaan. Jeda atau batal bila-bila masa tanpa penalti."
+        },
+        {
+          "q": "Apakah kupon FIRST200?",
+          "a": "FIRST200 ialah diskaun tetap ₹200 untuk pembeli buat pertama kali bagi troli ₹500 ke atas. Masukkannya dalam \"Guna Kupon\" semasa pembayaran; troli di bawah ₹500 tidak layak."
+        }
+      ]
+    },
+    {
+      "title": "Pulangan, bayaran balik & B2B",
+      "items": [
+        {
+          "q": "Apakah dasar pemulangan anda?",
+          "a": "Kami tidak menerima pemulangan untuk item yang telah dibuka, tetapi jika produk tiba dalam keadaan rosak, luput atau salah, anda akan menerima gantian percuma, bayaran balik penuh dalam 3–5 hari bekerja, atau baki kedai dengan bonus 5%. Laporkan dalam masa 24 jam."
+        },
+        {
+          "q": "Bagaimana saya melaporkan item yang rosak atau salah?",
+          "a": "Hubungi kami dalam masa 24 jam dengan ID pesanan, gambar item dan sedikit nota — melalui WhatsApp (+91 9943994603) atau support@vpnexues.com — dan kami akan mengatur gantian percuma atau bayaran balik penuh."
+        },
+        {
+          "q": "Berapa lama masa untuk bayaran balik?",
+          "a": "Bayaran balik dimasukkan ke kaedah pembayaran asal dalam 3–5 hari bekerja (tempoh bank untuk pembayaran gagal: 5–7 hari). Baki kedai dengan bonus 5% adalah serta-merta."
+        },
+        {
+          "q": "Adakah anda menerima pesanan B2B atau borong?",
+          "a": "Ya — restoran, hotel, rangkaian runcit, pemprosesan makanan dan institusi. Anda mendapat kategori khusus, pengurus akaun, bil invois, kredit 30 hari serta sijil organik/Halal. Minimum 50kg setiap penghantaran; dokumen eksport & logistik diuruskan."
+        },
+        {
+          "q": "Bagaimana saya meminta sebut harga B2B atau menjadi pengedar?",
+          "a": "E-mel support@vpnexues.com atau hubungi +91 9943994603 dengan keperluan anda. Kami menghantar sebut harga yang disesuaikan, biasanya dalam 24 jam bekerja."
+        }
+      ]
+    }
+  ],
+  "contact.formEmail": "E-mel",
+  "contact.formError": "Tidak dapat menghantar mesej anda buat masa ini. Sila cuba lagi nanti.",
+  "contact.formMessage": "Bagaimana kami boleh membantu?",
+  "contact.formName": "Nama anda",
+  "contact.formPhone": "Telefon (pilihan)",
+  "contact.formSend": "Hantar mesej",
+  "contact.formSending": "Sedang menghantar…",
+  "contact.formSent": "Mesej dihantar",
+  "contact.formSub": "Kami membalas dalam 24 jam bekerja.",
+  "contact.formSubject": "Subjek",
+  "contact.formSuccess": "Mesej anda telah berjaya dihantar. Kami akan membalas anda dalam 24 jam bekerja.",
+  "contact.formTitle": "Masih bermasalah? Hantar mesej kepada kami",
+  "contact.howItWorksSub": "Tiga langkah pantas untuk kebanyakan pertanyaan pesanan.",
+  "contact.howItWorksTitle": "Bagaimana sokongan berfungsi",
+  "contact.howSteps": [
+    {
+      "title": "1. Buat pesanan anda",
+      "body": "Teroka kedai, tambah item ke troli, pilih Small Box, Big Box atau B2B, kemudian bayar sebagai tetamu — tiada akaun diperlukan."
+    },
+    {
+      "title": "2. Jejak pesanan",
+      "body": "ID pesanan bermula dengan VPN- (cth. VPN-24581). Gunakan pautan penjejakan di WhatsApp/e-mel atau Akaun Saya → Pesanan Saya."
+    },
+    {
+      "title": "3. Perlu perubahan?",
+      "body": "Ubah atau batal dalam masa 4 jam selepas pesanan dibuat (sebelum pembungkusan) melalui WhatsApp +91 9943994603 atau support@vpnexues.com berserta ID pesanan anda."
+    }
+  ],
+  "contact.inOffice": "No 312/11, Siva towers, Perumal Malai Road, Narasothipatti, Salem Tamil Nadu, India, 636004",
+  "contact.infoCards": [
+    {
+      "title": "Penghantaran",
+      "body": "Kami menghantar ke India, Singapura, USA dan UAE. Tamil Nadu: PERCUMA melebihi ₹999. Langganan termasuk penghantaran percuma; hari yang sama di bandar terpilih."
+    },
+    {
+      "title": "Pembayaran",
+      "body": "Kad (Visa, Mastercard, RuPay, Amex), UPI (GPay, PhonePe, Paytm, BHIM), perbankan dalam talian, PayNow (SG), PayPal dan pemindahan bank untuk B2B. COD untuk kod pos TN terpilih di bawah ₹5,000."
+    },
+    {
+      "title": "Pulangan & bayaran balik",
+      "body": "Laporkan item yang rosak, luput atau salah dalam masa 24 jam dengan ID pesanan + gambar untuk gantian percuma, bayaran balik dalam 3–5 hari bekerja, atau baki kedai dengan bonus 5%."
+    }
+  ],
+  "contact.infoSub": "Penghantaran, pembayaran dan pemulangan sekilas pandang.",
+  "contact.infoTitle": "Perlu tahu",
+  "contact.lkOffice": "Alamat akan diumumkan",
+  "contact.officesSub": "Isn–Sab, 9 pagi–7 malam IST. Ditutup pada hari Ahad & cuti umum.",
+  "contact.officesTitle": "Lawat atau hubungi kami",
+  "contact.sendAnother": "Hantar mesej lain",
+  "contact.sentTitle": "Mesej berjaya dihantar",
+  "contact.sgOffice": "Singapore: 412 Race Course Road, Singapore 218660",
+  "contact.showAllInTopic": "Tunjukkan semua",
+  "contact.showLess": "Tunjukkan kurang",
+  "contact.tpOffice": "Tirupattur: VPNexues Private Limited, No. 8, Don Bosco Nagar, 3rd Floor, Aether E-Bike Showroom Building, Opposite DBX School, Tirupattur 635601, Tamil Nadu, India",
+  "faq.categories.aboutFarmers": "Tentang VPNexues & Petani",
+  "faq.categories.organicQuality": "Organik & Kualiti Produk",
+  "faqQuestions.aboutFarmers": [
+    {
+      "q": "Dari mana produk VPNexues datang?",
+      "a": "Produk kami disumber terus daripada ladang dan pekebun yang dipercayai, membantu menghubungkan petani dengan pelanggan sambil mengekalkan kualiti dan kesegaran."
+    },
+    {
+      "q": "Adakah petani menerima harga yang lebih baik apabila saya membeli dari VPNexues?",
+      "a": "Model ladang-ke-pelanggan kami direka untuk mewujudkan rantaian bekalan yang lebih langsung dan mengurangkan orang tengah yang tidak perlu, membantu mewujudkan nilai lebih baik untuk petani dan pelanggan."
+    },
+    {
+      "q": "Bolehkah saya tahu ladang mana produk saya berasal?",
+      "a": "Di mana maklumat ketelusan tersedia, pelanggan boleh melihat maklumat ladang, sumber, penuaian dan kualiti yang berkaitan dengan produk tersebut."
+    },
+    {
+      "q": "Bagaimana anda memeriksa kualiti produk anda?",
+      "a": "Produk kami melalui pemeriksaan kualiti sebelum pembungkusan dan penghantaran. Kami memeriksa kesegaran, penampilan, kuantiti dan pembungkusan bagi memastikan pelanggan menerima produk yang memenuhi standard kami."
+    }
+  ],
+  "faqQuestions.organicQuality": [
+    {
+      "q": "Bagaimana saya boleh mengetahui sama ada sesuatu produk itu organik?",
+      "a": "Senarai produk menyatakan dakwaan dan sijil organik yang terpakai. Untuk dokumentasi sijil atau ketelusan, pelanggan boleh menghubungi pasukan sokongan kami."
+    },
+    {
+      "q": "Adakah produk anda baru dituai?",
+      "a": "Kebanyakan produk segar kami disediakan berdekatan dengan kitaran penghantaran bagi membantu mengekalkan kesegaran."
+    },
+    {
+      "q": "Adakah saiz, warna atau penampilan produk boleh berbeza?",
+      "a": "Ya. Buah-buahan dan sayuran semula jadi mungkin sedikit berbeza dari segi saiz, bentuk, warna dan penampilan kerana ia adalah produk pertanian. Ini tidak semestinya menunjukkan masalah kualiti."
+    },
+    {
+      "q": "Bagaimana saya harus menyimpan sayuran dan buah-buahan segar selepas penghantaran?",
+      "a": "Keperluan penyimpanan berbeza mengikut produk. Kami mengesyorkan mengikut arahan penyimpanan yang disertakan bersama produk dan menyimpan dalam peti sejuk untuk produk yang memerlukan penyimpanan sejuk."
+    },
+    {
+      "q": "Apa akan berlaku jika sesuatu produk tidak tersedia buat sementara waktu?",
+      "a": "Ketersediaan boleh berubah mengikut tuaian dan inventori. Jika sesuatu item menjadi tidak tersedia, kami mungkin menghubungi anda berkenaan alternatif, gantian atau bayaran balik jika berkenaan."
+    }
+  ],
+  "gallery.notes": [
+    "Petani wanita di ladang rakan kongsi kami",
+    "Sayuran hijau membesar di ladang kami",
+    "Kubis segar, dituai dengan tangan",
+    "Benih dikongsi dengan petani tempatan",
+    "Memetik hasil paling segar",
+    "Hari menuai bersama pekebun kami",
+    "Tanaman kacang yang sedang berbunga",
+    "Kubis segar dari ladang kami",
+    "Cili hijau, baru dipetik",
+    "Bendi muda, disusun dengan tangan",
+    "Pokok cili penuh dengan buah",
+    "Timun tikus di pokok menjalar",
+    "Sayuran berdaun di ladang",
+    "Terung baru dituai",
+    "Terung kecil, disusun di ladang",
+    "Kacang dinilai untuk pasaran",
+    "Petola dari ladang kami",
+    "Terung disusun untuk penilaian",
+    "Cili hijau disusun dengan tangan",
+    "Kacang botor segar dari ladang",
+    "Sayuran berdaun diikat sedia untuk dihantar",
+    "Barisan kemas merentasi tanah ladang kami",
+    "Tanaman sihat, ditanam secara semula jadi",
+    "Sayuran berdaun dipetik dengan tangan",
+    "Petak sayuran yang terjaga rapi",
+    "Sayuran berkhasiat, dari ladang ke garpu"
+  ],
+  "gallery.openPhotoAria": "Buka gambar galeri",
+  "home.freshPicks": "Pilihan Segar Untuk Anda",
+  "home.shopAll": "Belanja semua",
+  "team.profileLoadError": "Kami tidak dapat memuatkan profil ini buat masa ini. Sila cuba lagi.",
+  "team.profileLoading": "Sedang memuatkan profil…",
+  "team.retry": "Cuba lagi",
+  "team.roleNames.manager": "Pengurus"
+}

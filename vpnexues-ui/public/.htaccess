@@ -1,0 +1,99 @@
+# ============================================================================
+#  VPNexues — Apache / GoDaddy configuration for the React SPA
+# ============================================================================
+#  The app uses react-router <BrowserRouter> and is deployed at the DOMAIN
+#  ROOT (Vite `base` is "/", and index.html references /assets/... absolutely).
+#
+#  Without this file Apache returns 404 for every deep link and every browser
+#  refresh, because paths like /shop/tomatoes, /account/orders or /admin/login
+#  do not exist on disk. The rules below hand anything that is not a real file
+#  or directory back to /index.html so the client-side router can resolve it.
+#
+#  Every optional block is wrapped in <IfModule>, so a module that happens to
+#  be missing on the host can never turn this file into a 500 error. Only
+#  long-established directives are used, so this is safe on GoDaddy shared
+#  hosting (AllowOverride All in public_html).
+#
+#  NOTE: this file only works if the site is served from the domain root.
+# ============================================================================
+
+
+# --- 1. Default document ---------------------------------------------------
+DirectoryIndex index.html
+
+
+# --- 2. MIME types ----------------------------------------------------------
+# Vite ships ES modules. Browsers apply strict MIME checking to
+# <script type="module">, so .js must never be served as text/plain.
+<IfModule mod_mime.c>
+  AddType application/javascript     .js
+  AddType application/javascript     .mjs
+  AddType application/json           .json
+  AddType image/svg+xml              .svg
+  AddType image/webp                 .webp
+  AddType image/avif                 .avif
+  AddType font/woff2                 .woff2
+  AddType application/manifest+json  .webmanifest
+</IfModule>
+
+
+# --- 3. SPA fallback (the important part) -----------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Paths owned by the backend: never rewrite them, so a missing endpoint
+  # still produces a clean 404 instead of the HTML shell.
+  # (In production the frontend calls https://vpnexues-api.onrender.com
+  #  directly, so these are only a safety net.)
+  RewriteRule ^(?:api|uploads)(?:/|$) - [L]
+
+  # A hashed bundle that no longer exists (visitor still has an old
+  # index.html cached) must return a real 404. Without this rule Apache
+  # falls through to the SPA shell below and serves HTML as JavaScript,
+  # which kills the page with "Unexpected token '<'".
+  RewriteCond %{REQUEST_URI} ^/assets/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ - [R=404,L]
+
+  # Anything that really exists on disk — / , /assets/*, /images/*,
+  # /videos/*, /favicon.svg, /icons.svg … — is served normally.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Everything else is a client-side route: serve the SPA shell.
+  RewriteRule . /index.html [L]
+</IfModule>
+
+
+# --- 4. Caching -------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # The HTML shell must never be cached, otherwise a redeploy leaves visitors
+  # asking for a hashed bundle the server no longer has.
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # Build output under /assets/ is content-hashed (index-DMlJhQWw.js), so it
+  # can be kept for a long time: a new build produces a new file name.
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript       "access plus 1 year"
+  ExpiresByType text/css              "access plus 1 year"
+
+  # Everything else (public/ images, favicon, fonts): one week is a good
+  # middle ground between repeat downloads and stale artwork.
+  ExpiresDefault "access plus 7 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Chrome/Edge give Cache-Control priority over the Expires header set in
+  # section 4, so repeat the "never cache the shell" rule explicitly. This is
+  # what makes a new upload show up on the very next page load.
+  <Files "index.html">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </Files>
+</IfModule>

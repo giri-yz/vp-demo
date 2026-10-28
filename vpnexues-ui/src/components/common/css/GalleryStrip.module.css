@@ -1,0 +1,18 @@
+.section {
+  padding: var(--space-9) 0;
+  background: var(--color-bg);
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.tile {
+  width: 180px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+}

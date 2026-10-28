@@ -1,0 +1,52 @@
+/* Heavy add-to-cart flight FX — elements are created at runtime
+   by flyToCartFx.ts (gated to prefers-reduced-motion: no-preference + 700 ms
+   throttle; works on mobile and desktop). z-index sits above the mobile
+   summary bars (99990) and below page overlays (999999).
+   All colors/shadows come from tokens.css per the design-consistency rule. */
+
+.fly {
+  position: fixed;
+  z-index: 99996;
+  pointer-events: none;
+  object-fit: contain;
+  border-radius: 16px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-3d);
+  will-change: transform, opacity;
+}
+
+.ring {
+  position: fixed;
+  z-index: 99994;
+  pointer-events: none;
+  border-radius: 50%;
+  border: 3px solid var(--color-primary-500);
+}
+
+.ringGlow {
+  border-color: var(--color-green);
+}
+
+.spark {
+  position: fixed;
+  z-index: 99996;
+  pointer-events: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-primary-500);
+  box-shadow: 0 0 10px var(--color-primary-300);
+}
+
+.sparkGlow {
+  background: var(--color-green);
+  box-shadow: 0 0 10px var(--color-green-dark);
+}
+
+.trail {
+  position: fixed;
+  z-index: 99993;
+  pointer-events: none;
+  border-radius: 50%;
+  background: var(--color-primary-300);
+}

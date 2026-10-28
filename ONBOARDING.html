@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VPNexues — Developer Onboarding Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08100d; --bg2:#0b1512; --card:#0f1a16; --card2:#12211c;
+    --line:rgba(255,255,255,.08); --line2:rgba(45,212,167,.25);
+    --text:#e9f4ef; --muted:#9db5ab; --dim:#6f8aff00;
+    --acc:#2dd4a7; --acc2:#79e2b8; --blue:#5ab0ff; --warn:#f5b942; --danger:#ff7a7a;
+    --grad:linear-gradient(120deg,#2dd4a7 0%,#5ab0ff 100%);
+    --radius:16px; --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+    --sans:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:76px}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(90,176,255,.10), transparent 60%),
+      radial-gradient(700px 500px at 5% 0%, rgba(45,212,167,.12), transparent 55%);}
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,16,13,.78);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:22px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px;white-space:nowrap}
+  .brand .mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;color:#05261c;font-weight:800;font-size:15px}
+  .nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:7px 12px;border-radius:9px;transition:.15s}
+  .nav-links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* HERO */
+  header{padding:74px 0 54px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--acc);border:1px solid var(--line2);background:rgba(45,212,167,.07);padding:7px 14px;border-radius:999px}
+  h1{font-size:clamp(34px,5.4vw,54px);line-height:1.12;font-weight:800;margin:22px 0 16px;letter-spacing:-1px}
+  h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:18px;color:var(--muted);max-width:760px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;transition:.18s;border:1px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--grad);color:#04241b;box-shadow:0 8px 26px rgba(45,212,167,.25)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(45,212,167,.35)}
+  .btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--line2);background:rgba(45,212,167,.06)}
+  .chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:34px}
+  .chip{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--acc2);background:rgba(45,212,167,.08);border:1px solid rgba(45,212,167,.2);padding:6px 12px;border-radius:8px}
+
+  /* SECTIONS */
+  section{padding:44px 0}
+  .sec-tag{font-family:var(--mono);font-size:13px;color:var(--acc);font-weight:600}
+  h2{font-size:clamp(26px,3.4vw,34px);font-weight:800;letter-spacing:-.5px;margin:8px 0 10px}
+  .sec-sub{color:var(--muted);max-width:780px;margin-bottom:30px;font-size:16.5px}
+  h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  p{color:var(--muted)}
+  a{color:var(--acc2)}
+
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+  .card{background:linear-gradient(180deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px 20px;transition:.2s}
+  .card:hover{border-color:var(--line2);transform:translateY(-3px)}
+  .card .kind{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#04241b;background:var(--grad);padding:4px 10px;border-radius:6px;margin-bottom:12px}
+  .card ul{list-style:none;margin-top:10px}
+  .card ul li{position:relative;padding-left:18px;font-size:14.5px;color:var(--muted);margin-bottom:6px}
+  .card ul li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--acc);opacity:.85}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .tag{font-family:var(--mono);font-size:12px;color:var(--text);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:5px 10px;border-radius:7px}
+
+  /* numbers */
+  .steps{display:flex;flex-direction:column;gap:18px;counter-reset:st}
+  .step{background:linear-gradient(180deg,var(--card) 0%,var(--card2) 100%);border:1px solid var(--line);border-radius:var(--radius);padding:26px 26px 24px;position:relative}
+  .step-h{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .step-n{counter-increment:st;flex:none;width:40px;height:40px;border-radius:12px;background:var(--grad);color:#04241b;font-weight:800;font-size:17px;display:grid;place-items:center;font-family:var(--mono)}
+  .step-h h3{margin:0;font-size:19px}
+  .step .hint{font-size:13.5px;color:var(--acc2);font-family:var(--mono);margin-bottom:8px}
+  .step p{font-size:15px}
+  .step p+p{margin-top:8px}
+
+  /* video card */
+  .video-card{margin-top:18px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .video-thumb{position:relative;flex:none;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 10px 30px rgba(0,0,0,.45);transition:.2s;line-height:0}
+  .video-thumb:hover{transform:scale(1.03);border-color:var(--acc)}
+  .video-thumb img{width:320px;max-width:78vw;height:auto;display:block}
+  .play{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(4,20,15,.1),rgba(4,20,15,.5))}
+  .play::after{content:"";width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.94);box-shadow:0 6px 20px rgba(0,0,0,.5)}
+  .play span{position:absolute;width:0;height:0;border-left:20px solid #0b1512;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:6px;z-index:2}
+  .video-meta{min-width:230px;flex:1}
+  .video-meta .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+  .video-meta .ttl{font-weight:700;font-size:15.5px;line-height:1.4;margin-bottom:10px}
+  .video-meta a.url{font-family:var(--mono);font-size:13px;word-break:break-all;color:var(--blue);text-decoration:none;border-bottom:1px dashed rgba(90,176,255,.5)}
+  .video-meta a.url:hover{color:var(--acc2)}
+  .video-note{width:100%;font-size:13.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+
+  /* code */
+  pre{background:#060c0a;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-family:var(--mono);font-size:13.5px;line-height:1.7;color:#cfe9df}
+  pre .c{color:#6d8a7f}
+  pre .ok{color:var(--acc2)}
+  code{font-family:var(--mono);font-size:.92em;background:rgba(45,212,167,.09);border:1px solid rgba(45,212,167,.18);color:var(--acc2);padding:2px 7px;border-radius:6px;white-space:nowrap}
+
+  /* token procedure */
+  .tok-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:16px}
+  .tok{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:13px;padding:18px}
+  .tok h4{font-size:14px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--acc);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .tok ol{margin-left:18px;font-size:14.5px;color:var(--muted)}
+  .tok ol li{margin-bottom:7px}
+  .warn{border-color:rgba(245,185,66,.4);background:rgba(245,185,66,.05)}
+  .warn h4{color:var(--warn)}
+
+  /* workflow */
+  .flow{display:flex;flex-direction:column;gap:12px}
+  .flow-item{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px;align-items:flex-start}
+  .flow-item .n{flex:none;width:30px;height:30px;border-radius:9px;background:rgba(45,212,167,.12);border:1px solid var(--line2);color:var(--acc);font-family:var(--mono);font-weight:700;font-size:14px;display:grid;place-items:center}
+  .flow-item .t{font-weight:700;font-size:15.5px;margin-bottom:3px}
+  .flow-item .d{font-size:14.5px;color:var(--muted)}
+
+  /* checklist */
+  .check{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:8px 22px}
+  .check label{display:flex;gap:13px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer;font-size:15px;color:var(--muted)}
+  .check label:last-child{border-bottom:none}
+  .check input{margin-top:4px;accent-color:var(--acc);width:17px;height:17px;flex:none;cursor:pointer}
+  .check input:checked+span{color:var(--acc2);text-decoration:line-through;opacity:.75}
+
+  /* red lines */
+  .red{background:rgba(255,122,122,.05);border:1px solid rgba(255,122,122,.3);border-radius:var(--radius);padding:20px 24px}
+  .red ul{list-style:none}
+  .red li{position:relative;padding-left:26px;margin-bottom:9px;color:#f3c9c9;font-size:15px}
+  .red li::before{content:"✕";position:absolute;left:0;color:var(--danger);font-weight:800}
+
+  /* docs table */
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  th{background:rgba(45,212,167,.08);color:var(--acc2);text-align:left;font-size:13px;letter-spacing:.8px;text-transform:uppercase;padding:13px 18px;border-bottom:1px solid var(--line)}
+  td{padding:13px 18px;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  td:first-child{color:var(--text);font-weight:600}
+  td code{white-space:normal}
+
+  footer{padding:44px 0 60px;border-top:1px solid var(--line);margin-top:40px;color:var(--muted);font-size:13.5px}
+  footer .muted{color:var(--muted)}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:.6s cubic-bezier(.2,.7,.3,1)}
+  .reveal.on{opacity:1;transform:none}
+  @media print{nav,.cta-row{display:none}body{background:#fff;color:#111}.card,.step,.tok,table{border-color:#ddd}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand"><span class="mark">V</span> VPNexues · Onboarding</div>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#workflow">How We Work</a>
+      <a href="#setup">First Session</a>
+      <a href="#security">Red Lines</a>
+      <a href="#docs">Docs</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">● Developer Onboarding · Start Here</span>
+  <h1>Your first session,<br><span class="g">start to finish.</span></h1>
+  <p class="lede">This page explains what we are building, the tools and tech stack we use today, and the exact steps to get your environment coding-ready. Read it top to bottom once (≈15 minutes) — then keep it as your reference. After this, read <code>ARCHITECTURE.md</code> in the git repository for the full system map.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://youtu.be/EH0UWu-a_jg?si=wQHI_LvGXWrbv0-J" target="_blank" rel="noopener">▶ Watch the OpenCode install guide</a>
+    <a class="btn btn-ghost" href="#setup">Start the setup steps ↓</a>
+  </div>
+  <div class="chips">
+    <span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Vite</span>
+    <span class="chip">Java 17 · Spring Boot</span><span class="chip">PostgreSQL</span>
+    <span class="chip">Firebase OTP</span><span class="chip">Cloudinary</span>
+    <span class="chip">GitHub Actions</span><span class="chip">Render</span><span class="chip">GoDaddy</span>
+  </div>
+</header>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview" class="reveal">
+  <div class="sec-tag">// 01 — what we're building</div>
+  <h2>A fresh-farm grocery e-commerce platform</h2>
+  <p class="sec-sub">One product, several surfaces: a customer storefront, a full account area, and a super-admin + per-country sub-admin dashboard. Evolution so far: a static HTML/jQuery site → the current <strong style="color:var(--text)">React SPA + Spring Boot API</strong>.</p>
+  <div class="grid g3">
+    <div class="card">
+      <span class="kind">Storefront</span>
+      <h3>Shop &amp; box builders</h3>
+      <ul>
+        <li>Shop, Small Box builder, Big Box builder, B2B wholesale</li>
+        <li>Geo-detection → local currency, flags, delivery thresholds</li>
+        <li>Cart → checkout → Cash on Delivery; WhatsApp order handoff</li>
+        <li>Account area: orders, addresses, wishlist, profile</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="kind">Admin</span>
+      <h3>Super-admin &amp; sub-admin</h3>
+      <ul>
+        <li>Orders, products, price manager, users, reports, payments</li>
+        <li>Per-country sub-admins with module/permission whitelists</li>
+        <li>One-time 6-digit access pass for newer admin accounts</li>
+        <li>Careers, contact, B2B enquiries, content &amp; settings</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="kind">Markets</span>
+      <h3>4 countries, 5 languages</h3>
+      <ul>
+        <li>IN (₹) · SG ($) · US ($) · AE (د.إ) — base prices in SGD</li>
+        <li>Regional overrides via <code>ProductPriceOverride</code></li>
+        <li>i18n: English · Tamil · Hindi · Malayalam · Sinhala</li>
+        <li>Phone-OTP signup/login (Firebase) — no passwords</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section id="stack" class="reveal">
+  <div class="sec-tag">// 02 — the stack we use today</div>
+  <h2>Tech stack &amp; tools</h2>
+  <p class="sec-sub">Everything currently in production, grouped by layer. These are the tools you will touch daily.</p>
+  <div class="grid g3">
+    <div class="card">
+      <span class="kind">Frontend</span>
+      <h3>React SPA</h3>
+      <p style="font-size:14.5px">Built with Vite, linted with oxlint, styled with CSS Modules on a design-token system.</p>
+      <div class="tags"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Vite</span><span class="tag">React Router v7</span><span class="tag">CSS Modules</span><span class="tag">Swiper</span><span class="tag">Framer Motion</span><span class="tag">Leaflet</span><span class="tag">i18next ×5</span></div>
+    </div>
+    <div class="card">
+      <span class="kind">Backend</span>
+      <h3>Spring Boot API</h3>
+      <p style="font-size:14.5px">REST API with JWT auth in httpOnly cookies, rate limiting, public Swagger docs.</p>
+      <div class="tags"><span class="tag">Java 17</span><span class="tag">Spring Boot</span><span class="tag">Gradle wrapper</span><span class="tag">Spring Security</span><span class="tag">jjwt</span><span class="tag">Caffeine</span><span class="tag">springdoc / Swagger</span><span class="tag">JUnit 5</span></div>
+    </div>
+    <div class="card">
+      <span class="kind">Database</span>
+      <h3>PostgreSQL + Flyway</h3>
+      <p style="font-size:14.5px">Supabase-hosted PostgreSQL in production, local service for dev. Schema changes only via migrations.</p>
+      <div class="tags"><span class="tag">PostgreSQL 17/18</span><span class="tag">Supabase (prod)</span><span class="tag">Flyway migrations</span><span class="tag">ddl-auto: validate</span></div>
+    </div>
+    <div class="card">
+      <span class="kind">Auth</span>
+      <h3>Firebase Phone OTP</h3>
+      <p style="font-size:14.5px">OTP sign-in verified server-side; sessions live only in httpOnly cookies — never in browser storage.</p>
+      <div class="tags"><span class="tag">Firebase Phone Auth</span><span class="tag">ID-token verify</span><span class="tag">Trusted device</span><span class="tag">httpOnly cookies</span></div>
+    </div>
+    <div class="card">
+      <span class="kind">Media &amp; integrations</span>
+      <h3>CDN + services</h3>
+      <p style="font-size:14.5px">Product imagery on a CDN; delivery, messaging and geodata via integrated services.</p>
+      <div class="tags"><span class="tag">Cloudinary</span><span class="tag">Supabase Storage</span><span class="tag">WhatsApp handoff</span><span class="tag">GeoIP cascade</span><span class="tag">Leaflet / OSM</span><span class="tag">SMTP email</span></div>
+    </div>
+    <div class="card">
+      <span class="kind">Quality &amp; delivery</span>
+      <h3>Gates, CI, hosting</h3>
+      <p style="font-size:14.5px">Nothing ships without passing gates; the API deploys through CI, the site ships as a gated zip.</p>
+      <div class="tags"><span class="tag">oxlint</span><span class="tag">vite build</span><span class="tag">postbuild guards</span><span class="tag">gradlew test</span><span class="tag">GitHub Actions</span><span class="tag">Render (API)</span><span class="tag">GoDaddy (site)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORKFLOW ============ -->
+<section id="workflow" class="reveal">
+  <div class="sec-tag">// 03 — how we work</div>
+  <h2>The methods behind the code</h2>
+  <p class="sec-sub">Our delivery rules — these keep the product stable while several devs and AI coding sessions work in parallel.</p>
+  <div class="flow">
+    <div class="flow-item"><div class="n">1</div><div><div class="t">Branch → gates → reviewed push</div><div class="d">Daily work happens on the team's integration branch; exact branch and repo names live in <code>ARCHITECTURE.md</code> §3. Never push without explicit permission, and never push until all gates below are green.</div></div></div>
+    <div class="flow-item"><div class="n">2</div><div><div class="t">Quality gates before every push</div><div class="d"><code>npx oxlint src</code> → 0 errors · <code>npm run build</code> → OK (postbuild guards verify the API base URL and the Firebase web key in the bundle) · <code>gradlew test</code> → green · staged-diff secrets scan · deploy zips must pass <code>check-zip.ps1</code> → ALL GREEN.</div></div></div>
+    <div class="flow-item"><div class="n">3</div><div><div class="t">Backend deploys through a mirror repo</div><div class="d">Backend code is copied into the deploy-mirror repository, pushed there, and GitHub Actions runs the test suite against an empty database before Render auto-deploys. Syncing the mirror is a permissioned step — ask before doing it.</div></div></div>
+    <div class="flow-item"><div class="n">4</div><div><div class="t">Frontend ships as a gated zip</div><div class="d">Production <code>dist/</code> is zipped (forward-slash entries only — plain <code>Compress-Archive</code> breaks Linux unzip), gated with <code>check-zip.ps1</code>, then extracted into the host's <code>public_html</code>.</div></div></div>
+    <div class="flow-item"><div class="n">5</div><div><div class="t">Migrations are append-only</div><div class="d">New entity ⇒ new Flyway migration in the same change. Never edit an applied <code>V*</code> file; only <code>R__Seed_data.sql</code> is editable in place and must stay idempotent.</div></div></div>
+    <div class="flow-item"><div class="n">6</div><div><div class="t">Design &amp; i18n rules</div><div class="d">Colors/spacing come from <code>tokens.css</code> (no hardcoded hex in new code); every user-visible string goes into all 5 language dictionaries. Product data always comes from the API, never hardcoded in components.</div></div></div>
+  </div>
+</section>
+
+<!-- ============ SETUP ============ -->
+<section id="setup" class="reveal">
+  <div class="sec-tag">// 04 — your first session</div>
+  <h2>Set up in six steps</h2>
+  <p class="sec-sub">Do these once, in order. By step 6 you can push and pull code through OpenCode safely.</p>
+
+  <div class="steps">
+
+    <!-- STEP 1 : video -->
+    <div class="step">
+      <div class="step-h"><div class="step-n">1</div><h3>Install OpenCode — watch the installation guide</h3></div>
+      <div class="hint">→ video: "How to Install and Use OpenCode on Windows – Free AI Coding Agent with 75+ Models"</div>
+      <p>OpenCode is the AI coding agent we use to work on this codebase. Watch the guide first, then install it on your machine. <strong style="color:var(--text)">Click the thumbnail image or the URL — both open the same video:</strong></p>
+      <div class="video-card">
+        <a class="video-thumb" href="https://youtu.be/EH0UWu-a_jg?si=wQHI_LvGXWrbv0-J" target="_blank" rel="noopener" aria-label="Play: How to Install and Use OpenCode on Windows">
+          <img src="https://i.ytimg.com/vi/EH0UWu-a_jg/hqdefault.jpg" alt="OpenCode installation guide video — click to play on YouTube" loading="lazy">
+          <span class="play"><span></span></span>
+        </a>
+        <div class="video-meta">
+          <div class="lbl">Installation guide · YouTube</div>
+          <div class="ttl">How to Install and Use OpenCode on Windows – Free AI Coding Agent with 75+ Models</div>
+          <a class="url" href="https://youtu.be/EH0UWu-a_jg?si=wQHI_LvGXWrbv0-J" target="_blank" rel="noopener">https://youtu.be/EH0UWu-a_jg?si=wQHI_LvGXWrbv0-J</a>
+        </div>
+        <div class="video-note">The video covers installing OpenCode on Windows and the first-run basics. If you are on macOS/Linux, the same install flow applies — the video is for orientation.</div>
+      </div>
+    </div>
+
+    <!-- STEP 2 : /connect -->
+    <div class="step">
+      <div class="step-h"><div class="step-n">2</div><h3>Switch the agent to the MiMo model</h3></div>
+      <div class="hint">→ run inside the OpenCode chat</div>
+      <p>Open your project folder in OpenCode, then run the connect command and select the <strong style="color:var(--text)">MiMo</strong> model (<code>mimo-v2.6-flash-free</code>) — the default agent for this project:</p>
+      <pre><span class="c"># inside the OpenCode chat</span>
+/connect
+<span class="c"># → choose: MiMo  (mimo-v2.6-flash-free)</span>
+<span class="ok">Start every session this way.</span></pre>
+    </div>
+
+    <!-- STEP 3 : ARCHITECTURE.md -->
+    <div class="step">
+      <div class="step-h"><div class="step-n">3</div><h3>Read ARCHITECTURE.md in the git repository</h3></div>
+      <div class="hint">→ repo root → ARCHITECTURE.md — read fully, it is the source of truth</div>
+      <p>Before writing any code, open the repository on GitHub (your access is granted with your account) and read the root file <code>ARCHITECTURE.md</code> from top to bottom. It is the single system map: tech stack (§2), repositories &amp; branches (§3), frontend/backend structure (§4–§5), external services (§6), auth &amp; security model (§7), country/pricing logic (§8), environments (§10), build &amp; deploy (§12), house rules (§13), and a "which doc for what" index (§16).</p>
+      <p>If any other document disagrees with it, <strong style="color:var(--text)">ARCHITECTURE.md wins</strong>. Skim once, then re-read properly — 20 minutes now saves days later. The root <code>README.md</code> (quick start + test credentials) and the per-area READMEs are next.</p>
+    </div>
+
+    <!-- STEP 4 : token -->
+    <div class="step">
+      <div class="step-h"><div class="step-n">4</div><h3>Get your developer access token (git push &amp; pull)</h3></div>
+      <div class="hint">→ GitHub → Settings → Developer settings → Personal access tokens</div>
+      <p>Git authentication on this project uses a <strong style="color:var(--text)">personal access token</strong> that you generate yourself on GitHub. You paste it when git (or OpenCode acting as git) asks for credentials — it then works for both <code>git pull</code> and <code>git push</code>. <strong style="color:var(--text)">Learn the generation step from this video first</strong> — click the thumbnail or the URL, both open the same video:</p>
+      <div class="video-card">
+        <a class="video-thumb" href="https://youtube.com/shorts/KLWsGhUUFDM?si=o1otO_0mciOui3Aq" target="_blank" rel="noopener" aria-label="Play: How to Generate a Personal Access Token in GitHub">
+          <img src="https://i.ytimg.com/vi/KLWsGhUUFDM/hqdefault.jpg" alt="GitHub personal access token generation guide — click to play on YouTube" loading="lazy">
+          <span class="play"><span></span></span>
+        </a>
+        <div class="video-meta">
+          <div class="lbl">Token generation guide · YouTube</div>
+          <div class="ttl">How to Generate a Personal Access Token in GitHub — the token you will use to push &amp; pull</div>
+          <a class="url" href="https://youtube.com/shorts/KLWsGhUUFDM?si=o1otO_0mciOui3Aq" target="_blank" rel="noopener">https://youtube.com/shorts/KLWsGhUUFDM?si=o1otO_0mciOui3Aq</a>
+        </div>
+        <div class="video-note">Watch it, generate and copy your token — then come straight back here and <strong style="color:var(--text)">paste that token into OpenCode</strong> when git asks for credentials (panel Ⓑ below). The token alone means nothing until it is pasted into OpenCode for your <code>git pull</code> / <code>git push</code>.</div>
+      </div>
+      <div class="tok-grid">
+        <div class="tok">
+          <h4>Ⓐ Generate the token (once)</h4>
+          <ol>
+            <li>Sign in to GitHub → click your avatar → <strong>Settings</strong>.</li>
+            <li>Bottom of the left sidebar → <strong>Developer settings</strong> → <strong>Personal access tokens</strong>.</li>
+            <li>Choose <strong>Fine-grained tokens → Generate new token</strong> (or <em>Tokens (classic)</em>).</li>
+            <li>Set an expiry (30/60/90 days). Grant <strong>repository access</strong> to the project repos. Permission needed: <strong>Contents – Read &amp; write</strong> (classic: tick the <code>repo</code> scope).</li>
+            <li>Click <strong>Generate token</strong> and <strong>copy it immediately</strong> — it is shown only once and looks like <code>ghp_••••••••</code>.</li>
+          </ol>
+        </div>
+        <div class="tok">
+          <h4>Ⓑ Paste it into OpenCode</h4>
+          <ol>
+            <li>With the token copied, open your project in <strong>OpenCode</strong> and run <code>git pull</code> or <code>git push</code> (directly, or by asking the agent to do it).</li>
+            <li>When credentials are requested: <strong>Username</strong> = your GitHub username, <strong>Password</strong> = <strong>paste the token into the OpenCode prompt</strong>.</li>
+            <li>On Windows the credential manager stores it after the first paste — you will not retype it every time.</li>
+            <li>Push failure <code>401/403</code> usually means the token expired or lacks <em>Contents: Read &amp; write</em> → watch the video above and generate a new one (step Ⓐ).</li>
+          </ol>
+        </div>
+        <div class="tok warn">
+          <h4>⚠ Treat it like a password</h4>
+          <ol>
+            <li>One token <strong>per person</strong> — never share yours with anyone, including teammates or agents.</li>
+            <li>Never commit it, never paste it into source files, docs, screenshots or chat logs, and never embed it in a repository URL.</li>
+            <li>If a token is ever leaked, revoke it immediately (<em>Settings → Developer settings → Personal access tokens → Delete</em>) and generate a replacement.</li>
+            <li>Rotate before expiry; a dead token is the most common cause of sudden push errors.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 : local run -->
+    <div class="step">
+      <div class="step-h"><div class="step-n">5</div><h3>Run the project locally</h3></div>
+      <div class="hint">→ two terminals: API on :8080, site on :5173</div>
+      <p>Clone the repository with your account, then start both sides:</p>
+      <pre>git clone &lt;repository-url&gt;   <span class="c"># your access, prompted once — paste the token</span>
+
+<span class="c"># Terminal 1 — backend (port 8080)</span>
+cd vpnexues-svc
+.\gradlew.bat bootRun
+
+<span class="c"># Terminal 2 — frontend (port 5173/5174)</span>
+cd vpnexues-ui
+npm install
+npm run dev</pre>
+      <p>Backend environment values live in git-ignored <code>.env</code> files (see <code>.env.example</code> — request the real values from your team channel). Local test credentials for admin/customer login are in the root <code>README.md</code>.</p>
+    </div>
+
+    <!-- STEP 6 : checklist -->
+    <div class="step">
+      <div class="step-h"><div class="step-n">6</div><h3>Before your first push — self-check</h3></div>
+      <div class="hint">→ all boxes green = safe to push (after review/permission)</div>
+      <div class="check" id="checklist">
+        <label><input type="checkbox" data-k="c1"><span>OpenCode installed and <code>/connect</code> set to the MiMo model</span></label>
+        <label><input type="checkbox" data-k="c2"><span><code>ARCHITECTURE.md</code> read end-to-end in the repository</span></label>
+        <label><input type="checkbox" data-k="c3"><span>My personal access token generated — and stored only in the credential manager</span></label>
+        <label><input type="checkbox" data-k="c4"><span>Backend and frontend both run locally (login works)</span></label>
+        <label><input type="checkbox" data-k="c5"><span><code>npx oxlint src</code> → 0 errors &amp; <code>npm run build</code> → OK</span></label>
+        <label><input type="checkbox" data-k="c6"><span>Backend <code>gradlew test</code> green (any backend change)</span></label>
+        <label><input type="checkbox" data-k="c7"><span>Staged diff scanned — no <code>.env</code>, keys, tokens or logs in it</span></label>
+        <label><input type="checkbox" data-k="c8"><span>New strings added to all 5 dictionaries · new entity has a new migration</span></label>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ SECURITY ============ -->
+<section id="security" class="reveal">
+  <div class="sec-tag">// 05 — non-negotiable</div>
+  <h2>Security red lines</h2>
+  <p class="sec-sub">Breaking any of these is a ship-blocker, not a style preference.</p>
+  <div class="red">
+    <ul>
+      <li>Never commit <code>.env</code> files, API keys, tokens, passwords or session logs to git.</li>
+      <li>Your developer token is yours alone — never share it, never paste it into code, docs or screenshots.</li>
+      <li>No identity or order data in browser storage — sessions stay in httpOnly cookies set by the backend.</li>
+      <li>Never hardcode secrets into <code>application.yml</code> / <code>build.gradle</code> — environment variables only.</li>
+      <li>Never push without permission, and never push un-gated builds (lint/build/test/zips) to the shared branch.</li>
+      <li>Server recomputes all payable amounts — never trust totals sent from the client, and never expose admin keys client-side.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DOCS ============ -->
+<section id="docs" class="reveal">
+  <div class="sec-tag">// 06 — which doc for what</div>
+  <h2>Your documentation map</h2>
+  <p class="sec-sub">All of these live in the git repository — open them there so you always see the current version.</p>
+  <table>
+    <tr><th>Question</th><th>Where to read</th></tr>
+    <tr><td>"Where do I start?"</td><td><strong>This page</strong> + <code>ARCHITECTURE.md</code> §0 (new-joiner quickstart)</td></tr>
+    <tr><td>"What is this system and which tools does it use?"</td><td><code>ARCHITECTURE.md</code> — system map, source of truth</td></tr>
+    <tr><td>Quick start, test credentials, sample API calls</td><td>Root <code>README.md</code></td></tr>
+    <tr><td>Frontend stack, gates, where things live</td><td><code>vpnexues-ui/README.md</code></td></tr>
+    <tr><td>Backend stack, tests, migrations, deploy</td><td><code>vpnexues-svc/README.md</code></td></tr>
+    <tr><td>Scope boundaries for parallel work</td><td><code>agents.md</code></td></tr>
+    <tr><td>Recurring-task recipes</td><td><code>skills.md</code></td></tr>
+    <tr><td>What is actually built / current phase</td><td><code>TASKS.md</code> (maintained locally as the phase log)</td></tr>
+  </table>
+</section>
+
+<footer>
+  <p class="muted"><strong style="color:var(--text)">VPNexues — Developer Onboarding.</strong> Shareable guide for new engineers · version 23-Oct-2026.</p>
+  <p style="margin-top:8px">This document intentionally contains no credentials and no personal details — real keys, tokens and credentials are only ever held in git-ignored files, your personal credential store, and the service consoles. Questions go to the team channel.</p>
+</footer>
+
+</div>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // checklist persistence (local browser only — no data leaves the device)
+  const KEY = 'vpnexues_onboarding_checklist_v1';
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { saved = {}; }
+  document.querySelectorAll('#checklist input[type=checkbox]').forEach(cb => {
+    const k = cb.dataset.k;
+    if (saved[k]) cb.checked = true;
+    cb.addEventListener('change', () => {
+      saved[k] = cb.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+.footer {
+  text-align: center;
+  padding: 16px 16px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  background: #1e3917;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    display: none;
+  }
+}

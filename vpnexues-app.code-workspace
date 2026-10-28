@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"claudeCode.allowDangerouslySkipPermissions": true,
+		"claudeCode.initialPermissionMode": "acceptEdits",
+		"java.compile.nullAnalysis.mode": "disabled",
+		"liveServer.settings.multiRootWorkspaceName": "vpnexues-app"
+	}
+}

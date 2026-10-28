@@ -1,0 +1,435 @@
+/* =====================================================================
+   DeliveryComingSoon.module.css — post-checkout page shown IN PLACE of
+   OrderSuccess when the delivery city is not serviceable yet (409
+   DELIVERY_NOT_AVAILABLE). Same visual family as OrderSuccess: warm cream
+   base, leaf-green bottom wave, gold "coming soon" accents, soft blobs.
+   Every colour / space / radius / shadow is a styles/tokens.css variable
+   (translucent tints via color-mix) — no one-off hex, per the
+   design-consistency rule.
+   ===================================================================== */
+
+.page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(640px, calc(100vh - 120px), 960px);
+  padding: clamp(32px, 5vh, 60px) clamp(16px, 3vw, 40px) clamp(150px, 20vh, 230px);
+  overflow: hidden;
+  background:
+    radial-gradient(
+      940px 500px at 6% -8%,
+      color-mix(in srgb, var(--color-primary-100) 80%, transparent) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      860px 460px at 102% 12%,
+      color-mix(in srgb, var(--color-gold) 16%, transparent) 0%,
+      transparent 64%
+    ),
+    linear-gradient(180deg, var(--color-cream) 0%, var(--color-brand-ivory) 52%, var(--color-bg) 100%);
+  font-family: var(--font-family-base);
+}
+
+/* ===== Soft organic shapes ===== */
+.blob {
+  position: absolute;
+  z-index: 0;
+  border-radius: 58% 42% 47% 53% / 44% 52% 48% 56%;
+  pointer-events: none;
+}
+
+.blobOne {
+  top: -140px;
+  left: -120px;
+  width: min(54vw, 500px);
+  height: min(46vw, 440px);
+  background: color-mix(in srgb, var(--color-primary-300) 34%, transparent);
+}
+
+.blobTwo {
+  top: 6%;
+  right: -160px;
+  width: min(56vw, 540px);
+  height: min(50vw, 480px);
+  background: color-mix(in srgb, var(--color-primary-100) 92%, transparent);
+}
+
+.blobThree {
+  bottom: 6%;
+  left: -140px;
+  width: min(44vw, 440px);
+  height: min(40vw, 400px);
+  background: color-mix(in srgb, var(--color-gold) 12%, transparent);
+}
+
+/* ===== Bottom green wave (mirrors OrderSuccess) ===== */
+.wave {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: clamp(130px, 17vw, 200px);
+  pointer-events: none;
+}
+
+.waveSoft {
+  fill: var(--color-primary-300);
+}
+
+.waveDeep {
+  fill: var(--color-primary-700);
+}
+
+/* ===== Center column ===== */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(600px, 100%);
+  text-align: center;
+  animation: csRise 0.6s ease-out both;
+}
+
+/* ===== Illustration ===== */
+.illustration {
+  width: min(240px, 56vw);
+  height: auto;
+  margin-bottom: var(--space-5);
+  animation: csFloat 5.5s ease-in-out infinite;
+}
+
+.orbit {
+  fill: none;
+  stroke: var(--color-gold-dark);
+  stroke-width: 2.5;
+  stroke-dasharray: 3 14;
+  stroke-linecap: round;
+  opacity: 0.9;
+}
+
+.orbitDotOne,
+.orbitDotTwo,
+.orbitDotThree {
+  fill: var(--color-gold-deep);
+}
+
+.orbitDotOne {
+  fill: var(--color-primary-500);
+}
+
+.orbitDotThree {
+  fill: var(--color-primary-300);
+}
+
+.pinBody {
+  fill: var(--color-primary-500);
+  filter: drop-shadow(0 14px 22px color-mix(in srgb, var(--color-primary-700) 34%, transparent));
+}
+
+.pinCore {
+  fill: var(--color-white);
+}
+
+.sproutStem {
+  fill: none;
+  stroke: var(--color-primary-700);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+}
+
+.sproutLeafLeft,
+.sproutLeafRight {
+  fill: var(--color-primary-300);
+}
+
+.sproutLeafRight {
+  fill: var(--color-primary-500);
+}
+
+.pinShine {
+  fill: none;
+  stroke: var(--overlay-white-30);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+/* ===== Coming-soon badge ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  margin-bottom: var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--color-gold-deep) 35%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-gold) 26%, var(--color-white));
+  color: var(--color-text-heading);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.badgeDot {
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--color-warning);
+  animation: csPulse 1.6s ease-in-out infinite;
+}
+
+/* ===== Headline copy ===== */
+.title {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-heading);
+  font-family: var(--font-family-display);
+  font-size: clamp(var(--font-size-2xl), 5.4vw, var(--font-size-5xl));
+  font-weight: 700;
+  line-height: 1.14;
+}
+
+.subtitle {
+  margin: 0 0 var(--space-5);
+  max-width: 46ch;
+  color: var(--color-brand-forest);
+  font-size: clamp(var(--font-size-base), 2.4vw, var(--font-size-md));
+  line-height: 1.6;
+}
+
+/* ===== Selected city chip ===== */
+.cityChip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-primary-700);
+}
+
+.cityChipLabel {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.cityChipValue {
+  color: var(--color-text-heading);
+  font-size: var(--font-size-base);
+  font-weight: 800;
+}
+
+.cityChipPill {
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-gold) 34%, var(--color-white));
+  color: var(--color-gold-deep);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ===== Info card ===== */
+.card {
+  width: 100%;
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--color-white) 92%, var(--color-primary-100));
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.cardRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+.cardRowBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.cardTitle {
+  color: var(--color-text-heading);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-base);
+  font-weight: 800;
+}
+
+.cardText {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+}
+
+.cardDivider {
+  height: 1px;
+  margin: var(--space-4) 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-primary-500) 26%, transparent) 0%,
+    color-mix(in srgb, var(--color-primary-500) 8%, transparent) 100%
+  );
+}
+
+.cityTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.cityTag {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-primary-700);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+}
+
+/* ===== Calls to action ===== */
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-700) 100%);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-white);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.ctaPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-3d);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-6);
+  border: 2px solid var(--color-primary-700);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-primary-700);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-base);
+  font-weight: 800;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.ctaSecondary:hover {
+  background: var(--color-primary-100);
+}
+
+/* ===== Motion ===== */
+@keyframes csRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes csFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes csPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content,
+  .illustration,
+  .badgeDot {
+    animation: none;
+  }
+}
+
+/* ===== Viewports (breakpoints from tokens.css: 450 / 576 / 768 …) ===== */
+@media (max-width: 576px) {
+  .content {
+    width: 100%;
+  }
+
+  .illustration {
+    width: min(190px, 52vw);
+    margin-bottom: var(--space-4);
+  }
+
+  .card {
+    padding: var(--space-4);
+  }
+
+  .ctaGroup {
+    width: 100%;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    justify-content: center;
+    width: 100%;
+  }
+}

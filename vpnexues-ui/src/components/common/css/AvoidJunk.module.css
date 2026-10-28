@@ -1,0 +1,474 @@
+/* ===== Know What to Avoid — "bad choices" contrast cards (tokens only) ===== */
+.badSection {
+  margin: 0 0 var(--space-9);
+  padding-inline: var(--space-8);
+}
+
+.badContainer {
+  width: 100%;
+  margin-inline: auto;
+  padding: var(--space-9) var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-cream);
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+.badHead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 640px;
+  margin: 0 auto var(--space-7);
+  text-align: center;
+}
+
+.badEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-primary-700);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badTitle {
+  margin: 0;
+  color: var(--color-text-heading);
+  font-family: var(--font-family-base);
+  font-size: clamp(28px, 3vw, 38px);
+  line-height: 1.05;
+}
+
+.badSub {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.badGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  max-width: 960px;
+  margin-inline: auto;
+  align-items: stretch;
+}
+
+/* ===== 3D flip card ===== */
+.flipCard {
+  height: 620px;
+  min-width: 0;
+  border-radius: var(--radius-xl);
+  perspective: 1200px;
+  cursor: pointer;
+  outline-offset: 3px;
+}
+
+.flipCard:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+}
+
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.flipped .flipInner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flipCard:hover .flipInner {
+    transform: rotateY(180deg);
+  }
+}
+
+.flipFront,
+.flipBack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.flipBack {
+  transform: rotateY(180deg);
+}
+
+/* ===== Front face — the bad ===== */
+.flipFront {
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-white);
+}
+
+.badCardTitle {
+  margin: 0;
+  color: var(--color-danger);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xl);
+  line-height: 1.15;
+}
+
+.badCardDesc {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.badMedia {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 120px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-cream);
+}
+
+.badMedia img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: filter 0.45s ease;
+}
+
+/* Decorative "avoid" seal on the junk photo. */
+.badStamp {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 3px solid var(--color-danger);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.18) inset;
+  opacity: 0;
+  transform: scale(2) rotate(-18deg);
+  pointer-events: none;
+}
+
+.badStamp svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2.5;
+}
+
+@keyframes junkShake {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(-4px) rotate(-0.6deg);
+  }
+  40% {
+    transform: translateX(4px) rotate(0.6deg);
+  }
+  60% {
+    transform: translateX(-3px) rotate(-0.4deg);
+  }
+  80% {
+    transform: translateX(2px) rotate(0.3deg);
+  }
+}
+
+@keyframes stampPress {
+  0% {
+    opacity: 0;
+    transform: scale(2) rotate(-18deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.92) rotate(4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-6deg);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Junk side: desaturate + a subtle indignant shake. */
+  .flipFront:hover .badMedia img {
+    filter: saturate(0.3) contrast(0.92);
+    animation: junkShake 0.55s ease-in-out;
+  }
+
+  .flipFront:hover .badStamp {
+    animation: stampPress 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) forwards;
+  }
+
+  /* Organic side: soft green glow around the promise photo. */
+  .flipBack .posterPhoto {
+    transition: box-shadow 0.45s ease;
+  }
+
+  .flipBack:hover .posterPhoto {
+    box-shadow: 0 0 0 3px rgba(91, 140, 81, 0.35), 0 0 30px rgba(91, 140, 81, 0.6);
+  }
+}
+
+.badChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+.badChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-danger);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* ===== Back face — promise poster layout ===== */
+.flipBack {
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--color-primary-700);
+}
+
+.posterBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.posterBrand span {
+  color: var(--color-leaf);
+}
+
+.posterHeading {
+  margin: 0;
+  color: var(--color-white);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-2xl);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.posterHeading em {
+  color: var(--color-leaf);
+}
+
+.posterDesc {
+  margin: 0;
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.posterPhoto {
+  flex: 1 1 auto;
+  min-height: 120px;
+  overflow: hidden;
+  border: 2px solid var(--color-primary-300);
+  border-radius: var(--radius-lg);
+}
+
+.posterPhoto img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.posterChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.posterChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--color-cream);
+  color: var(--color-primary-700);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.posterCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-primary-700);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  text-decoration: none;
+  transition: box-shadow 0.25s ease;
+}
+
+.posterCta:hover {
+  box-shadow: var(--shadow-lift);
+}
+
+.badHint {
+  display: none;
+  margin: var(--space-4) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ===== Tablet: tighter spacing, slightly shorter cards ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .badSection {
+    padding-inline: var(--space-6);
+  }
+
+  .badContainer {
+    padding: var(--space-7) var(--space-5);
+  }
+
+  .badGrid {
+    gap: var(--space-4);
+  }
+
+  .flipCard {
+    height: 600px;
+  }
+
+  .flipFront {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .flipBack {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 767px) {
+  .badSection {
+    padding-inline: var(--space-4);
+  }
+
+  .badContainer {
+    padding: var(--space-6) var(--space-4);
+    border-radius: var(--radius-lg);
+  }
+
+  .badGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .flipCard {
+    height: 580px;
+  }
+
+  .flipFront {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .badHint {
+    display: block;
+  }
+}
+
+/* ===== Small phones: compact type + spacing so nothing clips ===== */
+@media (max-width: 380px) {
+  .flipCard {
+    height: 560px;
+  }
+
+  .flipFront {
+    padding: var(--space-4);
+  }
+
+  .flipBack {
+    padding: var(--space-4);
+  }
+
+  .badCardTitle {
+    font-size: var(--font-size-md);
+  }
+
+  .badCardDesc,
+  .posterDesc {
+    font-size: var(--font-size-xs);
+  }
+
+  .posterHeading {
+    font-size: var(--font-size-xl);
+  }
+
+  .posterCta {
+    padding: var(--space-2) var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flipInner {
+    transition: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .flipCard:hover .flipInner {
+      transform: none;
+    }
+  }
+}

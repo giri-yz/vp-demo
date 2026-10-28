@@ -1,0 +1,344 @@
+@import './tokens.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+html[lang="ta"] body,
+html[lang="ta"] {
+  font-family: "Noto Sans Tamil", "Latha", "Vijaya", sans-serif;
+}
+
+html[lang="hi"] body,
+html[lang="hi"] {
+  font-family: "Noto Sans Devanagari", "Mangal", "Arial Unicode MS", sans-serif;
+}
+
+html[lang="si"] body,
+html[lang="si"] {
+  font-family: "Noto Sans Sinhala", "Iskoola Pota", "Noto Sans", sans-serif;
+}
+
+html[lang="ms"] body,
+html[lang="ms"] {
+  font-family: "Noto Sans Malayalam", "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html[lang="ta"] h1,
+html[lang="ta"] h2,
+html[lang="ta"] h3,
+html[lang="ta"] h4,
+html[lang="ta"] h5,
+html[lang="ta"] h6,
+html[lang="hi"] h1,
+html[lang="hi"] h2,
+html[lang="hi"] h3,
+html[lang="hi"] h4,
+html[lang="hi"] h5,
+html[lang="hi"] h6,
+html[lang="si"] h1,
+html[lang="si"] h2,
+html[lang="si"] h3,
+html[lang="si"] h4,
+html[lang="si"] h5,
+html[lang="si"] h6,
+html[lang="ms"] h1,
+html[lang="ms"] h2,
+html[lang="ms"] h3,
+html[lang="ms"] h4,
+html[lang="ms"] h5,
+html[lang="ms"] h6 {
+  font-family: inherit;
+  line-height: 1.3;
+}
+
+/* Tamil glyphs are taller/wider — pull large headings down so they fit */
+html[lang="ta"] h1 {
+  font-size: clamp(30px, 4vw, 54px) !important;
+  line-height: 1.2 !important;
+}
+
+html[lang="ta"] h2 {
+  font-size: clamp(20px, 2.6vw, 34px) !important;
+  line-height: 1.25 !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-heading);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 2vw, 32px);
+  box-sizing: border-box;
+}
+
+/* Fluid wide variant of the container system: content occupies ~90-94% of the
+   viewport (≈40-70px side spacing on desktop, 16-24px on mobile) instead of the
+   narrow 1320px box. Higher specificity than `.container` so it also wins over
+   the ≤768px padding override below. */
+.container.container-wide {
+  max-width: 1920px;
+  padding-inline: clamp(20px, 3.5vw, 70px);
+}
+
+.btn {
+  font-family: var(--font-family-base);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.btn-primary {
+  background: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-700);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-primary-500);
+  color: var(--color-primary-500);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--color-primary-500);
+  color: var(--color-white);
+}
+
+.btn-gold {
+  background: var(--color-gold);
+  color: var(--color-primary-700);
+}
+
+.btn-gold:hover:not(:disabled) {
+  background: var(--color-gold-dark);
+  color: var(--color-white);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-primary-100);
+}
+
+/* Press-down feedback — declared AFTER variant hover rules so it wins at
+   equal specificity (previously .btn-primary:hover shadowed :active). */
+.btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: var(--shadow-sm);
+  transition-duration: 0.08s;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.badge-success {
+  background: #e6f6e9;
+  color: var(--color-success);
+}
+
+.badge-warning {
+  background: #fbf1de;
+  color: var(--color-warning);
+}
+
+.badge-danger {
+  background: #fbe9e7;
+  color: var(--color-danger);
+}
+
+.badge-info {
+  background: #e9eef6;
+  color: var(--color-info);
+}
+
+.badge-primary {
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
+
+/* Shared admin table look — used across every admin list page (Orders, Products,
+   Inventory, Customers, B2B Enquiries, Contact Messages, ...) so it lives here
+   once instead of being copy-pasted into every page's CSS module. */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.admin-table th {
+  text-align: left;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+  background: var(--color-bg);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
+
+@keyframes bellDropdownSlideUp {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── i18n: prevent translated text overflow ── */
+button, a, span, p, h1, h2, h3, h4, h5, h6, label, div, li, td, th, option {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: none;
+}
+
+nav a, nav span, nav button {
+  white-space: nowrap;
+  min-width: 0;
+}
+
+footer a, footer h5, footer p, footer span {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.header-nav-item, .dropdown-trigger, .mobile-link, .mobile-group-toggle {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  nav a, nav span, nav button {
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+/* Ensure buttons accommodate longer translated text */
+button[type="submit"], .btn, [class*="submitBtn"], [class*="ctaBtn"] {
+  white-space: normal;
+  text-align: center;
+  min-width: 0;
+  max-width: 100%;
+}
+/* =====================================================================
+   Accessibility — respect users who request reduced motion
+   ===================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

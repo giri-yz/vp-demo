@@ -1,0 +1,72 @@
+@media (max-width: 767px) {
+  .root {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Shop page: hide global header on mobile (shop has its own mobile header) */
+  .shopPage > [class*="wrapper"] {
+    display: none;
+  }
+
+  .shopPage > footer {
+    display: none !important;
+  }
+
+  .shopPage {
+    padding-bottom: 0;
+  }
+
+  /* Box Builder pages: hide global header + footer on mobile */
+  .boxBuilderPage > [class*="wrapper"] {
+    display: none;
+  }
+
+  .boxBuilderPage > footer {
+    display: none !important;
+  }
+
+  .boxBuilderPage {
+    padding-bottom: 0;
+  }
+
+  /* Account page: hide global header + footer on mobile (account has its own header) */
+  .accountPage > [class*="wrapper"] {
+    display: none;
+  }
+
+  .accountPage > footer {
+    display: none !important;
+  }
+
+  .accountPage {
+    padding-bottom: 0;
+  }
+
+  /* Cart page: hide header + footer on mobile */
+  .cartPage > [class*="wrapper"] {
+    display: none;
+  }
+
+  .cartPage > footer {
+    display: none !important;
+  }
+
+  .cartPage {
+    padding-bottom: 0;
+  }
+
+  /* B2B page: hide global header on mobile (B2B has its own header) */
+  .b2bPage > [class*="wrapper"] {
+    display: none;
+  }
+
+  .b2bPage {
+    padding-bottom: 0;
+  }
+
+  /* Legal pages with Shop-style mobile header (privacy / account-deletion):
+     hide the global header on mobile only — desktop keeps it */
+  .legalMobileHeaderPage > [class*="wrapper"] {
+    display: none;
+  }
+}

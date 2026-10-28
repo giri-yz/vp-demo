@@ -1,0 +1,28 @@
+# VPNexues - robots.txt
+# https://vpnexues.com/
+#
+# Purpose: give crawlers a valid robots file at the domain root.
+# Before this file existed, /robots.txt fell through to the SPA rewrite in
+# .htaccess and returned the homepage HTML with HTTP 200, so no crawler could
+# read any directives.
+#
+# Policy: PERMISSIVE. Every public page is crawlable. No page that currently
+# ranks or that marketing depends on is blocked, so this file cannot reduce
+# existing search visibility.
+#
+# Deliberately NOT listed here (see the audit notes):
+#   * No "Disallow: /admin/..."   - tempting, but robots.txt is not a security
+#     control; /admin is already protected by RequireAuth + Spring Security.
+#     Adding it is a separate decision, not needed to fix this issue.
+#   * No "Disallow: /account/..." - /account-deletion and /delete-account are
+#     PUBLIC pages sharing that prefix; a prefix rule would block them by
+#     accident.
+#   * No "Sitemap:" line yet - the canonical hostname (vpnexues.com vs
+#     www.vpnexues.com) is not confirmed, and both currently answer. Adding a
+#     Sitemap directive is pending that decision.
+#
+# Group order matters: the User-agent line must come before its rules.
+
+# --- All crawlers ---
+User-agent: *
+Allow: /

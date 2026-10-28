@@ -1,0 +1,157 @@
+.mascot {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.2));
+  touch-action: none;
+}
+
+.mascot:active {
+  cursor: grabbing;
+}
+
+.wrap {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  animation: idleBounce 3s ease-in-out infinite;
+}
+
+.mascot.floating .wrap {
+  animation: floatAnim 2s ease-in-out infinite;
+}
+
+@keyframes idleBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(-1.5deg); }
+  50% { transform: translateY(-6px) rotate(0deg); }
+  75% { transform: translateY(-3px) rotate(1.5deg); }
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* Eye blink */
+.eyeLidL, .eyeLidR {
+  animation: blink 3.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.eyeLidR {
+  animation-delay: 0.08s;
+}
+
+@keyframes blink {
+  0%, 42%, 46%, 100% { transform: scaleY(0); }
+  43%, 45% { transform: scaleY(1); }
+}
+
+/* Arm wave */
+.armR {
+  transform-origin: 78px 60px;
+  animation: armIdle 4s ease-in-out infinite 1s;
+}
+
+.armL {
+  animation: armIdleL 4s ease-in-out infinite 1.5s;
+  transform-origin: 22px 60px;
+}
+
+@keyframes armIdle {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+@keyframes armIdleL {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Mouth */
+.mouth {
+  animation: mouthIdle 4s ease-in-out infinite;
+}
+
+@keyframes mouthIdle {
+  0%, 40%, 100% { d: path('M45 66 Q50 72 55 66'); }
+  45%, 55% { d: path('M46 66 Q50 70 54 66'); }
+  50% { d: path('M47 66 Q50 71 53 66'); }
+}
+
+/* Shadow */
+.shadow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+  animation: shadowIdle 3s ease-in-out infinite;
+}
+
+@keyframes shadowIdle {
+  0%, 100% { transform: translateX(-50%) scaleX(1); }
+  50% { transform: translateX(-50%) scaleX(0.85); }
+}
+
+/* Speech bubble */
+.bubble {
+  position: absolute;
+  bottom: calc(100% + 2px);
+  right: -6px;
+  background: #fff;
+  border-radius: 14px 14px 4px 14px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1E293B;
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(8px) scale(0.85);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+.bubble.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  transform: rotate(45deg);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+  .mascot {
+    bottom: 20px;
+    right: 16px;
+  }
+
+  .wrap {
+    width: 62px;
+    height: 62px;
+  }
+
+  .bubble {
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 10px 10px 3px 10px;
+  }
+}

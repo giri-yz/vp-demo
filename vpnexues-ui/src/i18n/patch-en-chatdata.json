@@ -1,0 +1,229 @@
+{
+  "chat.answers": {
+    "What does VP NEXUES do?": "We supply high-quality agricultural and food products for domestic and international markets. Farm-to-table organic produce connecting Tamil Nadu’s finest farmers with global tables.",
+    "about vpnexues": "Est. 2022 — Tamil Nadu’s Premier Organic Farm-to-Table Export Company. Connecting farmers directly with consumers. No middlemen, fair pricing, guaranteed freshness. Ships to India, Singapore, USA & UAE.",
+    "Why should I choose VPNexues?": "<strong>Quality:</strong> 100% certified organic, lab-tested produce.<br><strong>Reliability:</strong> Consistent supply with on-time delivery.<br><strong>Traceability:</strong> QR codes on every carton.<br><strong>Fair Trade:</strong> Direct from farmers, no middlemen.",
+    "source from farmers": "We source directly from certified organic farms across Tamil Nadu. Every farm is audited and certified under Indian & international organic standards.",
+    "product quality": "All products are 100% certified organic. Soil, water & produce tested at independent labs. QR code on every carton shows farm, harvest date & inspection report.",
+    "What products do you sell?": "<strong>Vegetables:</strong> Tomato, Carrot, Eggplant, Lady Finger, Broccoli, Beans, Onion<br><strong>Fruits:</strong> Mango, Banana, Apple, Watermelon<br><strong>Grains & Spices:</strong> Coffee Beans, Dal, Rice, Premium Spices<br><strong>Other:</strong> Fresh Eggs, Beverages, Groceries<br><em>All chemical-free, sourced from certified organic farms.</em>",
+    "do you provide organic products": "Yes! All our products are 100% certified organic. We work directly with certified organic farms across Tamil Nadu.",
+    "freshness": "Harvested to order, packed within hours. Cold-chain insulated packaging with ice packs. Temperature-controlled freight for international shipments.",
+    "shelf life": "<strong>Leafy Vegetables:</strong> 3–5 days (refrigerated)<br><strong>Root Vegetables & Fruits:</strong> 7–10 days<br><strong>Spices & Grains:</strong> Up to 12 months. Every pack lists harvest date & best-before guidance.",
+    "product samples": "Yes, product samples are available depending on the product and request. Contact us to request samples for your evaluation.",
+    "pricing plans": "<strong>Small Box — ₹1,550:</strong> Min 10 products. Mix veg, fruits & groceries.<br><strong>Big Box — ₹5,518:</strong> Min 10 kg. Any mix. 12% discount.<br><strong>B2B Custom — Quote:</strong> Restaurants, hotels. 30-day credit.",
+    "small box": "<strong>Small Box — ₹1,550:</strong> Min 10 products per box. Mix vegetables, fruits & groceries. Weekly or fortnightly delivery. Items after 10 charged at +15% premium.",
+    "big box": "<strong>Big Box — ₹5,518:</strong> Min 10 kg total weight. Any mix from any category. No item count limit. 12% bulk discount auto-applied at 10 kg+.",
+    "minimum order": "<strong>Retail:</strong> No minimum — order a single item if you need.<br><strong>B2B / Wholesale:</strong> Minimum varies by product. Contact our B2B team for a quote.",
+    "gift": "Curated Small Box & Big Box subscriptions. Festive hampers during Diwali, Pongal & year-end. Subscribers get up to 15% off + priority delivery.",
+    "how to place an order": "<strong>1.</strong> Browse at vpnexues.com/shop<br><strong>2.</strong> Add items to your cart<br><strong>3.</strong> Choose box type: Small Box, Big Box, or B2B<br><strong>4.</strong> Enter delivery details & complete payment. No account needed — checkout as a guest!",
+    "track my order": "<strong>1.</strong> My Account → \"My Orders\"<br><strong>2.</strong> Tracking link via WhatsApp/email<br><strong>3.</strong> Order ID starts with VPN- (e.g. VPN-24581). Need help? Call +91 9943994603",
+    "cancel order": "You can modify or cancel within 4 hours of placement (before packing). Contact via WhatsApp (+91 9943994603) or Email (support@vpnexues.com). Include your order ID.",
+    "modify order": "You can modify within 4 hours of placement (before packing). Contact via WhatsApp (+91 9943994603) or Email (support@vpnexues.com). Include your order ID.",
+    "promo code": "<strong>1.</strong> Go to checkout<br><strong>2.</strong> Find \"Apply Coupon\" field<br><strong>3.</strong> Enter code and click \"Apply\"<br><strong>4.</strong> Discount reflected in order total.",
+    "delivery info": "We deliver across Singapore, India, UAE, USA & Europe. Free delivery on subscription plans. Same-day delivery in select cities.",
+    "shipping charges": "<strong>Tamil Nadu:</strong> FREE on orders above ₹999<br><strong>Rest of India:</strong> Calculated at checkout by weight<br><strong>International:</strong> Quoted at checkout. No hidden fees.",
+    "where do you deliver": "We ship to: India, Singapore, United States, United Arab Emirates. New destinations reviewed quarterly.",
+    "delayed order": "<strong>1.</strong> Check tracking link for updated ETA<br><strong>2.</strong> If 2+ days past promised date, WhatsApp +91 9943994603 with order ID. We’ll escalate it immediately.",
+    "no one home": "Delivery attempted up to 2 times. Package held at nearest hub for 3 days. Leave a note at checkout like \"Leave with security\" or \"Call before delivery\".",
+    "payment methods": "<strong>Cards:</strong> Visa, Mastercard, RuPay, Amex<br><strong>UPI:</strong> Google Pay, PhonePe, Paytm, BHIM<br><strong>Net Banking:</strong> All major Indian banks<br><strong>Other:</strong> PayNow (SG), PayPal, Bank Transfer (B2B)",
+    "cod": "Available for select Tamil Nadu pin codes. Orders under ₹5,000. Not available for international or B2B orders.",
+    "payment failed": "Usually auto-refunded by bank within 5–7 business days. If not refunded after 7 days, email support@vpnexues.com with transaction ID.",
+    "gst invoice": "Auto-sent to registered email after payment. For business GSTIN, provide at checkout or email before dispatch.",
+    "return policy": "We don’t accept returns on opened items. If a product arrives damaged, expired, or wrong: free replacement, full refund (5–7 days), or store credit with 5% bonus. Report within 24 hours.",
+    "refund": "Full refund to original payment (5–7 business days). Free replacement on next delivery. Store credit with 5% bonus. Contact within 24 hours with order ID + photo.",
+    "damaged product": "Contact us within 24 hours with: order ID, photo of damaged product, and a short note. We’ll arrange free replacement or full refund.",
+    "wrong product": "Contact us within 24 hours with: order ID, photo of wrong product, and a short note. We’ll arrange free replacement or full refund.",
+    "b2b orders": "<strong>We Supply:</strong> Restaurants, Hotels, Grocery Chains, Food Processing, Institutions<br><strong>What You Get:</strong> Custom categories, Account manager, Invoice billing, 30-day credit, Organic & Halal certs.",
+    "become a distributor": "Interested in becoming a distributor? Contact our B2B team at support@vpnexues.com or call +91 9943994603.",
+    "customized packaging": "Yes, we provide customised packaging for bulk orders. Discuss your requirements with our B2B team.",
+    "request a quotation": "Send us your requirements and we will provide a customised quotation. Response time: Usually within 24 business hours.",
+    "do you export": "Yes, we export products to international markets including Singapore, USA, and UAE. Contact our B2B team at support@vpnexues.com for export enquiries.",
+    "contact info": "<strong>Phone:</strong> +91 9943994603 | +91 8148197842<br><strong>Email:</strong> support@vpnexues.com<br><strong>Singapore:</strong> 412 Race Course Road, Singapore 218660<br><strong>India:</strong> Siva Towers, Salem, Tamil Nadu 636004",
+    "talk to agent": "Mon–Sat, 9AM–7PM IST<br><strong>Phone:</strong> +91 9943994603<br><strong>WhatsApp:</strong> +91 9943994603<br><strong>Email:</strong> support@vpnexues.com",
+    "business hours": "Mon–Sat, 9AM–7PM IST. Closed on Sundays & public holidays.",
+    "business enquiry": "Email: support@vpnexues.com | Call: +91 9943994603. We respond within 24 business hours.",
+    "linkedin": "Follow VPNexues on LinkedIn for company updates, product launches, and news:<br><a href=\"https://www.linkedin.com/company/vpnexues/\" target=\"_blank\" style=\"color:#2d6a2e;font-weight:600;\">linkedin.com/company/vpnexues</a>"
+  },
+  "chat.topicTitles": {
+    "About Us": "About Us",
+    "Products": "Products",
+    "Pricing & Plans": "Pricing & Plans",
+    "Orders": "Orders",
+    "Delivery": "Delivery",
+    "Payment": "Payment",
+    "Returns & Refunds": "Returns & Refunds",
+    "B2B & Wholesale": "B2B & Wholesale",
+    "Contact & Support": "Contact & Support"
+  },
+  "chat.topicLabels": {
+    "What does VP NEXUES do?": "What we do",
+    "about vpnexues": "About VPNexues",
+    "Why should I choose VPNexues?": "Why choose us",
+    "source from farmers": "Our farmers",
+    "product quality": "Quality assurance",
+    "What products do you sell?": "Our products",
+    "do you provide organic products": "Organic products",
+    "freshness": "Freshness",
+    "shelf life": "Shelf life",
+    "product samples": "Product samples",
+    "pricing plans": "Pricing plans",
+    "small box": "Small Box",
+    "big box": "Big Box",
+    "minimum order": "Minimum order",
+    "gift": "Gift packs",
+    "how to place an order": "How to order",
+    "track my order": "Track order",
+    "cancel order": "Cancel order",
+    "modify order": "Modify order",
+    "promo code": "Promo codes",
+    "delivery info": "Delivery info",
+    "shipping charges": "Shipping charges",
+    "where do you deliver": "Countries",
+    "delayed order": "Delayed order",
+    "no one home": "Missed delivery",
+    "payment methods": "Payment methods",
+    "cod": "Cash on delivery",
+    "payment failed": "Payment failed",
+    "gst invoice": "GST invoice",
+    "return policy": "Return policy",
+    "refund": "Refund options",
+    "damaged product": "Damaged product",
+    "wrong product": "Wrong product",
+    "b2b orders": "B2B orders",
+    "become a distributor": "Become distributor",
+    "customized packaging": "Custom packaging",
+    "request a quotation": "Request quote",
+    "do you export": "Export services",
+    "contact info": "Contact info",
+    "talk to agent": "Talk to agent",
+    "business hours": "Business hours",
+    "business enquiry": "Business enquiry",
+    "linkedin": "LinkedIn"
+  },
+  "chat.main": {
+    "products": "Products",
+    "pricing": "Pricing Plans",
+    "delivery": "Delivery Info",
+    "track": "Track My Order",
+    "cancel": "Cancel Order",
+    "payment": "Payment Methods",
+    "return": "Return Policy",
+    "b2b": "B2B Orders",
+    "contact": "Contact Info",
+    "agent": "Talk to Agent"
+  },
+  "chat.sugg": {
+    "freeDeliverySubs": "Yes — every Small Box and Big Box subscription includes free doorstep delivery. No delivery fee, ever.",
+    "sameDayDelivery": "Same-day delivery is available in select cities. Order before 12 PM and you will get it the same evening.",
+    "trackDeliveryLive": "You can track your order live from My Orders → Track Order. You will also get SMS and email updates at every step.",
+    "flexibleScheduling": "Pick your preferred delivery day and time slot at checkout, and reschedule anytime before dispatch.",
+    "ecoPackaging": "All deliveries use 100% recyclable, plastic-free packaging — paper wraps and compostable trays only.",
+    "cardsAccepted": "Yes — we accept Visa, Mastercard and AMEX. Payments run through a secure, PCI-compliant gateway.",
+    "upiApps": "UPI is supported! Pay via Google Pay, PhonePe, Paytm and all major UPI apps with instant confirmation.",
+    "netBankingSugg": "Net banking is available for all major Indian and Singaporean banks at checkout.",
+    "digitalWallets": "Digital wallets are accepted wherever available in your region — balance is applied instantly at checkout.",
+    "secureEncrypted": "Every transaction is protected with TLS encryption and tokenized card storage — we never store your card details.",
+    "freshReturns24h": "Report it within 24 hours of delivery with a photo — we will replace or refund it free of charge.",
+    "refund3to5": "Once approved, refunds reach your original payment method within 3–5 business days.",
+    "damagedPhotoSupport": "Send a photo to WhatsApp +91 9943994603 or email support@vpnexues.com with your order ID — we will fix it within 24 hours.",
+    "subPauseCancel": "You can pause, skip or cancel your subscription anytime from My Orders — no penalty, no questions asked.",
+    "b2bBulkOrders": "We supply restaurants, hotels and retailers across 25+ districts with consistent farm-fresh quality.",
+    "b2bMin50kg": "B2B minimum order is 50 kg per delivery, with tiered pricing for larger volumes.",
+    "b2bCustomPack": "We offer private-label packaging with your brand name and logo — share your artwork and we will handle the rest.",
+    "b2bAccountManager": "Every B2B account gets a dedicated manager for ordering, scheduling and billing.",
+    "b2bExportDocs": "We handle export documentation, cold-chain and customs logistics end to end.",
+    "contactCall": "Our support lines are open 9 AM – 9 PM IST, Monday to Saturday.",
+    "contactEmail": "Email us at support@vpnexues.com — we reply within 4 working hours.",
+    "contactWhatsApp": "Chat with us on WhatsApp at +91 9943994603 for the fastest response.",
+    "contactSingapore": "Our Singapore office is at 412 Race Course Road, Singapore 218660.",
+    "contactIndia": "Our India head office is Siva Towers, Salem, Tamil Nadu 636004."
+  },
+  "avoidJunk": {
+    "cards": {
+      "junk-food": {
+        "title": "Junk Food",
+        "desc": "Tasty for now, harmful for your tomorrow.",
+        "chips": [
+          "Burgers & Fries",
+          "Chips & Packaged Snacks",
+          "Sweets & Donuts",
+          "Sugary Drinks"
+        ],
+        "backBrand": "VP NEXUES Promise",
+        "backHeading": "Fresh",
+        "backAccent": "Fruits",
+        "backDesc": "Fresh fruits sourced from trusted growers who prioritise natural freshness over long storage.",
+        "points": [
+          "Naturally Fresh",
+          "No Artificial Ripening",
+          "No Preservatives"
+        ],
+        "ctaLabel": "Explore Fresh Produce"
+      },
+      "packaged-snacks": {
+        "title": "Packaged Snacks & Sweets",
+        "desc": "Packaged snacks and treats often contain high levels of sugar, salt and unhealthy fats.",
+        "chips": [
+          "High Added Sugar",
+          "Excess Salt",
+          "Artificial Flavours",
+          "Highly Processed"
+        ],
+        "backBrand": "VP NEXUES Promise",
+        "backHeading": "Quality",
+        "backAccent": "Groceries",
+        "backDesc": "Quality groceries for everyday goodness. Carefully selected essentials for your home.",
+        "points": [
+          "Premium Quality",
+          "Carefully Selected",
+          "Everyday Essentials"
+        ],
+        "ctaLabel": "Explore Categories"
+      }
+    }
+  },
+  "testimonial.fallback": {
+    "arp-sathish-kumar": {
+      "quote": "Love the Small Box option — perfect quantity for my household without any waste.",
+      "role": "Working Professional",
+      "location": "India"
+    },
+    "priya-nair": {
+      "quote": "The produce is always fresh and the delivery is right on time. VPNexues has become our weekly staple.",
+      "role": "Home Chef",
+      "location": "Singapore"
+    },
+    "james-tan": {
+      "quote": "Their B2B bulk pricing and reliability make VPNexues our go-to supplier for fresh vegetables.",
+      "role": "Restaurant Owner",
+      "location": "Singapore"
+    }
+  },
+  "testimonial.extraQuotes": {
+    "Arp Sathish Kumar": "Delivery slots are always on time and the veggies stay fresh for days.",
+    "Priya Nair": "The weekly variety keeps my home cooking exciting — my kids love it.",
+    "James Tan": "Every bulk crate arrives graded and fresh, ready for service."
+  },
+  "b2b.testimonials": {
+    "PS": {
+      "quote": "VPNexues has been our trusted organic supplier for over 2 years. The quality and consistency is unmatched.",
+      "role": "Restaurant Owner, Singapore"
+    },
+    "RK": {
+      "quote": "Switching to VPNexues for our hotel kitchen was the best decision. Fresh produce, on time, every time.",
+      "role": "Head Chef, Marina Bay Resort"
+    },
+    "ML": {
+      "quote": "The B2B team understands our needs. Flexible volumes, great pricing, and certified organic products.",
+      "role": "Catering Director, GreenPlate Co."
+    },
+    "AP": {
+      "quote": "Scaled from 20kg to 300kg weekly without a single missed delivery. VPNexues is our growth partner for organic sourcing.",
+      "role": "Procurement Head, Olive Grove Hotels, UAE"
+    },
+    "SN": {
+      "quote": "Retail margins improved 18% after switching to direct farm supply. Customers taste the freshness and keep coming back.",
+      "role": "Founder, Farm2Fork Retail, India"
+    }
+  }
+}

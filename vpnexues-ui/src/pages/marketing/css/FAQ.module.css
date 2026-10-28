@@ -1,0 +1,488 @@
+/* ── FAQ page — card-based two-column (left topic cards + right numbered Q&A cards) ──
+   Base = mobile (pills nav, stacked cards). Desktop ≥768px = sidebar card list + divider. */
+
+/* ── Banner — Support-hero layout (Contact.module.css .hero) ── */
+.desktopBanner {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.bannerOverlay {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 0 0 28px 28px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary-700) 94%, transparent) 0%,
+      color-mix(in srgb, var(--color-primary-700) 84%, transparent) 52%,
+      color-mix(in srgb, var(--color-primary-500) 74%, transparent) 100%
+    ),
+    url('/images/banners/page-banner-faq.jpg') center 25% / cover no-repeat;
+  padding: 56px 0 48px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.bannerContent {
+  color: var(--color-white);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.bannerIcon {
+  box-sizing: border-box;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+.breadcrumb {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 1;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 16px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+.breadcrumb a { color: rgba(255, 255, 255, 0.92); text-decoration: none; }
+.breadcrumb a:hover { color: var(--color-white); text-decoration: underline; }
+.breadcrumb span { margin: 0 6px; }
+.bannerContent h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 0;
+  color: var(--color-white);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+.bannerContent p {
+  font-size: 17px;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 767px) {
+  .bannerOverlay {
+    padding: 40px 0 36px;
+    min-height: 240px;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+  .bannerIcon {
+    width: 54px;
+    height: 54px;
+    margin-bottom: 14px;
+  }
+  .bannerContent p { font-size: 15px; }
+  .breadcrumb { font-size: 11px; letter-spacing: 1.5px; }
+}
+
+/* ── Section ── */
+.section {
+  padding: 48px 0 40px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow: clip; /* clip (not hidden) keeps position: sticky working in the sidebar */
+}
+.sectionTitleArea {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.secTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: #5B8C51;
+  font: 700 12px/1 'Nunito', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.secTagIcon {
+  width: 16px;
+  height: 16px;
+}
+.secTitle {
+  margin: 0;
+  color: #1e3318;
+  font: 900 clamp(24px, 5vw, 34px)/1.2 'Nunito', sans-serif;
+  line-height: 1.25;
+}
+
+/* ── Layout ── */
+.faqLayout {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* ── LEFT nav (mobile: horizontal pills) ── */
+.faqSide {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.sideNav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.sideNav::-webkit-scrollbar { display: none; }
+.sideGroup {
+  flex: 0 0 auto;
+}
+.sideItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1.5px solid #E3EEE0;
+  background: #F6FAF3;
+  color: #14472F;
+  font: 800 13px/1 'Nunito', sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.sideItem:hover {
+  background: #EDF5E7;
+}
+.sideGroupActive .sideItem {
+  background: linear-gradient(135deg, #14472F, #2c7a46);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 18px rgba(20,71,47,.25);
+}
+.sideIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.sideLabel { min-width: 0; }
+.sideChevron { display: none; }
+
+/* ── RIGHT content ── */
+.faqMain {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.mainTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 8px;
+  color: #14472F;
+  font: 900 clamp(22px, 5vw, 28px)/1.25 'Nunito', sans-serif;
+}
+.mainTitleIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: #2f7d2c;
+}
+.mainIntro {
+  margin: 0 0 18px;
+  font: 500 14px/1.7 'Nunito', sans-serif;
+  color: #4a6a4e;
+}
+.mainIntro a {
+  color: #2f7d2c;
+  font-weight: 800;
+  text-decoration: none;
+}
+.mainIntro a:hover { text-decoration: underline; }
+
+.faqCard {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.qList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Question card ── */
+.qItem {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  background: #fff;
+  border: 1px solid #E7EDE4;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(20,71,47,.05);
+  overflow: hidden;
+}
+.qBtn {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: 700 14px/1.45 'Nunito', sans-serif;
+  color: #1e3a24;
+  transition: background .2s ease, color .2s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.qBtn:hover {
+  background: #fbfdf9;
+}
+.qBtnActive {
+  background: #F1F8EE;
+  color: #14472F;
+}
+.qNum {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #14472F, #2c7a46);
+  color: #fff;
+  font: 800 12px/1 'Nunito', sans-serif;
+}
+.qText {
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+.qChevron {
+  flex: 0 0 auto;
+  margin-top: 4px;
+  color: #5B8C51;
+  transition: transform .3s ease;
+}
+.qBtnActive .qChevron { transform: rotate(180deg); }
+.qAnswer {
+  padding: 0 14px 14px 50px;
+  background: #F1F8EE;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.qAnswer p {
+  margin: 0;
+  font: 400 13px/1.7 'Nunito', sans-serif;
+  color: #4a6a4e;
+}
+.qAnswer p ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.qAnswer p ul li {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+/* ═══════════════════════════════════════
+   MOBILE (≤767px)
+   ═══════════════════════════════════════ */
+@media (max-width: 767px) {
+  .section { padding: 40px 0 32px; }
+  .secTitle { font-size: clamp(22px, 5vw, 28px); }
+  .qBtn { font-size: 13px; padding: 13px 12px; gap: 10px; }
+  .qNum { width: 22px; height: 22px; font-size: 11px; }
+  .qAnswer { padding: 0 12px 12px 46px; }
+  .qAnswer p { font-size: 12px; }
+}
+
+/* ═══════════════════════════════════════
+   DESKTOP (≥768px) — topic cards left, divider, numbered Q&A cards right
+   ═══════════════════════════════════════ */
+@media (min-width: 768px) {
+  .section { padding: 60px 0 50px; }
+  .secTitle { font-size: 30px; }
+  .sectionTitleArea {
+    text-align: left;
+    margin-bottom: 26px;
+  }
+
+  /* Topic section breaks out of the centred container so its content sits flush
+     with the header logo (navbar padding-inline: 24px, then 40px ≥992px).
+     The banner keeps the shared centred `.container` so its text lines up with
+     the pricing plan / testimonial banners.
+     `.container` is a GLOBAL class → must be wrapped in :global() here, otherwise
+     CSS Modules hashes it and the selector never matches. */
+  .section > :global(.container) {
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 24px;
+  }
+
+  .faqLayout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 0;
+  }
+
+  /* Left column — stretches full height so the divider line runs full length */
+  .faqSide {
+    margin-bottom: 0;
+    padding-right: 24px;
+    border-right: 1px solid #E5EAE3;
+  }
+
+  /* Topic cards — stacked, sticky + own scrollbar */
+  .sideNav {
+    position: sticky;
+    top: 96px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: calc(100vh - 130px);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .sideGroup { flex: 0 0 auto; width: 100%; }
+  .sideItem {
+    position: relative;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 13px 14px;
+    border: 1px solid #E7EDE4;
+    border-radius: 12px;
+    background: #fff;
+    color: #14472F;
+    font: 700 14.5px/1.4 'Nunito', sans-serif;
+    text-align: left;
+    white-space: normal;
+    box-shadow: 0 2px 6px rgba(20,71,47,.05);
+    transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .sideItem:hover {
+    background: #F7FAF5;
+    border-color: #D8E7D3;
+  }
+  .sideIcon { color: #2f7d2c; }
+  .sideLabel {
+    flex: 1;
+    min-width: 0;
+  }
+  .sideChevron {
+    display: inline-flex;
+    flex-shrink: 0;
+    color: #7fa78a;
+    transform: rotate(-90deg);
+  }
+  .sideGroupActive .sideItem {
+    background: #EDF6E8;
+    border-color: #CFE6C9;
+    color: #14472F;
+    font-weight: 800;
+    box-shadow: 0 3px 10px rgba(20,71,47,.10);
+  }
+  .sideGroupActive .sideItem::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    bottom: 6px;
+    width: 4px;
+    border-radius: 4px;
+    background: #2f7d2c;
+  }
+  .sideGroupActive .sideIcon { color: #14472F; }
+  .sideGroupActive .sideChevron { color: #2f7d2c; }
+
+  /* Right panel */
+  .faqMain { padding-left: 30px; }
+  .mainTitle {
+    font-size: 27px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .mainTitleIcon svg {
+    width: 26px;
+    height: 26px;
+  }
+  .mainIntro {
+    font-size: 15px;
+    margin-bottom: 16px;
+    max-width: 760px;
+  }
+  .qBtn {
+    padding: 15px 18px;
+    font-size: 15px;
+    gap: 14px;
+  }
+  .qNum {
+    width: 26px;
+    height: 26px;
+    font-size: 13px;
+  }
+  .qText { padding-top: 3px; }
+  .qAnswer {
+    padding: 0 18px 16px 58px;
+  }
+  .qAnswer p { font-size: 14px; }
+  .qAnswer p ul li { font-size: 14px; }
+}
+
+/* ═══════════════════════════════════════
+   LOGO ALIGNMENT (≥992px) — navbar padding jumps to 40px here
+   ═══════════════════════════════════════ */
+@media (min-width: 992px) {
+  .section > :global(.container) {
+    padding-inline: 40px;
+  }
+}

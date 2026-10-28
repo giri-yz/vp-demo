@@ -1,0 +1,249 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  background: rgba(8, 30, 16, 0.55);
+  opacity: 0;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 520px;
+  max-width: 100vw;
+  background: linear-gradient(135deg, #14472F, #0d3018);
+  color: #fff;
+  box-shadow: -8px 0 30px rgba(8, 30, 16, 0.55);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  animation: slideIn 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; visibility: visible; }
+}
+
+@keyframes slideIn {
+  to { transform: translateX(0); }
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, #065f46, #047857);
+  flex-shrink: 0;
+}
+
+.drawerLabel {
+  font-size: 11px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.drawerTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.drawerBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 20px;
+}
+
+.drawerBody::-webkit-scrollbar {
+  width: 5px;
+}
+
+.drawerBody::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+}
+
+.section {
+  margin-bottom: 18px;
+}
+
+.sectionHeader {
+  font-size: 11px;
+  font-weight: 700;
+  color: #CA8A04;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.detailItem {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.detailLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.detailVal {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 2px;
+}
+
+.messageBox {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 10px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.conversation {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.bubble {
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  max-width: 85%;
+}
+
+.incoming {
+  background: rgba(34, 197, 94, 0.15);
+  color: #fff;
+  margin-right: auto;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.outgoing {
+  background: #065f46;
+  color: #fff;
+  margin-left: auto;
+}
+
+.bubbleMeta {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+.adminForm {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.formLabel {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.formSelect,
+.formTextarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 13px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.formSelect option {
+  background: #1a3a2a;
+  color: #fff;
+}
+
+.formTextarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.sendBtn {
+  margin-top: 8px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #F2B233;
+  color: #1a1a1a;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sendBtn:hover {
+  background: #e0a820;
+}
+
+@media (max-width: 640px) {
+  .drawer {
+    width: 100vw;
+  }
+
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+}

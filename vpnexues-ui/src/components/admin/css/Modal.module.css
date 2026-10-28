@@ -1,0 +1,122 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 47, 24, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--space-5);
+  animation: overlayFadeIn 0.2s ease;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.dialog {
+  background: var(--color-white);
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 500px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.wide {
+  max-width: 900px;
+}
+.full {
+  max-width: 96vw;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.header h2 {
+  font-size: var(--font-size-lg);
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--space-1);
+}
+
+.close:hover {
+  color: var(--color-text-heading);
+}
+
+.headerDark {
+  background: linear-gradient(135deg, #134B2F 0%, #1B5E3B 100%);
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  padding: 16px 28px;
+}
+.headerDark h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.3px;
+}
+.headerDark .close,
+.headerDark button {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.headerDark .close:hover {
+  background: rgba(255,255,255,.28);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.body {
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+.wide .body {
+  padding: 20px 24px;
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .dialog {
+    max-width: 100%;
+    border-radius: 18px 18px 0 0;
+    max-height: 92vh;
+  }
+}

@@ -1,0 +1,184 @@
+﻿/* Floating live-chat launcher — fixed bottom-right, glass orb + light sweep */
+
+/* layer 1: fixed positioning + show/hide state */
+.launcherWrap {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 350; /* above bottom nav (200), below modals/sheets */
+  width: 56px;
+  height: 56px;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* lift above the mobile bottom pill nav when it is shown */
+.launcherWrap.raised {
+  bottom: 84px;
+  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+}
+
+/* hide while the chat panel itself is open */
+.launcherHidden {
+  opacity: 0;
+  transform: scale(0.5);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* layer 2: entry animation (keeps transforms off the button itself) */
+.launcherFloat {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  animation: launcherIn 0.45s ease both;
+}
+
+/* layer 3: light-green glow ring + white bezel + vivid green disc */
+.launcher {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid #8fe6a8;
+  border-radius: 50%;
+  overflow: hidden; /* clips the light sweep to the circle */
+  cursor: pointer;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #00692b 0%, #00a344 50%, #00dc55 100%);
+  box-shadow:
+    inset 0 0 0 4.5px #fff,
+    inset 3px 3px 9px rgba(0, 45, 16, 0.4),
+    0 0 10px rgba(120, 235, 160, 0.55),
+    0 14px 28px rgba(10, 60, 30, 0.22);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.launcher:hover {
+  transform: scale(1.08) translateY(-3px);
+}
+.launcher:active {
+  transform: scale(0.94);
+}
+.launcher:focus-visible {
+  outline: 3px solid rgba(34, 185, 80, 0.5);
+  outline-offset: 3px;
+}
+
+/* green chat bubble icon with 3 white dots — bounces gently on a loop */
+.chatIcon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  animation: iconBounce 1.7s ease-in-out infinite;
+}
+.launcher:hover .chatIcon {
+  animation-duration: 0.85s;
+}
+/* white speech-bubble SVG — oval body + smooth tail drawn as one vector picture */
+.iconBubble {
+  display: block;
+  transform: translateY(3px); /* centers the body; the tail hangs below */
+  filter: drop-shadow(0 2px 3px rgba(0, 40, 15, 0.3));
+}
+
+/* light reflection sweeping across the white glass */
+.launcher::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -80%;
+  width: 45%;
+  height: 150%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  transform: skewX(-20deg);
+  animation: sweep 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* status badge — white ring with vivid green center, top-right of the rim */
+.onlineDot {
+  position: absolute;
+  z-index: 2;
+  top: 1px;
+  right: 1px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2.5px solid #fff;
+  background: radial-gradient(circle at 35% 30%, #45ff84, #00d94f);
+  box-shadow: 0 3px 6px rgba(0, 50, 20, 0.4);
+  pointer-events: none;
+  animation: dotGlow 2s ease-in-out infinite;
+}
+
+@keyframes launcherIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes sweep {
+  0% {
+    left: -80%;
+  }
+  55%,
+  100% {
+    left: 140%;
+  }
+}
+@keyframes dotGlow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.14);
+  }
+}
+@keyframes iconBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-4px) scale(1.1);
+  }
+  55% {
+    transform: translateY(0) scale(0.96);
+  }
+  75% {
+    transform: translateY(-2px) scale(1.04);
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .launcherWrap,
+  .launcherWrap.raised {
+    width: 60px;
+    height: 60px;
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  .launcherFloat,
+  .launcher::after,
+  .onlineDot,
+  .chatIcon {
+    animation: none;
+  }
+  .launcher:hover,
+  .launcher:active {
+    transform: none;
+  }
+}

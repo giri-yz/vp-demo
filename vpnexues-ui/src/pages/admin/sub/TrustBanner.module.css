@@ -1,0 +1,74 @@
+/* Trust banner — shared across the sub-admin views.
+   Previously an inline `repeat(auto-fit, minmax(150px, 1fr))` grid: with only
+   five items that resolves to five side-by-side columns across the whole
+   768–1280px tablet band and crushes each cell to ~140px. The column count
+   now steps with the viewport and divider rules follow the row shape. */
+.banner {
+  margin-top: 24px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
+  border: 1px solid #BBF7D0;
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.icon {
+  margin-bottom: 6px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #14532D;
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: #166534;
+  opacity: 0.8;
+}
+
+/* ── 2-up (large phone / small tablet) ── */
+@media (min-width: 600px) and (max-width: 767px) {
+  .banner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .item:nth-child(odd):not(:last-child) {
+    border-right: 1px solid rgba(22, 163, 74, 0.15);
+  }
+}
+
+/* ── 3-up (portrait tablet) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .banner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .item:nth-child(3n + 1):not(:last-child),
+  .item:nth-child(3n + 2):not(:last-child) {
+    border-right: 1px solid rgba(22, 163, 74, 0.15);
+  }
+}
+
+/* ── 5-up (landscape tablet and up) ── */
+@media (min-width: 1024px) {
+  .banner {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .item:not(:last-child) {
+    border-right: 1px solid rgba(22, 163, 74, 0.15);
+  }
+}

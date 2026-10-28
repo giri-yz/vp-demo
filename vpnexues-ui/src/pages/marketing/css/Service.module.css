@@ -1,0 +1,442 @@
+/* ==========================================
+   Service — Mobile-first, green premium
+   ========================================== */
+
+/* ── Page ── */
+.page {
+  min-height: 100vh;
+  background: #f8faf6;
+}
+
+/* ═══════════════════════════════════
+   MOBILE HERO
+   ═══════════════════════════════════ */
+.mobileHero {
+  background:
+    linear-gradient(135deg, rgba(20, 83, 45, 0.85), rgba(26, 107, 51, 0.8)),
+    url('/images/banners/page-banner-service.jpg') center 40% / cover no-repeat;
+  padding: 48px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mobileHero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 60%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 28px;
+  position: relative;
+}
+
+.heroTitle {
+  font-size: clamp(28px, 6vw, 42px);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 8px;
+  position: relative;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.heroSubtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+}
+
+/* ── Desktop pg-banner (hidden on mobile) ── */
+.desktopBanner {
+  display: none;
+}
+
+/* ═══════════════════════════════════
+   SERVICES GRID
+   ═══════════════════════════════════ */
+.gridSection {
+  padding: 30px 16px 40px;
+}
+
+.gridWrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e8efe5;
+  box-shadow: 0 4px 16px rgba(20, 60, 20, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:active {
+  transform: scale(0.98);
+}
+
+/* ── Card Image ── */
+.cardImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  background: #e8f5e9;
+}
+
+.cardImgPlaceholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #e8f5e9 0%, #c8e6c9 40%, #a5d6a7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cardImgPlaceholder::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  top: -20px;
+  right: -20px;
+}
+
+.cardImgPlaceholder::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  bottom: -10px;
+  left: -10px;
+}
+
+.placeholderSvgIcon {
+  width: 48px;
+  height: 48px;
+  color: #2d6a2e;
+  opacity: 0.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Card Body ── */
+.cardBody {
+  padding: 12px 14px 14px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardIconBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.cardIconBadge span {
+  font-size: 18px;
+}
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 800;
+  color: #1a3c1a;
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  font-size: 11px;
+  color: #6b7b6b;
+  margin: 0;
+  line-height: 1.35;
+  flex: 1;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2d6a2e;
+  transition: gap 0.2s;
+}
+
+.cardLink svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s;
+}
+
+.card:hover .cardLink svg {
+  transform: translateX(3px);
+}
+
+/* ═══════════════════════════════════
+   CTA SECTION
+   ═══════════════════════════════════ */
+.cta {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #14532d, #1a6b33);
+  text-align: center;
+}
+
+.ctaInner {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ctaLeaf {
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 12px;
+}
+
+.cta h2 {
+  font-size: clamp(20px, 4vw, 30px);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #fff;
+  color: #14532d;
+  font-weight: 800;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ctaBtn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ctaBtn:active {
+  transform: scale(0.97);
+}
+
+/* ═══════════════════════════════════
+   DESKTOP (≥ 768px)
+   ═══════════════════════════════════ */
+@media (min-width: 768px) {
+  .mobileHero {
+    display: none;
+  }
+
+  /* ── Desktop pg-banner ── */
+  .desktopBanner {
+    display: block;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background:
+      linear-gradient(to right, rgba(20, 71, 47, 0.7), rgba(20, 61, 33, 0.35)),
+      url('/images/banners/page-banner-service.jpg') 70% center / cover no-repeat;
+    padding: 28px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .desktopBanner::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 50%;
+    height: 180%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .desktopBannerInner {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 4vw, 60px);
+    padding-right: clamp(20px, 4vw, 60px);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.48);
+    text-decoration: none;
+    transition: color 0.28s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: #e8b84b;
+  }
+
+  .breadSep {
+    color: rgba(255, 255, 255, 0.26);
+  }
+
+  .bannerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .bannerIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .bannerContent h1 {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .bannerContent p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    max-width: 560px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  /* ── Grid ── */
+  .gridSection {
+    padding: 40px 0 60px;
+  }
+
+  .gridWrap {
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(20, 60, 20, 0.12);
+  }
+
+  .cardTitle {
+    font-size: 15px;
+  }
+
+  .cardDesc {
+    font-size: 13px;
+  }
+
+  .cardLink {
+    font-size: 12px;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    padding: 50px 20px;
+  }
+}
+
+/* ═══════════════════════════════════
+   DESKTOP / TABLET (≥ 768px)
+   ═══════════════════════════════════ */
+@media (min-width: 768px) {
+  .desktopBanner {
+    border-radius: 0 0 28px 28px;
+  }
+
+  .bannerContent h1 {
+    font-size: 30px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ═══════════════════════════════════
+   DESKTOP (≥ 992px)
+   ═══════════════════════════════════ */
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -1,0 +1,82 @@
+/* ═══════════════════════════════════════════════
+   Account Mobile Menu — top-left dropdown (mobile only)
+   ═══════════════════════════════════════════════ */
+
+.wrap {
+  position: relative; z-index: 60;
+  display: flex; justify-content: flex-start;
+  margin-bottom: 10px;
+}
+/* Sub-pages (AccountLayout) go desktop at 768px */
+@media (min-width: 768px) {
+  .wrap:not(.until1024) { display: none; }
+}
+/* Dashboard goes desktop at 1024px */
+@media (min-width: 1024px) {
+  .wrap.until1024 { display: none; }
+}
+
+/* Toggle pill */
+.toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 999px;
+  border: 1.5px solid rgba(20,71,47,.2);
+  background: #fff; color: #14472F;
+  font-size: 13px; font-weight: 800; font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -12px rgba(15,23,42,.35);
+  transition: all .2s ease;
+}
+.toggle:active { transform: scale(.96); }
+.toggleOpen {
+  background: linear-gradient(135deg, #14472F, #1a5c38);
+  border-color: transparent; color: #fff;
+  box-shadow: 0 8px 20px -10px rgba(20,71,47,.8);
+}
+.caret { font-size: 10px; opacity: .7; transition: transform .2s ease; }
+.caretOpen { transform: rotate(180deg); }
+
+/* Transparent backdrop — taps outside close the menu */
+.backdrop {
+  position: fixed; inset: 0; z-index: 55;
+  background: transparent; border: none; padding: 0; cursor: default;
+}
+
+/* Dropdown panel */
+.panel {
+  position: absolute; top: calc(100% + 8px); left: 0; z-index: 56;
+  width: min(300px, 80vw);
+  max-height: min(62vh, 480px); overflow-y: auto;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: 18px;
+  box-shadow: 0 20px 48px -12px rgba(15,23,42,.3);
+  padding: 8px;
+  animation: menuIn .18s cubic-bezier(.34,1.3,.64,1);
+}
+@keyframes menuIn { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.link, .logoutBtn {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%; padding: 9px 10px;
+  border: none; border-radius: 12px; background: none;
+  text-decoration: none; cursor: pointer; font-family: inherit;
+  font-size: 14px; font-weight: 600; color: #1f2937;
+  transition: background .15s ease;
+}
+.link:hover, .logoutBtn:hover { background: #f0fdf4; }
+.link:active, .logoutBtn:active { transform: scale(.98); }
+.linkIcon {
+  width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0;
+  background: #eef4ee; color: #14532d;
+  display: grid; place-items: center; font-size: 14px;
+}
+.linkLabel { flex: 1; text-align: left; }
+.linkChev { font-size: 11px; color: #9ca3af; }
+.linkActive { background: #14532d; color: #fff; font-weight: 700; }
+.linkActive:hover { background: #14532d; }
+.linkActive .linkIcon { background: rgba(255,255,255,.16); color: #fff; }
+.linkActive .linkChev { color: rgba(255,255,255,.7); }
+.logoutBtn { color: #dc2626; font-weight: 700; margin-top: 2px; border-top: 1px solid rgba(0,0,0,.06); border-radius: 0 0 12px 12px; padding-top: 11px; }
+.logoutIcon { background: #fee2e2; color: #dc2626; }
+.logoutBtn:hover { background: #fef2f2; }

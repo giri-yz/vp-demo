@@ -1,0 +1,541 @@
+/* Matches the live reference's actual rendered DOM/CSS (verified via DevTools):
+   #shop-bb-grid .bb-item — 6px card padding, a 74px-tall image with its OWN independent
+   9px border-radius (inset from the card edge, not full-bleed), ~210px total card height,
+   1px solid #e5e8e2 border, 10px card radius. Same compact design used on every viewport
+   per the user's explicit ask, not a separate desktop/mobile treatment. */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 6px;
+  border: 1px solid #e5e8e2;
+  border-radius: 10px;
+  background: #fff;
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 18px rgba(17, 32, 17, 0.1);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.card.selected {
+  border-color: #8dc63f;
+  background: #f6fbee;
+  animation: addPop 0.4s ease;
+}
+
+@keyframes addPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.03); }
+  70% { transform: scale(0.99); }
+  100% { transform: scale(1); }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* Hover must NOT move the card (no translate/rotate here): the transform transition keeps the
+     card drifting between mousedown and mouseup, so taps land off the small +/- stepper buttons
+     and the click fires on the parent div instead — making quantity changes silently do nothing.
+     Visual feedback stays via shadow/border; the product image still zooms. */
+  .card:hover {
+    box-shadow: var(--shadow-3d);
+    border-color: #cfe0c6;
+    will-change: box-shadow;
+    transition: box-shadow 0.35s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+}
+
+.selectedBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: flex;
+  width: 18px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2e7d32;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.imageWrap {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 140px;
+  margin-bottom: 0;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: radial-gradient(circle, #fbfcf9 0%, var(--color-white) 70%);
+  font-size: 30px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .card:hover .imageWrap {
+    transform: translateZ(24px);
+    box-shadow: 0 16px 28px rgba(17, 32, 17, 0.16);
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  padding: 4px;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.productInfoButton {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  z-index: 3;
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--color-primary, #1B5E3B);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-primary, #1B5E3B);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.productInfoButton:hover,
+.productInfoButton:focus-visible {
+  background: var(--color-primary, #1B5E3B);
+  color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .card:hover .image {
+    /* Zoom + gentle levitate (the card stays still so taps stay accurate). */
+    transform: scale(1.12) translateY(-6px);
+  }
+}
+
+/* Water-droplet shine: a soft diagonal specular sweep that glides across the
+   produce on hover (pseudo-element, no extra markup). */
+.imageWrap::after {
+  content: '';
+  position: absolute;
+  inset: -30%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.55) 48%,
+    rgba(255, 255, 255, 0.15) 54%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+@keyframes produceShine {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.fallback {
+  font-size: 30px;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  padding: 3px 7px 4px;
+  background: #1565c0;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1.2;
+  border-radius: 9px;
+  white-space: nowrap;
+  /* 3D pop as the card settles in on load. */
+  transform-origin: top left;
+  animation: badgePop 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) both;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0.4) rotate(-8deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .card:hover .imageWrap::after {
+    animation: produceShine 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  flex: 1;
+  text-align: left;
+}
+
+.name {
+  min-height: auto;
+  margin: 0 0 2px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-transform: none;
+  color: #111d13;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.name a {
+  color: inherit;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 6px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #08722a;
+}
+
+.oldPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  text-decoration: line-through;
+}
+
+.unit {
+  font-size: 13px;
+  font-weight: 600;
+  color: #788179;
+}
+
+.addBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 32px;
+  margin-top: auto;
+  padding: 0 12px;
+  border: none;
+  border-radius: 8px;
+  background: #5b8c51;
+  color: var(--color-white);
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.addBtn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.addBtn:hover {
+  background: #426d3b;
+  box-shadow: 0 8px 18px rgba(66, 109, 59, 0.35), 0 2px 6px rgba(66, 109, 59, 0.2);
+}
+
+.addBtn:active {
+  transform: scale(0.96);
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-height: 30px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.quantity button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: #1b5925;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(27, 89, 37, 0.35);
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.quantity button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.quantity button:hover {
+  background: #116d24;
+}
+
+.quantity button:active {
+  transform: scale(0.92);
+}
+
+.quantity output {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  min-width: 24px;
+  justify-content: center;
+  color: #111d13;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.qtyUnit {
+  font-size: 11px;
+  font-weight: 600;
+  color: #333;
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .imageWrap {
+    height: 200px;
+    padding: 2px;
+  }
+
+  .image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover .image {
+    transform: scale(1.16) translateY(-8px);
+  }
+
+  .freshoTag {
+    font-size: 11px;
+  }
+
+  .name {
+    font-size: 15px;
+    margin-bottom: 3px;
+    line-height: 1.25;
+  }
+
+  .priceRow {
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+
+  .oldPrice {
+    font-size: 14px;
+  }
+
+  .unit {
+    font-size: 13px;
+  }
+
+  .addBtn {
+    min-height: 38px;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 8px;
+    padding: 0 14px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .discountBadge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 3;
+    padding: 5px 12px;
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    line-height: 1.2;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(21, 101, 192, 0.35);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .card:hover .image {
+    transform: scale(1.16) translateY(-8px);
+  }
+}
+
+/* ===== Beverages — centered bottle images ===== */
+.card[data-category="Beverages"] .imageWrap,
+.card[data-category="Beverages"] .imageWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card[data-category="Beverages"] .image {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: 100%;
+  margin: auto;
+  padding: 6px;
+  display: block;
+  border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+  .card[data-category="Beverages"] .imageWrap {
+    aspect-ratio: 3 / 4;
+    height: auto;
+    min-height: 150px;
+    max-height: 200px;
+  }
+
+  /* Groceries packets (tall pouches) fully visible inside wrap */
+  .card[data-category="Groceries"] .image {
+    max-width: 72%;
+    max-height: 78%;
+    padding: 10px;
+  }
+}
+
+/* ===== Compact variant — Small/Big Box desktop grids (smaller cards) ===== */
+@media (min-width: 768px) {
+  .card.compact {
+    padding: 6px;
+  }
+
+  .card.compact .imageWrap {
+    height: 156px;
+  }
+
+  .card.compact .name {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .card.compact .priceRow {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .card.compact .oldPrice {
+    font-size: 12px;
+  }
+
+  .card.compact .unit {
+    font-size: 12px;
+  }
+
+  .card.compact .addBtn {
+    min-height: 34px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Mobile (<=767px): equal-height cards so 2-col rows align =====
+   Grid stretches cards to the tallest in the row; fixed text-block
+   heights + margin-top:auto on the Add button pin buttons to one line. */
+@media (max-width: 767px) {
+  .card {
+    height: 100%;
+  }
+
+  .imageWrap {
+    height: 120px;
+    flex-shrink: 0;
+  }
+
+  .body {
+    flex: 1;
+  }
+
+  .name {
+    min-height: 28px;
+    font-size: 12px;
+    line-height: 1.15;
+    -webkit-line-clamp: 2;
+  }
+
+  .priceRow {
+    min-height: 22px;
+    flex-wrap: wrap;
+    row-gap: 0;
+    align-content: flex-start;
+  }
+}

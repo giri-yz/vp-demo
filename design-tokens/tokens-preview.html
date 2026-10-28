@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VPNexues — Design Tokens Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* =====================================================================
+   VPNEXUES DESIGN TOKENS — canonical set (v2)
+   Source: reconciled from vpnexues-latest-main/assets-ui/{scss,css}/
+   (the new UI drop), which itself ships 4+ conflicting :root blocks
+   (_variables.scss's --theme-color, a second legacy-matching block in
+   main.css, a third isolated "jdblock-" scale, and mobile-nav inline
+   vars). Same fragmentation problem the v1 token set solved for the old
+   static site — resolved the same way: one canonical value per token.
+   vpnexues-static-ui/ is retired as a design reference as of this pass;
+   vpnexues-latest-main/ is now the only source. This block is the literal
+   seed for vpnexues-ui/src/styles/tokens.css.
+   ===================================================================== */
+:root {
+  /* --- Brand primary (green) --- */
+  --color-primary-700: #2c4f25;   /* dark green — nav/header/hover (unchanged, stable across both drops) */
+  --color-primary-500: #5b8c51;   /* v2: base brand green, from the new drop's --theme-color (was #4d7c3f) */
+  --color-primary-300: #6aa358;   /* light green (unchanged, stable across both drops) */
+  --color-primary-100: #e7f0e3;   /* light tint for subtle bg/badges */
+
+  /* --- Accent (gold) --- */
+  --color-gold: #eddd5e;          /* sale badges, CTAs, highlights — the one gold value stable across both drops */
+  --color-gold-dark: #c9bc50;     /* hover/darker gold */
+
+  /* --- Neutrals --- */
+  --color-white: #ffffff;
+  --color-cream: #f7f4ef;         /* section backgrounds */
+  --color-bg: #f0f4ef;            /* page background */
+  --color-bg-alt: #fff9e8;        /* v2 new: warm secondary section bg, from the new drop's --bg-2 */
+  --color-dark: #1b2f18;          /* darkest surface (sidebar, footer) */
+  --color-header-dark: #0a2803;   /* v2 new: deepest brand green, used for headers/overlays in the new drop */
+  --color-text: #555555;          /* body text */
+  --color-text-heading: #1e3318;  /* headings */
+  --color-text-muted: #888888;    /* secondary/meta text */
+  --color-border: #dde8d8;        /* default border */
+  --color-border-strong: #c8d8c2; /* emphasized border */
+
+  /* --- Semantic status (harmonized with brand, not Tailwind blue/purple/teal) --- */
+  --color-success: #2f9e44;
+  --color-warning: #c98a1f;
+  --color-danger: #c0392b;
+  --color-info: #4a6fa5;
+
+  /* --- Typography --- */
+  --font-family-base: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-body: 500;        /* v2: bumped from ~400 to match the new drop's heavier body weight */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 40px;
+  --font-size-5xl: 56px;          /* v2 new: hero-scale headings (new drop uses up to 100px unclamped; capped for this scale) */
+
+  /* --- Spacing scale (4/8px based) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* --- Shadow (kept green-tinted/brand-consistent — the new drop's blue-tinted
+     rgba(1,53,102,…) shadows read as an off-brand inconsistency in the source
+     material itself, not adopted here) --- */
+  --shadow-sm: 0 4px 24px rgba(44,79,37,.10);
+  --shadow-lg: 0 12px 48px rgba(44,79,37,.16);
+
+  /* --- Overlay tints (translucent white — glassy buttons/arrows on photo backgrounds) --- */
+  --overlay-white-15: rgba(255,255,255,.15);
+  --overlay-white-20: rgba(255,255,255,.2);
+  --overlay-white-30: rgba(255,255,255,.3);
+
+  /* --- Motion --- */
+  --transition: all .4s ease-in-out;  /* v2: was .28s ease — matches the new drop's global transition mixin */
+
+  /* --- Breakpoints (documented here for reference; media queries can't read custom properties) ---
+     v2: the new drop uses a more granular tier system than v1's 480/768/1024/1280.
+     --bp-xs: 450px, --bp-sm: 576px, --bp-md: 768px, --bp-lg: 992px, --bp-xl: 1200px, --bp-xxl: 1400px */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: var(--font-family-base);
+  font-weight: var(--font-weight-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  padding: var(--space-8) var(--space-6) var(--space-12);
+}
+h1,h2,h3,h4 { color: var(--color-text-heading); font-weight:800; }
+h1 { font-size: var(--font-size-4xl); margin-bottom: var(--space-2); }
+h2 { font-size: var(--font-size-2xl); margin: var(--space-11) 0 var(--space-2); border-bottom: 2px solid var(--color-border); padding-bottom: var(--space-3); }
+h3 { font-size: var(--font-size-lg); margin-bottom: var(--space-4); color: var(--color-primary-700); }
+p.lede { color: var(--color-text-muted); font-size: var(--font-size-md); max-width: 760px; }
+.wrap { max-width: 1200px; margin: 0 auto; }
+code { background: var(--color-white); border:1px solid var(--color-border); border-radius:6px; padding:2px 6px; font-size:.85em; }
+
+/* ---- swatch grid ---- */
+.swatch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:var(--space-5); }
+.swatch { border-radius: var(--radius-lg); overflow:hidden; box-shadow: var(--shadow-sm); background:var(--color-white); }
+.swatch-color { height:88px; }
+.swatch-label { padding: var(--space-3) var(--space-4); font-size: var(--font-size-sm); }
+.swatch-label strong { display:block; font-size: var(--font-size-sm); color:var(--color-text-heading); }
+.swatch-label span { color: var(--color-text-muted); font-size: var(--font-size-xs); }
+
+/* ---- type scale ---- */
+.type-row { display:flex; align-items:baseline; gap: var(--space-6); padding: var(--space-4) 0; border-bottom:1px dashed var(--color-border); }
+.type-row .tag { width:170px; flex-shrink:0; color:var(--color-text-muted); font-size:var(--font-size-xs); font-family:monospace; }
+.type-row .sample { color: var(--color-text-heading); font-weight:700; }
+
+/* ---- buttons ---- */
+.btn-row { display:flex; flex-wrap:wrap; gap: var(--space-5); align-items:center; margin-bottom: var(--space-6); }
+.btn {
+  font-family: var(--font-family-base);
+  font-weight:700; font-size: var(--font-size-sm); letter-spacing:.4px; text-transform:uppercase;
+  padding: 13px 28px; border-radius: var(--radius-pill); border:2px solid transparent; cursor:pointer;
+  transition: var(--transition);
+}
+.btn-primary { background: var(--color-primary-500); color:var(--color-white); }
+.btn-primary:hover { background: var(--color-primary-700); transform:translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn-outline { background:transparent; border-color: var(--color-primary-500); color: var(--color-primary-500); }
+.btn-outline:hover { background: var(--color-primary-500); color:var(--color-white); }
+.btn-gold { background: var(--color-gold); color: var(--color-primary-700); }
+.btn-gold:hover { background: var(--color-gold-dark); color:var(--color-white); }
+.btn-ghost { background:transparent; color: var(--color-text); border-color: var(--color-border); text-transform:none; letter-spacing:0; }
+.btn-ghost:hover { background: var(--color-primary-100); }
+.btn-disabled, .btn:disabled { opacity:.45; cursor:not-allowed; pointer-events:none; }
+.btn-label { font-size:var(--font-size-xs); color:var(--color-text-muted); margin-top:var(--space-2); text-align:center; }
+.btn-col { display:flex; flex-direction:column; align-items:center; }
+
+/* ---- status badges ---- */
+.badge-row { display:flex; flex-wrap:wrap; gap: var(--space-3); }
+.badge { padding:6px 14px; border-radius: var(--radius-pill); font-size: var(--font-size-xs); font-weight:700; text-transform:uppercase; letter-spacing:.4px; }
+.badge-success { background:#e6f6e9; color: var(--color-success); }
+.badge-warning { background:#fbf1de; color: var(--color-warning); }
+.badge-danger  { background:#fbe9e7; color: var(--color-danger); }
+.badge-info    { background:#e9eef6; color: var(--color-info); }
+.badge-primary { background: var(--color-primary-100); color: var(--color-primary-700); }
+
+/* ---- spacing scale ---- */
+.space-row { display:flex; align-items:center; gap: var(--space-4); margin-bottom: var(--space-3); }
+.space-row .tag { width:90px; font-family:monospace; font-size:var(--font-size-xs); color:var(--color-text-muted); }
+.space-bar { background: var(--color-primary-300); height:18px; border-radius:4px; }
+
+/* ---- cards demo (radius/shadow) ---- */
+.card-row { display:flex; flex-wrap:wrap; gap: var(--space-6); }
+.demo-card { background:var(--color-white); padding: var(--space-6); width:220px; }
+.card-sm { border-radius: var(--radius-sm); box-shadow: var(--shadow-sm); }
+.card-lg { border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.card-xl { border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); }
+
+/* ---- before/after admin comparison ---- */
+.compare { display:grid; grid-template-columns:1fr 1fr; gap: var(--space-6); }
+@media (max-width:768px){ .compare{ grid-template-columns:1fr; } }
+.compare-panel { border-radius: var(--radius-lg); overflow:hidden; box-shadow: var(--shadow-sm); }
+.compare-head { padding: var(--space-3) var(--space-5); font-size: var(--font-size-xs); font-weight:800; text-transform:uppercase; letter-spacing:.5px; }
+.compare-body { padding: var(--space-6); }
+
+/* BEFORE: current admin look — generic Tailwind/Inter, disconnected from brand */
+.before-panel { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+.before-panel .compare-head { background:#1a3a1a; color:#fff; }
+.before-panel .compare-body { background:#f3f4f6; }
+.before-panel .mock-sidebar-item { background:#16a34a; color:#fff; border-radius:10px; padding:10px 14px; font-size:13px; font-weight:600; margin-bottom:8px; display:inline-block; }
+.before-panel .mock-badge { background:#dcfce7; color:#15803d; border-radius:6px; padding:4px 10px; font-size:12px; font-weight:600; }
+.before-panel .mock-text { color:#111827; font-size:13px; }
+.before-panel .mock-muted { color:#9ca3af; font-size:12px; }
+
+/* AFTER: unified brand look, using tokens above */
+.after-panel .compare-head { background: var(--color-dark); color: var(--color-white); }
+.after-panel .compare-body { background: var(--color-bg); }
+.after-panel .mock-sidebar-item { background: var(--color-primary-500); color:var(--color-white); border-radius: var(--radius-sm); padding:10px 14px; font-size:var(--font-size-sm); font-weight:700; margin-bottom:8px; display:inline-block; }
+.after-panel .mock-badge { background: var(--color-primary-100); color: var(--color-primary-700); border-radius: var(--radius-pill); padding:4px 12px; font-size:var(--font-size-xs); font-weight:700; }
+.after-panel .mock-text { color: var(--color-text-heading); font-size:var(--font-size-sm); font-family: var(--font-family-base); }
+.after-panel .mock-muted { color: var(--color-text-muted); font-size:var(--font-size-xs); font-family: var(--font-family-base); }
+
+.footnote { margin-top: var(--space-12); padding-top:var(--space-6); border-top:1px solid var(--color-border); color:var(--color-text-muted); font-size:var(--font-size-sm); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>VPNexues Design Tokens</h1>
+  <p class="lede">Consolidated color, typography, spacing, and component tokens for both the customer-facing site and the admin/super-admin dashboard, reconciled from the <code>vpnexues-latest-main</code> UI drop (v2 — <code>vpnexues-static-ui</code> is retired as a reference). This file has no build step — open it directly in a browser to review.</p>
+
+  <h2>Brand &amp; neutral colors</h2>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-primary-700)"></div><div class="swatch-label"><strong>Primary 700</strong><span>--color-primary-700 · #2c4f25</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-primary-500)"></div><div class="swatch-label"><strong>Primary 500 (base, v2)</strong><span>--color-primary-500 · #5b8c51 (was #4d7c3f)</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-primary-300)"></div><div class="swatch-label"><strong>Primary 300</strong><span>--color-primary-300 · #6aa358</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-primary-100)"></div><div class="swatch-label"><strong>Primary 100</strong><span>--color-primary-100 · #e7f0e3</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-gold)"></div><div class="swatch-label"><strong>Gold accent</strong><span>--color-gold · #eddd5e</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-gold-dark)"></div><div class="swatch-label"><strong>Gold dark</strong><span>--color-gold-dark · #c9bc50</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-cream);border:1px solid var(--color-border)"></div><div class="swatch-label"><strong>Cream</strong><span>--color-cream · #f7f4ef</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-bg);border:1px solid var(--color-border)"></div><div class="swatch-label"><strong>Page bg</strong><span>--color-bg · #f0f4ef</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-bg-alt);border:1px solid var(--color-border)"></div><div class="swatch-label"><strong>Alt bg (v2 new)</strong><span>--color-bg-alt · #fff9e8</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-dark)"></div><div class="swatch-label"><strong>Dark surface</strong><span>--color-dark · #1b2f18</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--color-header-dark)"></div><div class="swatch-label"><strong>Header dark (v2 new)</strong><span>--color-header-dark · #0a2803</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:linear-gradient(135deg,#2c4f25,var(--overlay-white-30))"></div><div class="swatch-label"><strong>Overlay white 30%</strong><span>--overlay-white-30 · glassy buttons/arrows on photos</span></div></div>
+  </div>
+
+  <h2>Semantic status colors</h2>
+  <p class="lede">Harmonized with the brand palette rather than reusing Tailwind's default blue/purple/teal (as the old admin dashboard did).</p>
+  <div class="badge-row">
+    <span class="badge badge-primary">Primary</span>
+    <span class="badge badge-success">Success · Delivered</span>
+    <span class="badge badge-warning">Warning · Low Stock</span>
+    <span class="badge badge-danger">Danger · Cancelled</span>
+    <span class="badge badge-info">Info · Processing</span>
+  </div>
+
+  <h2>Typography — Nunito, single family for both UIs</h2>
+  <p class="lede">Body weight bumped to <code>--font-weight-body: 500</code> in v2 (was ~400) to match the new drop's heavier body copy.</p>
+  <div class="type-row"><div class="tag">--font-size-5xl / 56px (v2 new)</div><div class="sample" style="font-size:var(--font-size-5xl)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-4xl / 40px</div><div class="sample" style="font-size:var(--font-size-4xl)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-3xl / 32px</div><div class="sample" style="font-size:var(--font-size-3xl)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-2xl / 28px</div><div class="sample" style="font-size:var(--font-size-2xl)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-xl / 24px</div><div class="sample" style="font-size:var(--font-size-xl)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-lg / 20px</div><div class="sample" style="font-size:var(--font-size-lg)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-md / 18px</div><div class="sample" style="font-size:var(--font-size-md)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-base / 16px</div><div class="sample" style="font-size:var(--font-size-base)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-sm / 14px</div><div class="sample" style="font-size:var(--font-size-sm)">Fresh organic groceries</div></div>
+  <div class="type-row"><div class="tag">--font-size-xs / 12px</div><div class="sample" style="font-size:var(--font-size-xs)">Fresh organic groceries</div></div>
+
+  <h2>Buttons</h2>
+  <div class="btn-row">
+    <div class="btn-col"><button class="btn btn-primary">Add to Cart</button><div class="btn-label">Primary</div></div>
+    <div class="btn-col"><button class="btn btn-outline">View Details</button><div class="btn-label">Outline</div></div>
+    <div class="btn-col"><button class="btn btn-gold">Sale · 20% Off</button><div class="btn-label">Gold / CTA</div></div>
+    <div class="btn-col"><button class="btn btn-ghost">Cancel</button><div class="btn-label">Ghost</div></div>
+    <div class="btn-col"><button class="btn btn-primary btn-disabled">Add to Cart</button><div class="btn-label">Disabled</div></div>
+  </div>
+  <p class="lede">Hover the buttons above to see the hover states (darker shade + lift). All share one radius/shadow/transition token set — no more per-page one-off button styles.</p>
+
+  <h2>Spacing scale (4 / 8px based)</h2>
+  <div class="space-row"><div class="tag">--space-1 · 4px</div><div class="space-bar" style="width:4px"></div></div>
+  <div class="space-row"><div class="tag">--space-2 · 8px</div><div class="space-bar" style="width:8px"></div></div>
+  <div class="space-row"><div class="tag">--space-3 · 12px</div><div class="space-bar" style="width:12px"></div></div>
+  <div class="space-row"><div class="tag">--space-4 · 16px</div><div class="space-bar" style="width:16px"></div></div>
+  <div class="space-row"><div class="tag">--space-5 · 20px</div><div class="space-bar" style="width:20px"></div></div>
+  <div class="space-row"><div class="tag">--space-6 · 24px</div><div class="space-bar" style="width:24px"></div></div>
+  <div class="space-row"><div class="tag">--space-7 · 32px</div><div class="space-bar" style="width:32px"></div></div>
+  <div class="space-row"><div class="tag">--space-8 · 40px</div><div class="space-bar" style="width:40px"></div></div>
+  <div class="space-row"><div class="tag">--space-9 · 48px</div><div class="space-bar" style="width:48px"></div></div>
+  <div class="space-row"><div class="tag">--space-10 · 64px</div><div class="space-bar" style="width:64px"></div></div>
+  <div class="space-row"><div class="tag">--space-11 · 80px</div><div class="space-bar" style="width:80px"></div></div>
+  <div class="space-row"><div class="tag">--space-12 · 96px</div><div class="space-bar" style="width:96px"></div></div>
+
+  <h2>Radius &amp; shadow (cards)</h2>
+  <div class="card-row">
+    <div class="demo-card card-sm"><h3>--radius-sm</h3>8px — inputs, small chips</div>
+    <div class="demo-card card-lg"><h3>--radius-lg</h3>16px — product cards, panels</div>
+    <div class="demo-card card-xl"><h3>--radius-xl</h3>24px — hero panels, modals</div>
+  </div>
+
+  <h2>Admin dashboard: before vs. after</h2>
+  <p class="lede">The current admin dashboard uses Inter + a generic Tailwind gray/green palette, completely disconnected from the customer site's branded look. Proposed: retire that system and apply the same tokens above to the admin UI, using Nunito everywhere.</p>
+  <div class="compare">
+    <div class="compare-panel before-panel">
+      <div class="compare-head">Before — current admin (Inter + Tailwind)</div>
+      <div class="compare-body">
+        <div class="mock-sidebar-item">Dashboard</div><br>
+        <div class="mock-sidebar-item">Orders</div><br><br>
+        <div class="mock-text">Recent Orders</div>
+        <div class="mock-muted" style="margin-bottom:10px">Updated 2 min ago</div>
+        <span class="mock-badge">Delivered</span>
+      </div>
+    </div>
+    <div class="compare-panel after-panel">
+      <div class="compare-head">After — unified brand tokens</div>
+      <div class="compare-body">
+        <div class="mock-sidebar-item">Dashboard</div><br>
+        <div class="mock-sidebar-item">Orders</div><br><br>
+        <div class="mock-text">Recent Orders</div>
+        <div class="mock-muted" style="margin-bottom:10px">Updated 2 min ago</div>
+        <span class="mock-badge">Delivered</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    Source of truth: this <code>:root</code> block is ported verbatim into <code>vpnexues-ui/src/styles/tokens.css</code>. Standardized breakpoints (not visible as CSS variables, since media queries can't consume custom properties), v2: <code>450px</code> / <code>576px</code> / <code>768px</code> / <code>992px</code> / <code>1200px</code> / <code>1400px</code> — a more granular tier system than v1's 480/768/1024/1280, adopted from the new UI drop's own breakpoint usage (filter sheets, card grid reflow).
+  </div>
+
+</div>
+</body>
+</html>

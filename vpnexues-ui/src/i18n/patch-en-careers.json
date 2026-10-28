@@ -1,0 +1,317 @@
+{
+  "careers.jobs.fullstack.title": "Full Stack Web Developer Intern",
+  "careers.jobs.fullstack.skills": [
+    "Node.js",
+    "React",
+    "Java",
+    "MongoDB"
+  ],
+  "careers.jobs.fullstack.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🏠 Remote-First",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.seo.title": "SEO Content Writer",
+  "careers.jobs.seo.skills": [
+    "SEO Writing",
+    "Keyword Research",
+    "Content Strategy",
+    "Lead Generation"
+  ],
+  "careers.jobs.seo.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🏠 Remote-First",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.seo.openings": [
+    {
+      "role": "SEO Content Writer",
+      "responsibilities": [
+        "Write SEO-optimized blog posts",
+        "Create product descriptions",
+        "Develop website content",
+        "Conduct keyword research",
+        "Analyze content performance"
+      ]
+    },
+    {
+      "role": "SEO Lead Generation",
+      "responsibilities": [
+        "Conduct prospect research",
+        "Perform keyword research for leads",
+        "Generate organic leads",
+        "Maintain lead database",
+        "Track SEO-driven conversions"
+      ]
+    }
+  ],
+  "careers.jobs.sales.title": "Sales & Marketing Executive",
+  "careers.jobs.sales.skills": [
+    "B2B Sales",
+    "Digital Marketing",
+    "Client Relations"
+  ],
+  "careers.jobs.sales.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship",
+    "🌍 Global Impact"
+  ],
+  "careers.jobs.sales.openings": [
+    {
+      "role": "Sales & Marketing Executive",
+      "responsibilities": [
+        "Identify and close B2B deals",
+        "Execute marketing campaigns",
+        "Build client relationships",
+        "Track sales metrics",
+        "Drive business development"
+      ]
+    },
+    {
+      "role": "Sales & Marketing Intern",
+      "responsibilities": [
+        "Support sales outreach",
+        "Assist with campaigns",
+        "Engage customers",
+        "Generate leads",
+        "Support marketing activities"
+      ]
+    },
+    {
+      "role": "B2B / Retail Sales Intern",
+      "responsibilities": [
+        "Assist with B2B outreach",
+        "Handle retail customer inquiries",
+        "Follow up on leads",
+        "Maintain customer database",
+        "Support product inquiries"
+      ]
+    }
+  ],
+  "careers.jobs.agriculture.title": "Agriculture Executive",
+  "careers.jobs.agriculture.skills": [
+    "Farm Management",
+    "Supply Chain",
+    "Organic Certification",
+    "Crop Monitoring"
+  ],
+  "careers.jobs.agriculture.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship",
+    "🌍 Global Impact"
+  ],
+  "careers.jobs.agriculture.openings": [
+    {
+      "role": "Agriculture Executive",
+      "responsibilities": [
+        "Manage farmer relationships",
+        "Coordinate organic certifications",
+        "Ensure quality standards",
+        "Optimize supply chain",
+        "Lead farm operations"
+      ]
+    },
+    {
+      "role": "Agriculture Intern",
+      "responsibilities": [
+        "Monitor crop health",
+        "Coordinate with farmers",
+        "Support organic practices",
+        "Document farm activities",
+        "Assist with produce handling"
+      ]
+    }
+  ],
+  "careers.jobs.hr.title": "HR Executive",
+  "careers.jobs.hr.skills": [
+    "Recruitment",
+    "Employee Relations",
+    "HR Operations",
+    "Documentation"
+  ],
+  "careers.jobs.hr.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship",
+    "🌍 Global Impact"
+  ],
+  "careers.jobs.hr.openings": [
+    {
+      "role": "HR Executive",
+      "responsibilities": [
+        "Manage end-to-end recruitment",
+        "Handle employee relations",
+        "Implement HR policies",
+        "Organize team events",
+        "Lead HR operations"
+      ]
+    },
+    {
+      "role": "HR Intern",
+      "responsibilities": [
+        "Screen resumes",
+        "Coordinate interviews",
+        "Maintain employee records",
+        "Assist with HR admin",
+        "Support onboarding documentation"
+      ]
+    }
+  ],
+  "careers.jobs.accountant.title": "Accountant",
+  "careers.jobs.accountant.skills": [
+    "Tally",
+    "GST",
+    "Bookkeeping",
+    "MS Excel"
+  ],
+  "careers.jobs.accountant.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship",
+    "🌍 Global Impact"
+  ],
+  "careers.jobs.customer-support.title": "Customer Support Intern",
+  "careers.jobs.customer-support.skills": [
+    "Customer Support",
+    "Communication",
+    "Order Support",
+    "Problem Solving"
+  ],
+  "careers.jobs.customer-support.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🏠 Remote-First",
+    "🌴 Team Retreats",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.supply-chain.title": "Supply Chain Intern",
+  "careers.jobs.supply-chain.skills": [
+    "Supply Chain",
+    "Inventory",
+    "Logistics",
+    "Coordination"
+  ],
+  "careers.jobs.supply-chain.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.ea-director.title": "Executive Assistant to Director",
+  "careers.jobs.ea-director.skills": [
+    "Scheduling",
+    "Documentation",
+    "Communication",
+    "Coordination"
+  ],
+  "careers.jobs.ea-director.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.pa-director.title": "Personal Assistant to Director",
+  "careers.jobs.pa-director.skills": [
+    "Time Management",
+    "Communication",
+    "Scheduling",
+    "Administration"
+  ],
+  "careers.jobs.pa-director.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.quality.title": "Produce Quality / Food Quality Intern",
+  "careers.jobs.quality.skills": [
+    "Quality Inspection",
+    "Food Quality",
+    "Documentation",
+    "Fresh Produce"
+  ],
+  "careers.jobs.quality.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.procurement.title": "Procurement Intern",
+  "careers.jobs.procurement.skills": [
+    "Procurement",
+    "Vendor Management",
+    "Sourcing",
+    "Purchase Tracking"
+  ],
+  "careers.jobs.procurement.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.digital-marketing.title": "Digital Marketing Intern",
+  "careers.jobs.digital-marketing.skills": [
+    "Digital Marketing",
+    "Social Media",
+    "Content Marketing",
+    "Analytics"
+  ],
+  "careers.jobs.digital-marketing.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🏠 Remote-First",
+    "🌴 Team Retreats",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.android-dev.title": "Android Developer",
+  "careers.jobs.android-dev.skills": [
+    "Kotlin",
+    "Android SDK",
+    "REST APIs",
+    "Firebase"
+  ],
+  "careers.jobs.android-dev.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🏠 Remote-First",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship"
+  ],
+  "careers.jobs.b2b-sales.title": "B2B / Retail Sales Executive Intern",
+  "careers.jobs.b2b-sales.skills": [
+    "B2B Sales",
+    "Lead Generation",
+    "Negotiation",
+    "Communication"
+  ],
+  "careers.jobs.b2b-sales.perks": [
+    "🌱 Farm Fresh Produce",
+    "📚 Learning Budget",
+    "🌴 Team Retreats",
+    "💰 Growth Bonuses",
+    "👨‍🏫 Mentorship",
+    "🌍 Global Impact"
+  ]
+}

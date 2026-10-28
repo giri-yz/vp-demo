@@ -1,0 +1,100 @@
+/* Feature A — Live/Reconnecting pill (shared by all admin order surfaces) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-primary-100);
+  color: var(--color-text-heading);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  flex-shrink: 0;
+}
+
+.dotPulse {
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.label {
+  color: inherit;
+}
+
+.countdown {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Failing backend — amber, with a Retry affordance */
+.reconnecting {
+  background: var(--color-bg-alt);
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.reconnecting .dot {
+  background: var(--color-warning);
+}
+
+.retryBtn {
+  border: 1px solid var(--color-warning);
+  background: transparent;
+  color: var(--color-warning);
+  border-radius: 999px;
+  padding: 1px 9px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.retryBtn:hover {
+  background: var(--color-warning);
+  color: var(--color-white);
+}
+
+/* Dark-green banner variant (glass) */
+.onDark {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--color-white);
+}
+
+.onDark .countdown {
+  color: var(--color-white);
+  opacity: 0.75;
+}
+
+.onDark.reconnecting {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.onDark .retryBtn {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+}
+
+.onDark .retryBtn:hover {
+  background: var(--color-white);
+  color: var(--color-dark);
+}

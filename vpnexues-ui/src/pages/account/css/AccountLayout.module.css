@@ -1,0 +1,209 @@
+/* ═══════════════════════════════════════════════
+   Account Layout — Shared sidebar for all account pages
+   ═══════════════════════════════════════════════ */
+
+.layout {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #fbfdf8 0%, #f1f6ee 100%);
+  padding-bottom: 40px;
+  font-family: var(--font-family-base);
+}
+
+/* ── Mobile Header ── */
+.mobileHeader {
+  position: sticky; top: 0; z-index: 100;
+  display: grid; grid-template-columns: 44px 1fr 44px;
+  align-items: center; padding: 6px 12px;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(14px);
+  border-bottom: 1px solid #e8ece7;
+}
+.backBtn {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid rgba(91,140,81,.28);
+  background: linear-gradient(145deg, #f4fbf1, #e8f5e3);
+  color: #2f7d2c; display: grid; place-items: center;
+  font-size: 14px; cursor: pointer; text-decoration: none;
+  box-shadow: 0 4px 12px rgba(21,102,39,.1); transition: all .25s ease;
+}
+.backBtn:hover { transform: translateX(-2px); }
+.backBtn:active { transform: scale(.92) translateX(-1px); }
+.brand { display: flex; align-items: center; justify-self: center; gap: 8px; text-decoration: none; color: #1c2820; }
+.brandLogo { width: 36px; height: 36px; object-fit: contain; }
+.brandText { display: flex; flex-direction: column; line-height: 1; }
+.brandText strong { font-size: 16px; font-weight: 900; letter-spacing: -.5px; color: #134B2F; }
+.brandText small { font-size: 9px; font-weight: 700; color: #263528; }
+.headerSpacer { width: 44px; }
+
+/* ── Two-Column Shell ── */
+.shell {
+  display: flex; flex-direction: column; gap: 0;
+  max-width: 100%; padding: 0;
+}
+
+/* ── Mobile Sidebar (below header) — with bg image + dark green overlay ── */
+.mobileSidebar {
+  background:
+    linear-gradient(135deg, rgba(20,71,47,.72), rgba(26,92,56,.78), rgba(31,110,66,.72)),
+    url('/images/account-banners/sidebar-bg.png') center/cover no-repeat;
+  padding: 20px 16px 16px;
+  position: relative; overflow: hidden;
+}
+.mobileSidebar::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 140px; height: 140px; border-radius: 50%;
+  background: rgba(255,255,255,.07);
+}
+.mobileSidebar::after {
+  content: ''; position: absolute; bottom: -30px; left: 20px;
+  width: 90px; height: 90px; border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.mobileProfile {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.mobileAvatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: 2.5px solid rgba(255,255,255,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #fff; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  position: relative;
+}
+.mobileAvatarEdit {
+  position: absolute; bottom: -4px; right: -4px;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #fff; color: #14472F;
+  border: 1.5px solid #e5e7eb;
+  display: grid; place-items: center;
+  font-size: 10px; cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+.desktopAvatarEdit {
+  position: absolute; bottom: -2px; right: -2px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #14472F; color: #fff;
+  border: 2px solid #fff;
+  display: grid; place-items: center;
+  font-size: 10px; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.desktopEmoji { font-size: 16px; line-height: 1; display: inline-block; filter: saturate(1.2); }
+.mobileProfileInfo { flex: 1; min-width: 0; }
+.mobileProfileName { font-size: 17px; font-weight: 800; color: #fff; display: block; }
+.mobileProfileSub { font-size: 13px; color: rgba(255,255,255,.7); display: block; font-weight: 500; }
+
+/* Mobile Nav Pills — horizontal scroll */
+.mobileNav {
+  display: flex; gap: 8px; overflow-x: auto;
+  padding-bottom: 2px; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; position: relative; z-index: 1;
+}
+.mobileNav::-webkit-scrollbar { display: none; }
+.mobileNavPill {
+  display: flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: 22px;
+  border: 1.5px solid rgba(255,255,255,.2); background: rgba(255,255,255,.1);
+  color: rgba(255,255,255,.8); font-size: 12px; font-weight: 600;
+  cursor: pointer; white-space: normal; font-family: inherit;
+  text-align: center; overflow-wrap: anywhere;
+  transition: all .2s ease; text-decoration: none;
+  flex-shrink: 0; backdrop-filter: blur(4px);
+}
+.mobileNavPill:hover { border-color: rgba(255,255,255,.4); color: #fff; background: rgba(255,255,255,.15); }
+.mobileNavPill:active { transform: scale(.95); }
+.mobileNavPillActive {
+  border-color: #fff; background: #fff;
+  color: #14472F; font-weight: 700;
+  box-shadow: 0 2px 12px rgba(0,0,0,.2);
+}
+.mobileNavPill i { font-size: 11px; }
+
+/* Mobile Logout */
+.mobileLogout {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; margin-top: 12px; padding: 10px;
+  border: 1.5px solid rgba(255,255,255,.15); border-radius: 12px;
+  background: rgba(255,255,255,.08); color: rgba(255,255,255,.7);
+  font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit;
+  transition: all .2s ease; position: relative; z-index: 1;
+}
+.mobileLogout:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+/* ── Main Content ── */
+.mainContent { padding: 16px; flex: 1; min-width: 0; animation: contentIn .4s ease both; }
+
+/* ── Page head (dashboard-style title + breadcrumb) ── */
+.pageHead { margin-bottom: 16px; }
+.crumb { font-size: 12.5px; color: #6b7280; margin-bottom: 6px; font-weight: 500; }
+.crumb a { color: #15803d; text-decoration: none; font-weight: 700; }
+.crumb a:hover { text-decoration: underline; }
+.pageTitle {
+  margin: 0;
+  font-size: 22px; font-weight: 800; color: #111827; letter-spacing: -.01em;
+  display: flex; align-items: center; gap: 9px;
+}
+.pageTitle::before {
+  content: '';
+  width: 4px; height: 22px; border-radius: 2px;
+  background: linear-gradient(180deg, #16a34a, #a3e635);
+}
+@media (min-width: 768px) {
+  .pageHead { margin-bottom: 20px; }
+  .pageTitle { font-size: 24px; }
+}
+
+/* Keyframes */
+@keyframes contentIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes rippleAnim { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(4); opacity: 0; } }
+
+/* ── Footer ── */
+.footer {
+  text-align: center; padding: 20px 16px;
+  font-size: 11px; color: #111; font-weight: 600;
+  border-top: 1px solid rgba(0,0,0,.06);
+}
+
+/* Desktop sidebar hidden on mobile — renders the shared AccountSidebar */
+.desktopSidebar { display: none; }
+
+/* ═══ Desktop (768px+) ═══ */
+@media (min-width: 768px) {
+  .mobileHeader { display: none; }
+  .mobileSidebar { display: none; }
+  .mobileLogout { display: none; }
+  .footer { display: none; }
+
+  .layout { padding-bottom: 60px; }
+
+  .shell {
+    flex-direction: row; min-height: calc(100vh - 200px);
+    max-width: none;
+    padding: 0 16px;
+    gap: 28px;
+  }
+
+  /* Pass-through wrapper — the shared sidebar carries its own card styles.
+     Narrower step through the tablet band: the full 260px leaves only ~448px
+     of content between 768 and 1023px. */
+  .desktopSidebar {
+    display: block;
+    width: 220px; flex-shrink: 0;
+  }
+
+  /* Desktop Main */
+  .mainContent { padding: 0; }
+}
+
+/* ═══ Desktop (1024px+) ═══ */
+@media (min-width: 1024px) {
+  .desktopSidebar { width: 260px; }
+}
+
+/* ═══ Large Desktop ═══ */
+@media (min-width: 1280px) {
+  .desktopSidebar { width: 280px; }
+  .mainContent { padding: 0; }
+}
+
